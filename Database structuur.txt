@@ -21,7 +21,9 @@ instruction
 id (int)
 requirements_id (int)
 instruction (text)
-images_id(int)
+
+kankerkoppeltabel
+
 
 images
 id(int)
