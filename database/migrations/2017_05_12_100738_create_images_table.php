@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->char('image_type', 55);
             $table->char('image_path', 255);
-            $table->integer('image_size');
+            $table->intege('image_size');
             $table->char('image_name', 55);
         });
     }
