@@ -1,0 +1,31 @@
+Database structuur
+
+Class
+id (int)
+class (int)
+
+
+Mainrequirements
+id (int)
+name (varchar)
+description (text)
+class_id (int)
+
+requirements
+id (int)
+name (varchar)
+instruction_id (text)
+Mainrequirements_id (int)
+
+instruction
+id (int)
+requirements_id (int)
+instruction (text)
+images_id(int)
+
+images
+id(int)
+image_type(varchar)
+image_path(varchar)
+image_size(int)
+image_name(varchar)
