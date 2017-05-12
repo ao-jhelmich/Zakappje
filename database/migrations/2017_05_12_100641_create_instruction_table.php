@@ -16,7 +16,7 @@ class CreateInstructionTable extends Migration
         Schema::create('instruction', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('instruction');
-            $table->increments('requirements_id');
+            $table->integer('requirements_id');
             $table->timestamps();
         });
     }

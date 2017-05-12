@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequirementHasImagesTable extends Migration
+class CreateRequirementhasimagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class CreateRequirementHasImagesTable extends Migration
     public function up()
     {
         Schema::create('requirements_has_images', function (Blueprint $table) {
-            $table->increments('requirement_id');
-            $table->increments('image_id');
+            $table->integer('requirement_id');
+            $table->integer('image_id');
             $table->timestamps();
         });
     }
