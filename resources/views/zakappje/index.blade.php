@@ -1,4 +1,17 @@
 @extends('layout.master')
 @section('content')
-<p>Hier je page content</p>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        ZakAppje
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+    	<p>Test</p> 
+    </section>
+    <!-- /.content -->
+  </div>
 @endsection
