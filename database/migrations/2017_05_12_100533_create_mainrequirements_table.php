@@ -16,8 +16,8 @@ class CreateMainrequirementsTable extends Migration
         Schema::create('mainrequirements', function (Blueprint $table) {
             $table->increments('id');
             $table->char('name', 25);
-            $table->integer('instruction_id');
-            $table->integer('mainrequirements_id');
+            $table->longtext('description');
+            $table->integer('class_id');
             $table->timestamps();
         });
     }

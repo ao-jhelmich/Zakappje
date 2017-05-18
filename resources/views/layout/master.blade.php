@@ -189,7 +189,7 @@
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="login.html"><i class=" fa-caret-square-o-right"></i> <span>Log in</span></a></li>
+        <li class="active"><a href="/login"><i class=" fa-caret-square-o-right"></i> <span>Log in</span></a></li>
         <li><a href="#"><i class="fa fa-link"></i> <span>Uitleg</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
