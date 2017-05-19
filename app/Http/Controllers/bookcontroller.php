@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\requirements;
+use App\Requirements;
 
 class bookcontroller extends Controller
 {
     public function index()
     {
-        $requirements = requirements::all();
+        $requirements = Requirements::all();
 
         
         return View('zakappje.books')
