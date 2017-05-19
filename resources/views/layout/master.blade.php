@@ -14,8 +14,7 @@
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
-
-  <!-- Main Header -->
+<!-- Main Header -->
   <header class="main-header">
 
     <!-- Logo -->
@@ -103,20 +102,22 @@
               </li>
             </ul>
           </li>
-          <!-- User Account Menu -->
+       <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
-           
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              
+              <img src="images/user3-128x128.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Jasper Helmich</span>
+              <span class="hidden-xs">User user</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
-              
+              <li class="user-header">
+                <img src="images/user3-128x128.jpg" class="img-circle" alt="User Image">
+
                 <p>
-                  Jasper Helmich - Leiding Verkenners
+                  User User                  
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -124,13 +125,13 @@
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="#">Lorem</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="#">Lorem</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="#">Lorem</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -138,7 +139,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Mijn Profiel</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -146,11 +147,10 @@
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button 
+          <!-- Control Sidebar Toggle Button -->
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
-          -->
         </ul>
       </div>
     </nav>
@@ -164,32 +164,33 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/default-50x50.gif" class="img-circle" alt="User Image">
+          <img src="images/user3-128x128.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Welkom user</p>
           <!-- Status -->
-          <a href="#"></i>log hieronder in</a>
+          <p>status</p>
         </div>
       </div>
 
-      <!-- search form (Optional)
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      /.search form -->
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="/login"><i class=" fa-caret-square-o-right"></i> <span>Log in</span></a></li>
+          @if (!Auth::check())
+          <li class="active"><a href="{{ url('/login') }}"><i class=" fa-caret-square-o-right"></i> <span>Log in</span></a></li>
+          @else
+          <li><a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+          Log uit
+          </a></li>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          {{ csrf_field() }}
+          </form>
+          @endif
         <li><a href="#"><i class="fa fa-link"></i> <span>Uitleg</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
