@@ -10,4 +10,16 @@ class admincontroller extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index()
+    {
+    	return view('admin.index');
+    }
+
+    public function show(){}
+    public function create(){}
+    public function store(){}
+    public function edit(){}
+    public function update(){}
+    public function destroy(){}
 }

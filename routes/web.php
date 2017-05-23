@@ -15,4 +15,5 @@ Route::get('/', 'homecontroller@index');
 
 Route::resource('home', 'homecontroller');
 Route::resource('book', 'bookcontroller');
+Route::resource('admin', 'admincontroller');
 Auth::routes();
