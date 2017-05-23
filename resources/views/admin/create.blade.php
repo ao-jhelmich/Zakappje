@@ -12,6 +12,8 @@
     <section class="content">
     	<p>Admin create</p> 
     </section>
+
+
     <!-- /.content -->
   </div>
 @endsection

@@ -11,6 +11,12 @@
     <!-- Main content -->
     <section class="content">
     	<p>Admin index</p> 
+    
+    <p>Manage requirements</p>
+    {{ Form::open(array('url' => 'show/')) }}
+      {{ Form::hidden('sort', 'requirements') }}
+      {{ Form::submit('Delete this Todo', array('class' => 'btn btn-danger')) }}
+    {{ Form::close() }}
     </section>
     <!-- /.content -->
   </div>
