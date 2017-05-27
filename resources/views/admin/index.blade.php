@@ -13,11 +13,12 @@
     	<p>Admin index</p> 
     
     <p>Manage requirements</p>
-    {{ Form::open(array('url' => 'show/')) }}
+    {{ Form::open(['url' => 'show/']) }}
       {{ Form::hidden('sort', 'requirements') }}
       {{ Form::submit('Delete this Todo', array('class' => 'btn btn-danger')) }}
     {{ Form::close() }}
     </section>
+
     <!-- /.content -->
   </div>
 @endsection

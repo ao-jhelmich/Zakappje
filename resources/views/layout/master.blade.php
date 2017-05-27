@@ -145,6 +145,7 @@
                   @if (!Auth::check())
                   <a href="{{ url('/login') }}" class="btn btn-default btn-flat">Log in</a>
                   @else
+                  <a href="{{ url('admin') }}" class="btn btn-default btn-flat">Admin</a>
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Log uit</a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
