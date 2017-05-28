@@ -16,7 +16,10 @@ class admincontroller extends Controller
     	return view('admin.index');
     }
 
-    public function show(){}
+    public function show($test)
+    {
+        return $_POST['tablename'];
+    }
     public function create(){}
     public function store(){}
     public function edit(){}
