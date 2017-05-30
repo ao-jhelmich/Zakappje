@@ -16,5 +16,6 @@
         {{ $requirement->name }}
         <br>
       @endforeach
+      {{ $allInfo }}
   </div>
 @endsection

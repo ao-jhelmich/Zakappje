@@ -1,3 +1,17 @@
+@php
+  use App\Requirements;
+  $requirements = Requirements::all();
+
+  $allInfo = DB::table('class')
+            ->join('mainrequirements', 'class.class_id', '=', 'mainrequirements.mr_class_id')
+            ->join('requirements', 'mainrequirements.mr_id', '=', 'requirements.r_mr_id')
+            ->select('class.*', 'mainrequirements.*', 'requirements.*')
+            ->orderby('class_id')
+            ->get();
+  $curclass = 1;
+@endphp
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -199,7 +213,59 @@
           {{ csrf_field() }}
           </form>
           @endif
+          
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-folder"></i>  klasseneisen
+                  <i class="fa fa-angle-left pull-right"></i>
+              </a>                            
+              
+              <ul class="treeview-menu">
+                @foreach ($allInfo as $info)
+                  @if ($info->class_id == $curclass)
+                    <li class="treeview">
+     
+                        <a href="#">
+                            {{$info->class_name}}
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+
+                        <ul class="treeview-menu">
+                          @foreach ($allInfo  as $info)
+                            @if ($info->class_id == $curclass)
+                              <li class="treeview">
+                                  <a href="#">
+                                      {{$info->mr_name}}
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                  </a>
+
+                                    <ul class="treeview-menu">
+                                      @foreach ($allInfo  as $info)
+                                        @if ($info->class_id == $curclass)
+                                          <li class="treeview">
+                                              <a href="#">
+                                                  {{$info->r_name}}
+                                                  <i class="fa fa-angle-left pull-right"></i>
+                                              </a>
+
+                                          </li>
+                                          @endif
+                                      @endforeach
+                                    </ul>
+                              </li>
+                            @endif
+                          @endforeach
+                        </ul>
+                    </li>
+                    {{$curclass++}}
+                  @endif
+                @endforeach
+              </ul>
+          </li>
+              
         <li><a href="#"><i class="fa fa-link"></i> <span>Uitleg</span></a></li>
+        <li><a href="#"><i class="fa fa-link"></i> <span>{{$allInfo}}</span></a></li>
+
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -207,9 +273,10 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
+
   @yield('content')
   <!-- /.content-wrapper -->
-
+{{$allInfo}}
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->

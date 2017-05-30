@@ -10,5 +10,4 @@ class HomeController extends Controller
     {
         return view('zakappje.index');
     }
-    
 }
