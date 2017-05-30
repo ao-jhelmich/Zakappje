@@ -16,5 +16,5 @@ Route::get('/', 'homecontroller@index');
 Route::resource('home', 'homecontroller');
 Route::resource('book', 'bookcontroller');
 Route::resource('admin', 'admincontroller');
-Route::any('admin/show', 'admincontroller@show');
+Route::any('admin/manage', 'admincontroller@manage');
 Auth::routes();

@@ -19,11 +19,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{{ config('app.name') }}</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="css/adminlte/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('css/adminlte/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="css/adminlte/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="css/adminlte/dist/css/skins/skin-green.min.css">
+  <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/skins/skin-green.min.css') }}">
   <script src="https://unpkg.com/vue"></script>
 </head>
 <body class="hold-transition skin-green sidebar-mini">
@@ -121,14 +121,14 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="images/user3-128x128.jpg" class="user-image" alt="User Image">
+              <img src="{{ asset('/images/user3-128x128.jpg')}}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">User user</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="images/user3-128x128.jpg" class="img-circle" alt="User Image">
+                <img src="{{ asset('/images/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
                   User User                  
@@ -186,7 +186,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="images/user3-128x128.jpg" class="img-circle" alt="User Image">
+          <img src="{{ asset('/images/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Welkom user</p>
@@ -264,8 +264,6 @@
           </li>
               
         <li><a href="#"><i class="fa fa-link"></i> <span>Uitleg</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>{{$allInfo}}</span></a></li>
-
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -276,7 +274,6 @@
 
   @yield('content')
   <!-- /.content-wrapper -->
-{{$allInfo}}
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
@@ -369,11 +366,11 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="css/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="{{ asset('css/adminlte/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="css/adminlte/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{ asset('css/adminlte/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="css/adminlte/dist/js/app.min.js"></script>
+<script src="{{ asset('css/adminlte/dist/js/app.min.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

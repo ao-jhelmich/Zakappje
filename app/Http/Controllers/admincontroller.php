@@ -1,8 +1,9 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mainrequirements;
+use App\Requirements;
+use App\Instruction;
 
 class admincontroller extends Controller
 {
@@ -16,10 +17,25 @@ class admincontroller extends Controller
     	return view('admin.index');
     }
 
-    public function show($test)
+    public function manage()
     {
-        return $_POST['tablename'];
+        if ($_POST['tablename'] == 'Mainrequirements') {
+            $Mainrequirements = Mainrequirements::All();
+            return view('admin.manage', [$Mainrequirements])
+                -> with('tablename', $_POST['tablename']);
+        } elseif ($_POST['tablename'] == 'Requirements') {
+            $Requirements = Requirements::All();
+            return view('admin.manage', [$Requirements])
+                -> with('tablename', $_POST['tablename']);
+        } elseif ($_POST['tablename'] == 'Instruction') {
+            $Instruction = Instruction::All();
+            return view('admin.manage', [$Instruction])
+                -> with('tablename', $_POST['tablename']);;
+        } else {
+            return "You are not supposed to be here";
+        }
     }
+    public function show(){}
     public function create(){}
     public function store(){}
     public function edit(){}
