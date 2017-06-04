@@ -17,7 +17,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ config('app.name') }}</title>
+  <title>ZakAppje</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ asset('css/adminlte/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -366,11 +366,11 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="{{ asset('css/adminlte/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+<script src="{{ asset('/css/adminlte/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{{ asset('css/adminlte/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('/css/adminlte/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('css/adminlte/dist/js/app.min.js')}}"></script>
+<script src="{{ asset('/css/adminlte/dist/js/app.min.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

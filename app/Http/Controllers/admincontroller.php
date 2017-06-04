@@ -21,7 +21,7 @@ class admincontroller extends Controller
     {
         if ($_POST['tablename'] == 'Mainrequirements') {
             $Mainrequirements = Mainrequirements::All();
-            return view('admin.manage', [$Mainrequirements])
+            return view('admin.manage', ['Mainrequirements' => $Mainrequirements])
                 -> with('tablename', $_POST['tablename']);
         } elseif ($_POST['tablename'] == 'Requirements') {
             $Requirements = Requirements::All();
