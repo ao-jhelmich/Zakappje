@@ -25,18 +25,21 @@ class admincontroller extends Controller
                 -> with('tablename', $_POST['tablename']);
         } elseif ($_POST['tablename'] == 'Requirements') {
             $Requirements = Requirements::All();
-            return view('admin.manage', [$Requirements])
+            return view('admin.manage', ['Requirements' => $Requirements])
                 -> with('tablename', $_POST['tablename']);
         } elseif ($_POST['tablename'] == 'Instruction') {
             $Instruction = Instruction::All();
-            return view('admin.manage', [$Instruction])
+            return view('admin.manage', ['Instructions' => $Instruction])
                 -> with('tablename', $_POST['tablename']);;
         } else {
             return "You are not supposed to be here";
         }
     }
     public function show(){}
-    public function create(){}
+    public function create()
+    {
+        return view('admin.create');
+    }
     public function store(){}
     public function edit(){}
     public function update(){}

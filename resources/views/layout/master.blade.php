@@ -371,6 +371,19 @@
 <script src="{{ asset('/css/adminlte/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/css/adminlte/dist/js/app.min.js')}}"></script>
+<!-- jQuery 2.2.3 -->
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
