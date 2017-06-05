@@ -11,27 +11,47 @@
     <section class="content">
         <h3>Manage {{$tablename}}</h3>
     @if (isset($Mainrequirements))
-        <div class="box-body table-responsive no-padding">
-          <table id="example2" class="table table-hover table-bordered table-striped">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Alle {{$tablename}}</h3>
+            </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+            <thead>
                 <tr>
-                  <th>Pagina Naam</th>
-                  <th>Date created</th>
-                  <th>Last updated</th>
-                  <th>Edit</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                    <th>Pagina Naam</th>
+                    <th>Date created</th>
+                    <th>Last updated</th>
+                    <th>Edit</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
-            @foreach ($Mainrequirements as $Mainrequirement)
-                <tr>
-                  <td>{{$Mainrequirement->mr_name}}</td>
-                  <td>{{$Mainrequirement->created_at}}</td>
-                  <td>{{$Mainrequirement->updated_at}}</td>
-                  <td><button class="btn btn-default">Edit</button></td>
-                  <td><span class="label label-success">Active</span></td>
-                  <td><button class="btn btn-danger">Change status</button></td>
-                </tr>
-            @endforeach
-          </table>
+            </thead>
+            <tbody>
+                @foreach ($Mainrequirements as $Mainrequirement)
+                    <tr>
+                        <td>{{$Mainrequirement->mr_name}}</td>
+                        <td>{{$Mainrequirement->created_at}}</td>
+                        <td>{{$Mainrequirement->updated_at}}</td>
+                        <td><button class="btn btn-default">Edit</button></td>
+                        <td><span class="label label-success">Active</span></td>
+                        <td><button class="btn btn-danger">Change status</button></td>
+                    </tr>
+                @endforeach
+            </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Pagina Naam</th>
+                        <th>Date created</th>
+                        <th>Last updated</th>
+                        <th>Edit</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
         </div>
     @elseif(isset($Requirements))
         <div class="box-body table-responsive no-padding">
@@ -86,17 +106,5 @@
     </section>
     <!-- /.content -->
 </div>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
+
 @endsection
