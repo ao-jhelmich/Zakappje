@@ -2,10 +2,10 @@
   use App\Requirements;
   $requirements = Requirements::all();
 
-  $allInfo = DB::table('class')
-            ->join('mainrequirements', 'class.class_id', '=', 'mainrequirements.mr_class_id')
+  $allInfo = DB::table('classes')
+            ->join('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mr_class_id')
             ->join('requirements', 'mainrequirements.mr_id', '=', 'requirements.r_mr_id')
-            ->select('class.*', 'mainrequirements.*', 'requirements.*')
+            ->select('classes.*', 'mainrequirements.*', 'requirements.*')
             ->orderby('class_id')
             ->get();
   $curclass = 1;

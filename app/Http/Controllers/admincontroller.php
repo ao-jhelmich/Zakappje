@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use App\Mainrequirements;
 use App\Requirements;
 use App\Instruction;
+use App\Classes;
+use Input;
+use Redirect;
+
 
 class admincontroller extends Controller
 {
@@ -38,9 +42,23 @@ class admincontroller extends Controller
     public function show(){}
     public function create()
     {
-        return view('admin.create') -> with('tablename', $_POST['tablename']);
+
+        $Classes = Classes::pluck('class_name', 'class_id'); 
+        return view('admin.create', ['classes' => $Classes]) 
+        -> with('tablename', $_POST['tablename']);
     }
-    public function store(){}
+    public function store()
+    {
+        $mainRequirement = new Mainrequirements;
+            $mainRequirement->mr_name = Input::get('name');
+            $mainRequirement->mr_description = Input::get('desc');
+            $mainRequirement->flag = Input::get('flag');
+            $mainRequirement->mr_class_id = Input::get('class_id');
+            $mainRequirement->save();
+
+            // redirect
+            return Redirect::to('admin/');
+    }
     public function edit(){}
     public function update(){}
     public function destroy(){}

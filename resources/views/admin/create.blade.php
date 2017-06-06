@@ -8,11 +8,15 @@
       </h1>
     </section>
 
+    @php
+      var_dump($classes);
+    @endphp
+
     <!-- Main content -->
     <section class="content">
     	<p>Admin create</p> 
       <p>{{$tablename}}</p>
-      {{Form::open(['url' => 'admin/store', 'method' => 'put'])}}
+      {{Form::open(['url' => 'admin/store'])}}
         {{ Form::label('name', 'Name: ') }}
         {{ Form::text('name')}}
         <br> <br>
@@ -23,7 +27,7 @@
         {{Form::select('flag', ['1' => 'Active', '0' => 'Unactive'], '1')}}
         <br> <br>
         {{ Form::label('class_id', 'Class: ')}}
-        {{Form::select('class_id', ['1' => 'Class 1', '2' => 'Class 2'], null, ['placeholder' => 'Pick a class...'])}}
+        {{Form::select('class_id', $classes)}}
         <br> <br>
         {{ Form::submit('Save')}}
       {{Form::close()}}
