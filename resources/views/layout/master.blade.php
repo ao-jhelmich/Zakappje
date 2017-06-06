@@ -3,12 +3,16 @@
   $requirements = Requirements::all();
 
   $allInfo = DB::table('classes')
-            ->join('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mr_class_id')
-            ->join('requirements', 'mainrequirements.mr_id', '=', 'requirements.r_mr_id')
-            ->select('classes.*', 'mainrequirements.*', 'requirements.*')
+  ->select('classes.*', 'mainrequirements.*', 'requirements.*')
+            ->leftJoin('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mr_class_id')
+            ->leftJoin('requirements', 'mainrequirements.mr_id', '=', 'requirements.r_mr_id')
+            
             ->orderby('class_id')
             ->get();
-  $curclass = 1;
+                
+  $curclass = 0;
+  $curmr = 0;
+  $curr = 0;
 @endphp
 
 
@@ -214,7 +218,6 @@
           {{ csrf_field() }}
           </form>
           @endif
-          
           <li class="treeview">
               <a href="#">
                   <i class="fa fa-folder"></i>  klasseneisen
@@ -223,7 +226,8 @@
               
               <ul class="treeview-menu">
                 @foreach ($allInfo as $info)
-                  @if ($info->class_id == $curclass)
+                  @if ($info->class_id !== $curclass)
+                  @php$curclass=$info->class_id;@endphp
                     <li class="treeview">
      
                         <a href="#">
@@ -232,33 +236,41 @@
                         </a>
 
                         <ul class="treeview-menu">
-                          @foreach ($allInfo  as $info)
+                          @foreach ($allInfo as $info)
                             @if ($info->class_id == $curclass)
-                              <li class="treeview">
-                                  <a href="#">
-                                      {{$info->mr_name}}
-                                      <i class="fa fa-angle-left pull-right"></i>
-                                  </a>
+                              @if ($info->mr_id !== $curmr)
+                              @php$curmr=$info->mr_id;@endphp
+                                <li class="treeview">
+                                    <a href="#">
+                                        {{$info->mr_name}}
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </a>
 
-                                    <ul class="treeview-menu">
-                                      @foreach ($allInfo  as $info)
-                                        @if ($info->class_id == $curclass)
-                                          <li class="treeview">
-                                              <a href="#">
-                                                  {{$info->r_name}}
-                                                  <i class="fa fa-angle-left pull-right"></i>
-                                              </a>
+                                      <ul class="treeview-menu">
+                                        @foreach ($allInfo as $info)
+                                          @if ($info->class_id == $curclass)
+                                            @if ($info->mr_id == $curmr)
+                                              @if ($info->r_id !== $curr)
+                                              @php$curr=$info->r_id;@endphp
+                                                <li class="treeview">
+                                                    <a href="#">
+                                                        {{$info->r_name}}
+                                                        <i class="fa fa-angle-left pull-right"></i>
+                                                    </a>
 
-                                          </li>
+                                                </li>
+                                              @endif
+                                            @endif
                                           @endif
-                                      @endforeach
-                                    </ul>
-                              </li>
+                                        @endforeach
+                                      </ul>
+                                </li>
+      
+                              @endif
                             @endif
                           @endforeach
                         </ul>
                     </li>
-                    {{$curclass++}}
                   @endif
                 @endforeach
               </ul>
