@@ -385,12 +385,17 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/css/adminlte/dist/js/demo.js')}}"></script>
 <!-- page script -->
+<!-- Ckeditor -->
+<script src="{{asset('/css/adminlte/plugins/ckeditor/ckeditor.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-     <script>
+      <script>
+                CKEDITOR.replace( 'editor1' );
+            </script>
+<script>
   $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({

@@ -38,7 +38,7 @@ class admincontroller extends Controller
     public function show(){}
     public function create()
     {
-        return view('admin.create');
+        return view('admin.create') -> with('tablename', $_POST['tablename']);
     }
     public function store(){}
     public function edit(){}

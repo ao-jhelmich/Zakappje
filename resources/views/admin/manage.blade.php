@@ -9,8 +9,11 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <h3>Manage {{$tablename}}</h3>
-    @if (isset($Mainrequirements))
+
+    {{ Form::open(['url' => 'admin/create']) }}
+        {{Form::hidden('tablename', $tablename)}}
+        {{Form::submit('Create new', array('class' => 'btn btn-default'))}}
+    {{ Form::close()}}<br>
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Alle {{$tablename}}</h3>
@@ -29,6 +32,7 @@
                 </tr>
             </thead>
             <tbody>
+    @if (isset($Mainrequirements))
                 @foreach ($Mainrequirements as $Mainrequirement)
                     <tr>
                         <td>{{$Mainrequirement->mr_name}}</td>
@@ -39,7 +43,33 @@
                         <td><button class="btn btn-danger">Change status</button></td>
                     </tr>
                 @endforeach
-            </tbody>
+            
+    @elseif(isset($Requirements))
+            @foreach ($Requirements as $Requirement)
+                <tr>
+                  <td>{{$Requirement->r_name}}</td>
+                  <td>{{$Requirement->created_at}}</td>
+                  <td>{{$Requirement->updated_at}}</td>
+                  <td><button class="btn btn-default">Edit</button></td>
+                  <td><span class="label label-success">Active</span></td>
+                  <td><button class="btn btn-danger">Change status</button></td>
+                </tr>
+            @endforeach
+    @elseif(isset($Instructions))
+            @foreach ($Instructions as $Instruction)
+                <tr>
+                  <td>{{$Instruction->i_name}}</td>
+                  <td>{{$Instruction->created_at}}</td>
+                  <td>{{$Instruction->updated_at}}</td>
+                  <td><button class="btn btn-default">Edit</button></td>
+                  <td><span class="label label-success">Active</span></td>
+                  <td><button class="btn btn-danger">Change status</button></td>
+                </tr>
+            @endforeach
+    @else
+        <h1>Page 404 not found</h1>
+    @endif
+        </tbody>
                 <tfoot>
                     <tr>
                         <th>Pagina Naam</th>
@@ -53,56 +83,6 @@
             </table>
         </div>
         </div>
-    @elseif(isset($Requirements))
-        <div class="box-body table-responsive no-padding">
-            <table class="table table-hover">
-                <tr>
-                  <th>Pagina Naam</th>
-                  <th>Date created</th>
-                  <th>Last updated</th>
-                  <th>Edit</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-            @foreach ($Requirements as $Requirement)
-                <tr>
-                  <td>{{$Requirement->r_name}}</td>
-                  <td>{{$Requirement->created_at}}</td>
-                  <td>{{$Requirement->updated_at}}</td>
-                  <td><button class="btn btn-default">Edit</button></td>
-                  <td><span class="label label-success">Active</span></td>
-                  <td><button class="btn btn-danger">Change status</button></td>
-                </tr>
-            @endforeach
-          </table>
-        </div>
-    @elseif(isset($Instructions))
-        <div class="box-body table-responsive no-padding">
-            <table class="table table-hover">
-                <tr>
-                  <th>Instructie Naam</th>
-                  <th>Date created</th>
-                  <th>Last updated</th>
-                  <th>Edit</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-            @foreach ($Instructions as $Instruction)
-                <tr>
-                  <td>{{$Instruction->i_name}}</td>
-                  <td>{{$Instruction->created_at}}</td>
-                  <td>{{$Instruction->updated_at}}</td>
-                  <td><button class="btn btn-default">Edit</button></td>
-                  <td><span class="label label-success">Active</span></td>
-                  <td><button class="btn btn-danger">Change status</button></td>
-                </tr>
-            @endforeach
-          </table>
-        </div>
-    @else
-        <h1>Page 404 not found</h1>
-    @endif
-        
     </section>
     <!-- /.content -->
 </div>
