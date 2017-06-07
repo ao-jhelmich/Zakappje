@@ -255,8 +255,8 @@
                                               @php$curr=$info->requirements_id;@endphp
                                                 <li class="treeview">
                                                 {{ Form::open(['url' => 'book/show']) }}
-                                                    {{Form::hidden('name', $info->r_name)}}
-                                                    {{Form::submit($info->r_name, array('class' => 'btn btn-default'))}}
+                                                    {{Form::hidden('name', $info->requirements_name)}}
+                                                    {{Form::submit($info->requirements_name, array('class' => 'btn btn-default'))}}
                                                 {{ Form::close()}}
                                                     <a href="#">
                                                         {{$info->requirements_name}}
