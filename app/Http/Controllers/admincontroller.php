@@ -42,20 +42,49 @@ class admincontroller extends Controller
     public function show(){}
     public function create()
     {
-
-        $Classes = Classes::pluck('class_name', 'class_id'); 
-        return view('admin.create', ['classes' => $Classes]) 
-        -> with('tablename', $_POST['tablename']);
+        if ($_POST['tablename'] == 'Mainrequirements') {
+            $Classes = Classes::pluck('class_name', 'class_id'); 
+            return view('admin.create', ['select' => $Classes]) 
+            -> with('tablename', $_POST['tablename']);
+        } elseif ($_POST['tablename'] == 'Requirements') {
+            $Mainrequirements = Mainrequirements::pluck('mr_name', 'mr_id'); 
+            return view('admin.create', ['select' => $Mainrequirements]) 
+            -> with('tablename', $_POST['tablename']);
+        } elseif ($_POST['tablename'] == 'Instruction') {
+            $Requirements = Requirements::pluck('r_name', 'r_id'); 
+            return view('admin.create', ['select' => $Requirements]) 
+            -> with('tablename', $_POST['tablename']);
+        }else{
+            return "You are not supposed to be here";
+        }
+        
+        
     }
     public function store()
     {
-        $mainRequirement = new Mainrequirements;
+        if ($_POST['tablename'] == 'Mainrequirements') {
+            $mainRequirement = new Mainrequirements;
             $mainRequirement->mr_name = Input::get('name');
             $mainRequirement->mr_description = Input::get('desc');
             $mainRequirement->flag = Input::get('flag');
-            $mainRequirement->mr_class_id = Input::get('class_id');
+            $mainRequirement->mr_class_id = Input::get('select');
             $mainRequirement->save();
-
+        } elseif ($_POST['tablename'] == 'Requirements') {
+            $Requirement = new Requirements;
+            $Requirement->r_name = Input::get('name');
+            $Requirement->r_mr_id = Input::get('select');
+            $Requirement->flag = Input::get('flag');
+            $Requirement->save();
+        } elseif ($_POST['tablename'] == 'Instruction') {
+            $Instruction = new Instruction;
+            $Instruction->i_name = Input::get('name');
+            $Instruction->i_desc = Input::get('desc');
+            $Instruction->req_id = Input::get('select');
+            $Instruction->flag = Input::get('flag');
+            $Instruction->save();
+        }else{
+            return "You are not supposed to be here";
+        }
             // redirect
             return Redirect::to('admin/');
     }
