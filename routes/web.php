@@ -13,6 +13,7 @@
 
 Route::get('/', 'homecontroller@index');
 
+Route::post('book/show', 'bookcontroller@show');
 Route::resource('home', 'homecontroller');
 Route::resource('book', 'bookcontroller');
 Route::resource('admin', 'admincontroller');
