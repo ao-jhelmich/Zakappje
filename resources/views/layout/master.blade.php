@@ -4,8 +4,8 @@
 
   $allInfo = DB::table('classes')
   ->select('classes.*', 'mainrequirements.*', 'requirements.*')
-            ->leftJoin('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mr_class_id')
-            ->leftJoin('requirements', 'mainrequirements.mr_id', '=', 'requirements.r_mr_id')
+            ->leftJoin('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mainrequirements_class_id')
+            ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
             
             ->orderby('class_id')
             ->get();
@@ -238,23 +238,23 @@
                         <ul class="treeview-menu">
                           @foreach ($allInfo as $info)
                             @if ($info->class_id == $curclass)
-                              @if ($info->mr_id !== $curmr)
-                              @php$curmr=$info->mr_id;@endphp
+                              @if ($info->mainrequirements_id !== $curmr)
+                              @php$curmr=$info->mainrequirements_id;@endphp
                                 <li class="treeview">
                                     <a href="#">
-                                        {{$info->mr_name}}
+                                        {{$info->mainrequirements_name}}
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </a>
 
                                       <ul class="treeview-menu">
                                         @foreach ($allInfo as $info)
                                           @if ($info->class_id == $curclass)
-                                            @if ($info->mr_id == $curmr)
-                                              @if ($info->r_id !== $curr)
-                                              @php$curr=$info->r_id;@endphp
+                                            @if ($info->mainrequirements_id == $curmr)
+                                              @if ($info->requirements_id !== $curr)
+                                              @php$curr=$info->requirements_id;@endphp
                                                 <li class="treeview">
                                                     <a href="#">
-                                                        {{$info->r_name}}
+                                                        {{$info->requirements_name}}
                                                         <i class="fa fa-angle-left pull-right"></i>
                                                     </a>
 

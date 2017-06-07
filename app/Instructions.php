@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-    class instruction extends Eloquent
+    class instructions extends Eloquent
     {
 
     }

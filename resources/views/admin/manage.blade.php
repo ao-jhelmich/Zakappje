@@ -35,10 +35,10 @@
     @if (isset($Mainrequirements))
                 @foreach ($Mainrequirements as $Mainrequirement)
                     <tr>
-                        <td>{{$Mainrequirement->mr_name}}</td>
+                        <td>{{$Mainrequirement->mainrequirements_name}}</td>
                         <td>{{$Mainrequirement->created_at}}</td>
                         <td>{{$Mainrequirement->updated_at}}</td>
-                        <td><button class="btn btn-default">Edit</button></td>
+                        <td><a href="{{ URL::to('admin/' . $Mainrequirement->mainrequirements_id .'/edit') }}" title=""><button class="btn btn-default">Edit</button></a></td>
                         <td><span class="label label-success">Active</span></td>
                         <td><button class="btn btn-danger">Change status</button></td>
                     </tr>
@@ -47,7 +47,7 @@
     @elseif(isset($Requirements))
             @foreach ($Requirements as $Requirement)
                 <tr>
-                  <td>{{$Requirement->r_name}}</td>
+                  <td>{{$Requirement->requirements_name}}</td>
                   <td>{{$Requirement->created_at}}</td>
                   <td>{{$Requirement->updated_at}}</td>
                   <td><button class="btn btn-default">Edit</button></td>
@@ -58,7 +58,7 @@
     @elseif(isset($Instructions))
             @foreach ($Instructions as $Instruction)
                 <tr>
-                  <td>{{$Instruction->i_name}}</td>
+                  <td>{{$Instruction->instructions_name}}</td>
                   <td>{{$Instruction->created_at}}</td>
                   <td>{{$Instruction->updated_at}}</td>
                   <td><button class="btn btn-default">Edit</button></td>

@@ -3,8 +3,9 @@
 use Illuminate\Http\Request;
 use App\Mainrequirements;
 use App\Requirements;
-use App\Instruction;
+use App\Instructions;
 use App\Classes;
+use DB;
 use Input;
 use Redirect;
 
@@ -47,11 +48,11 @@ class admincontroller extends Controller
             return view('admin.create', ['select' => $Classes]) 
             -> with('tablename', $_POST['tablename']);
         } elseif ($_POST['tablename'] == 'Requirements') {
-            $Mainrequirements = Mainrequirements::pluck('mr_name', 'mr_id'); 
+            $Mainrequirements = Mainrequirements::pluck('mainrequirements_name', 'mainrequirements_id'); 
             return view('admin.create', ['select' => $Mainrequirements]) 
             -> with('tablename', $_POST['tablename']);
         } elseif ($_POST['tablename'] == 'Instruction') {
-            $Requirements = Requirements::pluck('r_name', 'r_id'); 
+            $Requirements = Requirements::pluck('requirements_name', 'requirements_id'); 
             return view('admin.create', ['select' => $Requirements]) 
             -> with('tablename', $_POST['tablename']);
         }else{
@@ -64,22 +65,22 @@ class admincontroller extends Controller
     {
         if ($_POST['tablename'] == 'Mainrequirements') {
             $mainRequirement = new Mainrequirements;
-            $mainRequirement->mr_name = Input::get('name');
-            $mainRequirement->mr_description = Input::get('desc');
+            $mainRequirement->mainrequirements_name = Input::get('name');
+            $mainRequirement->mainrequirements_description = Input::get('desc');
             $mainRequirement->flag = Input::get('flag');
-            $mainRequirement->mr_class_id = Input::get('select');
+            $mainRequirement->mainrequirements_class_id = Input::get('select');
             $mainRequirement->save();
         } elseif ($_POST['tablename'] == 'Requirements') {
             $Requirement = new Requirements;
-            $Requirement->r_name = Input::get('name');
-            $Requirement->r_mr_id = Input::get('select');
+            $Requirement->requirements_name = Input::get('name');
+            $Requirement->requirements_mainrequirements_id = Input::get('select');
             $Requirement->flag = Input::get('flag');
             $Requirement->save();
         } elseif ($_POST['tablename'] == 'Instruction') {
             $Instruction = new Instruction;
-            $Instruction->i_name = Input::get('name');
-            $Instruction->i_desc = Input::get('desc');
-            $Instruction->req_id = Input::get('select');
+            $Instruction->instructions_name = Input::get('name');
+            $Instruction->instructions_desc = Input::get('desc');
+            $Instruction->requirements_id = Input::get('select');
             $Instruction->flag = Input::get('flag');
             $Instruction->save();
         }else{
@@ -88,7 +89,34 @@ class admincontroller extends Controller
             // redirect
             return Redirect::to('admin/');
     }
-    public function edit(){}
-    public function update(){}
+    public function edit($id)
+    {
+        $Info = DB::table('classes')
+            ->select('classes.*', 'mainrequirements.*', 'requirements.*')
+            ->leftJoin('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mainrequirements_class_id')
+            ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
+            
+            ->orderby('class_id')
+            ->where('mainrequirements_id', '=', $id)
+            ->get();
+
+         $Classes = Classes::pluck('class_name', 'class_id'); 
+
+        return view('admin.edit',['Info' => $Info, 'Select' => $Classes])
+         -> with('tablename', 'mainrequirements');
+    }
+    public function update($id)
+    {
+        $Mainrequirement = Mainrequirements::find($id);
+            $mainRequirement->mainrequirements_name = Input::get('name');
+            $mainRequirement->mainrequirements_description = Input::get('desc');
+            $mainRequirement->flag = Input::get('flag');
+            $mainRequirement->mainrequirements_class_id = Input::get('select');
+            $mainRequirement->save();
+
+            // redirect
+            Session::flash('message', 'Successfully updated todo!');
+            return Redirect::to('admin/');
+    }
     public function destroy(){}
 }
