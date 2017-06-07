@@ -11,11 +11,7 @@
     <!-- Main content -->
     <section class="content">
     	<p>books controller</p> 
+      {{$name}}
     </section>
-      @foreach ($requirements as $requirement)
-        {{ $requirement->name }}
-        <br>
-      @endforeach
-      {{ $allInfo }}
   </div>
 @endsection

@@ -13,6 +13,7 @@
   $curclass = 0;
   $curmr = 0;
   $curr = 0;
+  $num = 1;
 @endphp
 
 
@@ -253,6 +254,10 @@
                                               @if ($info->requirements_id !== $curr)
                                               @php$curr=$info->requirements_id;@endphp
                                                 <li class="treeview">
+                                                {{ Form::open(['url' => 'book/show']) }}
+                                                    {{Form::hidden('name', $info->r_name)}}
+                                                    {{Form::submit($info->r_name, array('class' => 'btn btn-default'))}}
+                                                {{ Form::close()}}
                                                     <a href="#">
                                                         {{$info->requirements_name}}
                                                         <i class="fa fa-angle-left pull-right"></i>
