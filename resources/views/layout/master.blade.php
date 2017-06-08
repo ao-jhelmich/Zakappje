@@ -2,12 +2,12 @@
   use App\Requirements;
   $requirements = Requirements::all();
 
-  $allInfo = DB::table('classes')
-  ->select('classes.*', 'mainrequirements.*', 'requirements.*')
-            ->leftJoin('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mainrequirements_class_id')
+  $allInfo = DB::table('ranks')
+  ->select('ranks.*', 'mainrequirements.*', 'requirements.*')
+            ->leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
             ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
             
-            ->orderby('class_id')
+            ->orderby('rank_id')
             ->get();
                 
   $curclass = 0;
@@ -226,18 +226,18 @@
               </a>                            
               <ul class="treeview-menu">
                 @foreach ($allInfo as $info)
-                  @if ($info->class_id !== $curclass)
-                  @php$curclass=$info->class_id;@endphp
+                  @if ($info->rank_id !== $curclass)
+                  @php$curclass=$info->rank_id;@endphp
                     <li class="treeview">
      
                         <a href="#">
-                            {{$info->class_name}}
+                            {{$info->rank_name}}
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
 
                         <ul class="treeview-menu">
                           @foreach ($allInfo as $info)
-                            @if ($info->class_id == $curclass)
+                            @if ($info->rank_id == $curclass)
                               @if ($info->mainrequirements_id !== $curmr)
                               @php$curmr=$info->mainrequirements_id;@endphp
                                 <li class="treeview">
@@ -248,7 +248,7 @@
 
                                       <ul class="treeview-menu">
                                         @foreach ($allInfo as $info)
-                                          @if ($info->class_id == $curclass)
+                                          @if ($info->rank_id == $curclass)
                                             @if ($info->mainrequirements_id == $curmr)
                                               @if ($info->requirements_id !== $curr)
                                               @php$curr=$info->requirements_id;@endphp

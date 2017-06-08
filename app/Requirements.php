@@ -1,8 +1,8 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-    class requirements extends Eloquent
+    class requirements extends Model
     {
     	protected $primaryKey = 'requirements_id';
     }

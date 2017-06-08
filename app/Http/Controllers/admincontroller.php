@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use App\Mainrequirements;
 use App\Requirements;
 use App\Instructions;
-use App\Classes;
+use App\Ranks;
 use DB;
 use Input;
 use Redirect;
@@ -44,8 +44,8 @@ class AdminController extends Controller
     public function create()
     {
         if ($_POST['tablename'] == 'Mainrequirements') {
-            $Classes = Classes::pluck('class_name', 'class_id'); 
-            return view('admin.create', ['select' => $Classes]) 
+            $ranks = Ranks::pluck('rank_name', 'rank_id'); 
+            return view('admin.create', ['select' => $ranks]) 
             -> with('tablename', $_POST['tablename']);
         } elseif ($_POST['tablename'] == 'Requirements') {
             $Mainrequirements = Mainrequirements::pluck('mainrequirements_name', 'mainrequirements_id'); 
@@ -68,7 +68,7 @@ class AdminController extends Controller
             $mainRequirement->mainrequirements_name = Input::get('name');
             $mainRequirement->mainrequirements_description = Input::get('desc');
             $mainRequirement->flag = Input::get('flag');
-            $mainRequirement->mainrequirements_class_id = Input::get('select');
+            $mainRequirement->mainrequirements_rank_id = Input::get('select');
             $mainRequirement->save();
         } elseif ($_POST['tablename'] == 'Requirements') {
             $Requirement = new Requirements;
@@ -93,15 +93,15 @@ class AdminController extends Controller
     {
         $id = $_POST['id'];
         if ($_POST['tablename'] == 'Mainrequirements') {
-            $Info = DB::table('classes')
-                ->select('classes.*', 'mainrequirements.*', 'requirements.*')
-                ->leftJoin('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mainrequirements_class_id')
+            $Info = DB::table('ranks')
+                ->select('ranks.*', 'mainrequirements.*', 'requirements.*')
+                ->leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
                 ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
-                ->orderby('class_id')
+                ->orderby('rank_id')
                 ->where('mainrequirements_id', '=', $id)
                 ->get();
-                 $Classes = Classes::pluck('class_name', 'class_id'); 
-                return view('admin.edit',['Info' => $Info, 'Select' => $Classes])
+                 $ranks = Ranks::pluck('rank_name', 'rank_id'); 
+                return view('admin.edit',['Info' => $Info, 'Select' => $ranks])
                  -> with('tablename', 'mainrequirements');
         } elseif ($_POST['tablename'] == 'Requirements') {
             $Mainrequirements = Mainrequirements::pluck('mainrequirements_name', 'mainrequirements_id');
@@ -124,7 +124,7 @@ class AdminController extends Controller
             $Mainrequirement->mainrequirements_name = Input::get('name');
             $Mainrequirement->mainrequirements_description = Input::get('desc');
             $Mainrequirement->flag = Input::get('flag');
-            $Mainrequirement->mainrequirements_class_id = Input::get('select');
+            $Mainrequirement->mainrequirements_rank_id = Input::get('select');
             $Mainrequirement->save();
         } elseif ($_POST['tablename'] == 'Requirements') {
             $Requirement = new Requirements;
