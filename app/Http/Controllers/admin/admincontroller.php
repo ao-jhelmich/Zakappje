@@ -25,21 +25,7 @@ class AdminController extends Controller
 
     public function manage()
     {
-        if ($_POST['tablename'] == 'Mainrequirements') {
-            $Mainrequirements = Mainrequirements::All();
-            return view('admin.manage', ['Mainrequirements' => $Mainrequirements])
-                -> with('tablename', $_POST['tablename']);
-        } elseif ($_POST['tablename'] == 'Requirements') {
-            $Requirements = Requirements::All();
-            return view('admin.manage', ['Requirements' => $Requirements])
-                -> with('tablename', $_POST['tablename']);
-        } elseif ($_POST['tablename'] == 'Instruction') {
-            $Instruction = Instructions::All();
-            return view('admin.manage', ['Instructions' => $Instruction])
-                -> with('tablename', $_POST['tablename']);;
-        } else {
-            return "You are not supposed to be here";
-        }
+    
     }
     public function show(){}
     public function create()

@@ -19,7 +19,8 @@ class RequirementController extends Controller
      */
     public function create()
     {
-        //
+        $Mainrequirements = Mainrequirements::pluck('mainrequirements_name', 'mainrequirements_id'); 
+        return view('admin.create', ['select' => $Mainrequirements]);
     }
 
     /**

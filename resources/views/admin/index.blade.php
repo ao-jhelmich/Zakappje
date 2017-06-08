@@ -13,19 +13,9 @@
     	<p>Admin index</p> 
     
     <p>What would you like to manage?</p>
-    <a href="admin/manage/mainrequirements"><button class="btn btn-default">Mainrequirements</button></a>
-    {{ Form::open(['url' => 'admin/manage']) }}
-        {{Form::hidden('tablename', 'Mainrequirements')}}
-        {{Form::submit('Mainrequirements', array('class' => 'btn btn-default'))}}
-    {{ Form::close()}}<br>      
-    {{ Form::open(['url' => 'admin/manage']) }}
-        {{Form::hidden('tablename', 'Requirements')}}
-        {{Form::submit('Requirements' , array('class' => 'btn btn-default'))}}
-    {{ Form::close()}}<br>
-    {{ Form::open(['url' => 'admin/manage']) }}
-        {{Form::hidden('tablename', 'Instruction')}}
-        {{Form::submit('Instructions', array('class' => 'btn btn-default'))}}
-    {{ Form::close()}}
+    <a href="admin/manage/mainrequirement"><button class="btn btn-default">Mainrequirements</button></a>
+    <a href="admin/manage/requirement"><button class="btn btn-default">Requirements</button></a>
+    <a href="admin/manage/instruction"><button class="btn btn-default">instructions</button></a>
     <!-- /.content -->
   </div>
 @endsection
