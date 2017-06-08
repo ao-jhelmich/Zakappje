@@ -11,12 +11,12 @@
     <section class="content">
 
     {{ Form::open(['url' => 'admin/create']) }}
-        {{Form::hidden('tablename', $tablename)}}
+        {{Form::hidden('tablename')}}
         {{Form::submit('Create new', array('class' => 'btn btn-default'))}}
     {{ Form::close()}}<br>
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Alle {{$tablename}}</h3>
+                <h3 class="box-title">Alle</h3>
             </div>
         <!-- /.box-header -->
         <div class="box-body">

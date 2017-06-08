@@ -44,10 +44,31 @@
             </div>
         </div>
     @endforeach
-    @elseif($tablename == 'Requirements')
-        @php
-            echo($oldInfo);
-        @endphp
+    <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Edit {{$tablename}}</h3>
+            </div>
+        <div class="box-body">   
+            {{Form::open(['url' => 'admin/' . $inf->requirements_id, 'role' => 'form', 'method' => 'put'])}}
+                    {{ Form::hidden('tablename', $tablename)}}
+                <div class="form-group">
+                    {{ Form::label('name', $tablename . ' name: ') }}
+                    {{ Form::text('name', $inf->requirements_name, ['class' => 'form-control'])}}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('select', 'Toekennen aan: ')}}
+                    {{Form::select('select', $Select, $inf->requirements_mainrequirements_id,['class' => 'form-control'])}}
+                </div>                
+                <div class="form-group">
+                    {{ Form::label('flag', 'Flag: ')}}
+                    {{Form::select('flag', ['1' => 'Active', '0' => 'Unactive'], $inf->flag , ['class' => 'form-control'])}}
+                </div>
+                <div class="form-group">
+                {{ Form::submit('Save')}}
+                </div>
+            {{Form::close()}}
+            </div>
+        </div>
     @elseif($tablename == 'instructions')
     @else
     <p>Je bent nu in de else</p>

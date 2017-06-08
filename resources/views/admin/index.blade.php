@@ -13,7 +13,7 @@
     	<p>Admin index</p> 
     
     <p>What would you like to manage?</p>
-    
+    <a href="admin/manage/mainrequirements"><button class="btn btn-default">Mainrequirements</button></a>
     {{ Form::open(['url' => 'admin/manage']) }}
         {{Form::hidden('tablename', 'Mainrequirements')}}
         {{Form::submit('Mainrequirements', array('class' => 'btn btn-default'))}}
