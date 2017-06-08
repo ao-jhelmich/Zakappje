@@ -12,14 +12,13 @@
                 <h3 class="box-title">General Elements</h3>
             </div>
         <div class="box-body">   
-            {{Form::open(['url' => 'admin/store', 'role' => 'form'])}}
-                    {{ Form::hidden('tablename', $tablename)}}
+            {{Form::open(['url' => 'admin/mainrequirement', 'role' => 'form'])}}
                 <div class="form-group">
-                    {{ Form::label('name', $tablename . ' name: ') }}
+                    {{ Form::label('name', 'Main Requirement name: ') }}
                     {{ Form::text('name', null, ['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
-                    @if ($tablename == "Instruction")
+                    @if ('test' == "Instruction")
                     {{ Form::label('desc', 'Desc: ') }}
                     {{ Form::textarea('desc',null, ['id' => 'editor1']) }}
                     @else

@@ -13,15 +13,14 @@
 
 Route::get('/', 'homecontroller@index');
 
-Route::post('book/show', 'bookcontroller@show');
+// All the resource routes
+Route::resource('admin/mainrequirement', 'admin\MainRequirementController');
+Route::resource('admin/instruction', 'admin\InstructionController');
+Route::resource('admin/requirement', 'admin\RequirementController');
 Route::resource('home', 'homecontroller');
 Route::resource('book', 'bookcontroller');
 Route::resource('admin', 'admin\admincontroller');
-Route::any('admin/manage', 'admin\admincontroller@manage');
-route::get('admin/manage/mainrequirement', 'admin\MainRequirementController@index');
-route::get('admin/manage/requirement', 'admin\RequirementController@index');
-route::get('admin/manage/instruction', 'admin\InstructionController@index');
-Route::post('admin/create', 'admin\admincontroller@create');
-Route::post('admin/store', 'admin\admincontroller@store');
-Route::post('admin/edit', 'admin\admincontroller@edit');
+
+// Post routes
+Route::post('book/show', 'bookcontroller@show');
 Auth::routes();

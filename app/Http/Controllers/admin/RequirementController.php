@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Requirements;
+use App\Mainrequirements;
 
 class RequirementController extends Controller
 {
@@ -31,7 +32,11 @@ class RequirementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Requirement = new Requirements;
+        $Requirement->requirements_name = $request->input('name');
+        $Requirement->requirements_mainrequirements_id = $request->input('select');
+        $Requirement->flag = $request->input('flag');
+        $Requirement->save();
     }
 
     /**

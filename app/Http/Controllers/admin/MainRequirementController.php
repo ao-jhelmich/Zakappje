@@ -2,7 +2,11 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\Mainrequirements;
+use App\Ranks;
+
+use Redirect;
 
 class MainRequirementController extends Controller
 {
@@ -20,8 +24,7 @@ class MainRequirementController extends Controller
     public function create()
     {
         $ranks = Ranks::pluck('rank_name', 'rank_id'); 
-            return view('admin.create', ['select' => $ranks]) 
-            -> with('tablename', $_POST['tablename']);
+        return view('admin.create', ['select' => $ranks]);
     }
 
     /**
@@ -33,11 +36,14 @@ class MainRequirementController extends Controller
     public function store(Request $request)
     {
         $mainRequirement = new Mainrequirements;
-            $mainRequirement->mainrequirements_name = Input::get('name');
-            $mainRequirement->mainrequirements_description = Input::get('desc');
-            $mainRequirement->flag = Input::get('flag');
-            $mainRequirement->mainrequirements_rank_id = Input::get('select');
+            $mainRequirement->mainrequirements_name = $request->input('name');
+            $mainRequirement->mainrequirements_description = $request->input('desc');
+            $mainRequirement->flag = $request->input('flag');
+            $mainRequirement->mainrequirements_rank_id = $request->input('select');
             $mainRequirement->save();
+
+        // redirect
+        return Redirect::to('admin/mainrequirement');
     }
 
     /**
@@ -82,6 +88,9 @@ class MainRequirementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mainrequirement = Mainrequirements::findOrFail($id);
+        $mainrequirement->delete();
+
+        return Redirect::to('admin/mainrequirement');
     }
 }

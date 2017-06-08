@@ -9,11 +9,14 @@
     </section>
     <!-- Main content -->
     <section class="content">
-
-    {{ Form::open(['url' => 'admin/create']) }}
-        {{Form::hidden('tablename')}}
-        {{Form::submit('Create new', array('class' => 'btn btn-default'))}}
-    {{ Form::close()}}<br>
+    @if (isset($Mainrequirements))
+    <a href="{{url('admin/mainrequirement/create')}}"><button class="btn btn-default">Create new</button></a>
+    @elseif(isset($Requirements))
+    <a href="{{url('admin/requirement/create')}}"><button class="btn btn-default">Create new</button></a>
+    @elseif(isset($Instructions))
+    <a href="{{url('admin/instruction/create')}}"><button class="btn btn-default">Create new</button></a>
+    @endif
+    <br><br>
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Alle</h3>
@@ -27,6 +30,7 @@
                     <th>Date created</th>
                     <th>Last updated</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -45,6 +49,12 @@
                             {{ Form::submit('edit', array('class' => 'btn btn-default'))}}
                             {{ Form::close()}}
                         </td>
+                        <td> 
+                            {{ Form::open(['method' => 'DELETE', 
+                                            'route' => ['mainrequirement.destroy', $Mainrequirement->mainrequirements_id]]) }}
+                            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                            {{ Form::close() }}
+                        </td>
                         <td><span class="label label-success">Active</span></td>
                         <td><button class="btn btn-danger">Change status</button></td>
                     </tr>
@@ -62,6 +72,12 @@
                     {{ Form::submit('edit', array('class' => 'btn btn-default'))}}
                     {{ Form::close()}}
                   </td>
+                  <td>
+                       {{ Form::open(['method' => 'DELETE', 
+                                            'route' => ['mainrequirement.destroy', $Requirement->requirements_id]]) }}
+                            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                            {{ Form::close() }}
+                  </td>
                   <td><span class="label label-success">Active</span></td>
                   <td><button class="btn btn-danger">Change status</button></td>
                 </tr>
@@ -73,6 +89,12 @@
                   <td>{{$Instruction->created_at}}</td>
                   <td>{{$Instruction->updated_at}}</td>
                   <td><button class="btn btn-default">Edit</button></td>
+                  <td>
+                       {{ Form::open(['method' => 'DELETE', 
+                                            'route' => ['mainrequirement.destroy', $Instruction->instructions_name]]) }}
+                            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                            {{ Form::close() }}
+                  </td>
                   <td><span class="label label-success">Active</span></td>
                   <td><button class="btn btn-danger">Change status</button></td>
                 </tr>
