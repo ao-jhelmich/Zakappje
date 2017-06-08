@@ -224,7 +224,6 @@
                   <i class="fa fa-folder"></i>  klasseneisen
                   <i class="fa fa-angle-left pull-right"></i>
               </a>                            
-              
               <ul class="treeview-menu">
                 @foreach ($allInfo as $info)
                   @if ($info->class_id !== $curclass)
@@ -280,6 +279,9 @@
                 @endforeach
               </ul>
           </li>
+          @if(Auth::Check())
+            <li><a href="{{ url('admin') }}"><i class="fa fa-database"></i><span>Admin</span></a></li>
+          @endif
               
         <li><a href="#"><i class="fa fa-link"></i> <span>Uitleg</span></a></li>
       </ul>

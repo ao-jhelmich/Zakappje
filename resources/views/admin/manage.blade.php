@@ -38,19 +38,30 @@
                         <td>{{$Mainrequirement->mainrequirements_name}}</td>
                         <td>{{$Mainrequirement->created_at}}</td>
                         <td>{{$Mainrequirement->updated_at}}</td>
-                        <td><a href="{{ URL::to('admin/' . $Mainrequirement->mainrequirements_id .'/edit') }}" title=""><button class="btn btn-default">Edit</button></a></td>
+                        <td>
+                            {{ Form::open(['url' => 'admin/edit'])}}
+                            {{ Form::hidden('tablename', 'mainrequirements')}}
+                            {{ Form::hidden('id', $Mainrequirement->mainrequirements_id)}}
+                            {{ Form::submit('edit', array('class' => 'btn btn-default'))}}
+                            {{ Form::close()}}
+                        </td>
                         <td><span class="label label-success">Active</span></td>
                         <td><button class="btn btn-danger">Change status</button></td>
                     </tr>
-                @endforeach
-            
+                @endforeach         
     @elseif(isset($Requirements))
             @foreach ($Requirements as $Requirement)
                 <tr>
                   <td>{{$Requirement->requirements_name}}</td>
                   <td>{{$Requirement->created_at}}</td>
                   <td>{{$Requirement->updated_at}}</td>
-                  <td><button class="btn btn-default">Edit</button></td>
+                  <td>
+                    {{ Form::open(['url' => 'admin/edit'])}}
+                    {{ Form::hidden('tablename', 'Requirements')}}
+                    {{ Form::hidden('id', $Requirement->requirements_id)}}
+                    {{ Form::submit('edit', array('class' => 'btn btn-default'))}}
+                    {{ Form::close()}}
+                  </td>
                   <td><span class="label label-success">Active</span></td>
                   <td><button class="btn btn-danger">Change status</button></td>
                 </tr>

@@ -10,7 +10,7 @@ use Input;
 use Redirect;
 
 
-class admincontroller extends Controller
+class AdminController extends Controller
 {
    	public function __construct()
     {
@@ -33,7 +33,7 @@ class admincontroller extends Controller
             return view('admin.manage', ['Requirements' => $Requirements])
                 -> with('tablename', $_POST['tablename']);
         } elseif ($_POST['tablename'] == 'Instruction') {
-            $Instruction = Instruction::All();
+            $Instruction = Instructions::All();
             return view('admin.manage', ['Instructions' => $Instruction])
                 -> with('tablename', $_POST['tablename']);;
         } else {
@@ -89,33 +89,60 @@ class admincontroller extends Controller
             // redirect
             return Redirect::to('admin/');
     }
-    public function edit($id)
+    public function edit()
     {
-        $Info = DB::table('classes')
-            ->select('classes.*', 'mainrequirements.*', 'requirements.*')
-            ->leftJoin('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mainrequirements_class_id')
-            ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
-            
-            ->orderby('class_id')
-            ->where('mainrequirements_id', '=', $id)
-            ->get();
+        $id = $_POST['id'];
+        if ($_POST['tablename'] == 'Mainrequirements') {
+            $Info = DB::table('classes')
+                ->select('classes.*', 'mainrequirements.*', 'requirements.*')
+                ->leftJoin('mainrequirements', 'classes.class_id', '=', 'mainrequirements.mainrequirements_class_id')
+                ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
+                ->orderby('class_id')
+                ->where('mainrequirements_id', '=', $id)
+                ->get();
+                 $Classes = Classes::pluck('class_name', 'class_id'); 
+                return view('admin.edit',['Info' => $Info, 'Select' => $Classes])
+                 -> with('tablename', 'mainrequirements');
+        } elseif ($_POST['tablename'] == 'Requirements') {
+            $Mainrequirements = Mainrequirements::pluck('mainrequirements_name', 'mainrequirements_id');
 
-         $Classes = Classes::pluck('class_name', 'class_id'); 
-
-        return view('admin.edit',['Info' => $Info, 'Select' => $Classes])
-         -> with('tablename', 'mainrequirements');
+            $Requirement = Requirements::find($id);
+            return view('admin.edit', ['select' => $Mainrequirements, 'oldInfo' => $Requirement]) 
+            -> with('tablename', $_POST['tablename']);
+        } elseif ($_POST['tablename'] == 'Instruction') {
+            $Requirements = Requirements::pluck('requirements_name', 'requirements_id'); 
+            return view('admin.create', ['select' => $Requirements]) 
+            -> with('tablename', $_POST['tablename']);
+        }else{
+            return "You are not supposed to be here";
+        }
     }
     public function update($id)
-    {
-        $Mainrequirement = Mainrequirements::find($id);
-            $mainRequirement->mainrequirements_name = Input::get('name');
-            $mainRequirement->mainrequirements_description = Input::get('desc');
-            $mainRequirement->flag = Input::get('flag');
-            $mainRequirement->mainrequirements_class_id = Input::get('select');
-            $mainRequirement->save();
-
+    {   
+        if ($_POST['tablename'] == 'Mainrequirements') {
+            $Mainrequirement = Mainrequirements::find($id);
+            $Mainrequirement->mainrequirements_name = Input::get('name');
+            $Mainrequirement->mainrequirements_description = Input::get('desc');
+            $Mainrequirement->flag = Input::get('flag');
+            $Mainrequirement->mainrequirements_class_id = Input::get('select');
+            $Mainrequirement->save();
+        } elseif ($_POST['tablename'] == 'Requirements') {
+            $Requirement = new Requirements;
+            $Requirement->requirements_name = Input::get('name');
+            $Requirement->requirements_mainrequirements_id = Input::get('select');
+            $Requirement->flag = Input::get('flag');
+            $Requirement->save();
+        } elseif ($_POST['tablename'] == 'Instruction') {
+            $Instruction = new Instruction;
+            $Instruction->instructions_name = Input::get('name');
+            $Instruction->instructions_desc = Input::get('desc');
+            $Instruction->requirements_id = Input::get('select');
+            $Instruction->flag = Input::get('flag');
+            $Instruction->save();
+        }else{
+            return "You are not supposed to be here";
+        }
             // redirect
-            Session::flash('message', 'Successfully updated todo!');
             return Redirect::to('admin/');
     }
     public function destroy(){}

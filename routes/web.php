@@ -20,4 +20,5 @@ Route::resource('admin', 'admincontroller');
 Route::any('admin/manage', 'admincontroller@manage');
 Route::post('admin/create', 'admincontroller@create');
 Route::post('admin/store', 'admincontroller@store');
+Route::post('admin/edit', 'admincontroller@edit');
 Auth::routes();
