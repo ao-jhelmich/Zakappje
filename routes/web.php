@@ -22,5 +22,5 @@ Route::resource('book', 'bookcontroller');
 Route::resource('admin', 'admin\admincontroller');
 
 // Post routes
-Route::post('book/show', 'bookcontroller@show');
+Route::get('book/show/{requirement}', 'bookcontroller@show');
 Auth::routes();

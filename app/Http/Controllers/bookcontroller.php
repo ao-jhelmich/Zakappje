@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Requirements;
 use App\Ranks;
+use App\Instructions;
 use Redirect;
 
 class BookController extends Controller
@@ -27,7 +28,7 @@ class BookController extends Controller
 
 
 
-	$array = array();
+	/*$array = array();
 	$first = 0;
 	$second = 0;
 	$currentRank = 0;
@@ -96,7 +97,7 @@ class BookController extends Controller
 
 
 
-			/*$array = array(
+			$array = array(
 				array('klas 1', 
 					array('mr 1.1', 
 						array('r 1.1.1'),
@@ -114,14 +115,16 @@ class BookController extends Controller
 				),
 				);*/
 
-    	return $array;
+    	return $results;
     }
 
     public function show(Request $request, Requirements $requirement)
     {
-    	//$name = $request->get('name');
+    	$instructions = Instructions::select('instructions.*')
+    									->where('instructions.instructions_requirements_id', '=', $requirement->requirements_id)->get();
+
     	return View('zakappje.books')
-    		->with('name', $requirement);
+    		->with('requirement', $requirement)->with('instructions', $instructions);
     }
    
 }

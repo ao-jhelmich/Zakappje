@@ -11,8 +11,14 @@
     <!-- Main content -->
     <section class="content">
     	<p>books controller</p> 
-      @isset ($name)
-          {{$name}}
+      @isset ($requirement)
+          <h1>{{$requirement->requirements_name}}</h1>
+          @isset ($instructions)  
+          @foreach ($instructions as $instruction)
+            <p>{{htmlspecialchars($instruction->instructions_desc)}}</p> 
+          @endforeach
+             
+          @endisset
       @endisset
     </section>
   </div>
