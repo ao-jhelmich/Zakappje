@@ -1,5 +1,6 @@
 @php
   use App\Requirements;
+  use App\Http\Controllers\bookcontroller;
   $requirements = Requirements::all();
 
   $allInfo = DB::table('ranks')
@@ -13,7 +14,9 @@
   $curclass = 0;
   $curmr = 0;
   $curr = 0;
-  $num = 1;
+
+  $array = bookcontroller::GetInfo();
+  //dd($array);
 @endphp
 
 
@@ -241,6 +244,7 @@
                               @if ($info->mainrequirements_id !== $curmr)
                               @php$curmr=$info->mainrequirements_id;@endphp
                                 <li class="treeview">
+
                                     <a href="#">
                                         {{$info->mainrequirements_name}}
                                         <i class="fa fa-angle-left pull-right"></i>
@@ -253,14 +257,9 @@
                                               @if ($info->requirements_id !== $curr)
                                               @php$curr=$info->requirements_id;@endphp
                                                 <li class="treeview">
-                                                {{ Form::open(['url' => 'book/show']) }}
-                                                    {{Form::hidden('name', $info->requirements_name)}}
-                                                    {{Form::submit($info->requirements_name, array('class' => 'btn btn-default'))}}
-                                                {{ Form::close()}}
-                                                    <a href="#">
-                                                        {{$info->requirements_name}}
-                                                        <i class="fa fa-angle-left pull-right"></i>
-                                                    </a>
+
+                                                <a href="/book/show/{{$info->requirements_id}}">{{$info->requirements_name}}</a>
+                                                    
 
                                                 </li>
                                               @endif

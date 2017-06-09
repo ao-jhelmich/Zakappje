@@ -11,7 +11,9 @@
     <!-- Main content -->
     <section class="content">
     	<p>books controller</p> 
-      {{$name}}
+      @isset ($name)
+          {{$name}}
+      @endisset
     </section>
   </div>
 @endsection
