@@ -24,7 +24,8 @@ class MainRequirementController extends Controller
     public function create()
     {
         $ranks = Ranks::pluck('rank_name', 'rank_id'); 
-        return view('admin.create', ['select' => $ranks]);
+        return view('admin.create', ['select' => $ranks])
+        ->with('tablename', 'mainrequirement');;
     }
 
     /**

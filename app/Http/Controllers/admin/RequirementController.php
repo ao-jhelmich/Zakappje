@@ -2,8 +2,11 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Requirements;
+
 use App\Mainrequirements;
+use App\Requirements;
+
+use Redirect;
 
 class RequirementController extends Controller
 {
@@ -21,7 +24,8 @@ class RequirementController extends Controller
     public function create()
     {
         $Mainrequirements = Mainrequirements::pluck('mainrequirements_name', 'mainrequirements_id'); 
-        return view('admin.create', ['select' => $Mainrequirements]);
+        return view('admin.create', ['select' => $Mainrequirements])
+        ->with('tablename', 'requirement');
     }
 
     /**
@@ -37,6 +41,8 @@ class RequirementController extends Controller
         $Requirement->requirements_mainrequirements_id = $request->input('select');
         $Requirement->flag = $request->input('flag');
         $Requirement->save();
+
+        return Redirect::to('admin/requirement');
     }
 
     /**

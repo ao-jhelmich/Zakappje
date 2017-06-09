@@ -25,8 +25,6 @@ class BookController extends Controller
 				    ->orderby('rank_id')
 				    ->get();
 
-
-
 	$array = array();
 	$first = 0;
 	$second = 0;

@@ -41,7 +41,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="/" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -198,7 +198,7 @@
           <img src="{{ asset('/images/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Welkom user</p>
+          <p>{{{ isset(Auth::user()->name) ? 'welkom ' . Auth::user()->name : 'test'}}}</p>
           <!-- Status -->
           <p>status</p>
         </div>
