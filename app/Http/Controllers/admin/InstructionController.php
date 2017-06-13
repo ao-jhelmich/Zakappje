@@ -44,6 +44,9 @@ class InstructionController extends Controller
             $Instruction->flag = $request->input('flag');
             $Instruction->save();
 
+        //Message about the store
+        $request->session()->flash('alert-success', 'instruction was successful added!');
+        //redirecting
         return Redirect::to('admin/instruction');
     }
 

@@ -43,7 +43,9 @@ class MainRequirementController extends Controller
             $mainRequirement->mainrequirements_rank_id = $request->input('select');
             $mainRequirement->save();
 
-        // redirect
+        //Message about the store
+        $request->session()->flash('alert-success', 'mainrequirement was successful added!');
+        //redirecting
         return Redirect::to('admin/mainrequirement');
     }
 

@@ -36,12 +36,16 @@ class RequirementController extends Controller
      */
     public function store(Request $request)
     {
+        //storing the info
         $Requirement = new Requirements;
         $Requirement->requirements_name = $request->input('name');
         $Requirement->requirements_mainrequirements_id = $request->input('select');
         $Requirement->flag = $request->input('flag');
         $Requirement->save();
 
+        //Message about the store
+        $request->session()->flash('alert-success', 'Requirement was successful added!');
+        //redirecting
         return Redirect::to('admin/requirement');
     }
 

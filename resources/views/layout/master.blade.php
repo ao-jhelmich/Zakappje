@@ -198,7 +198,7 @@
           <img src="{{ asset('/images/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{{ isset(Auth::user()->name) ? 'welkom ' . Auth::user()->name : 'test'}}}</p>
+          <p>{{{ isset(Auth::user()->name) ? 'welkom'  . Auth::user()->name : 'test'}}}</p>
           <!-- Status -->
           <p>status</p>
         </div>
@@ -405,14 +405,20 @@
 <!-- page script -->
 <!-- Ckeditor -->
 <script src="{{asset('/css/adminlte/plugins/ckeditor/ckeditor.js')}}"></script>
+<!-- FastClick -->
+<script src="{{ asset('/css/adminlte/plugins/fastclick/fastclick.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('/css/adminlte/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+<!-- ChartJS 1.0.1 -->
+<script src="{{ asset('/css/adminlte/plugins/chartjs/Chart.min.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-      <script>
-                CKEDITOR.replace( 'editor1' );
-            </script>
+<script>
+    CKEDITOR.replace( 'editor1' );
+</script>
 <script>
   $(function () {
     $("#example1").DataTable();
