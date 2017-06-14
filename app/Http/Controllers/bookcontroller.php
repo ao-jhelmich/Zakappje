@@ -35,7 +35,7 @@ class BookController extends Controller
 
 
 		foreach ($results as $result) {
-		echo $i++;
+		//echo $i++;
 			if ($currentRank !== $result->rank_id)
 			{
 				$currentRank = $result->rank_id;
