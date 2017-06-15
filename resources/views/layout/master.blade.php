@@ -401,7 +401,8 @@
 <script src="{{ asset('/css/adminlte/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="{{ asset('/css/adminlte/plugins/chartjs/Chart.min.js')}}"></script>
-     <script>
+<script src="{{ asset('/css/adminlte/plugins/ckeditor/ckeditor.js')}}"></script>
+<script>
     CKEDITOR.replace( 'editor1' );
 </script>
 <script>

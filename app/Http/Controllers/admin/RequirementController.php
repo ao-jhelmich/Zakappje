@@ -68,7 +68,9 @@ class RequirementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Mainrequirements = Mainrequirements::pluck('mainrequirements_name', 'mainrequirements_id');
+        $requirement = Requirements::find($id);
+        return view('admin.edit', ['select' => $Mainrequirements, 'requirement' => $requirement]);
     }
 
     /**
@@ -80,7 +82,13 @@ class RequirementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Requirement = Requirements::find($id);
+        $Requirement->requirements_name = $request->input('name');
+        $Requirement->requirements_mainrequirements_id = $request->input('select');
+        $Requirement->flag = $request->input('flag');
+        $Requirement->save();
+
+        return Redirect::to('admin/requirement');
     }
 
     /**

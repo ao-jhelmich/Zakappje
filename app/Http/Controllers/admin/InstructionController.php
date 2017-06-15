@@ -69,7 +69,9 @@ class InstructionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $requirements = Requirements::pluck('requirements_name', 'requirements_id');
+        $instruction = Instructions::find($id); 
+        return view('admin.edit', ['select' => $requirements , 'instruction' => $instruction]);
     }
 
     /**
@@ -81,7 +83,14 @@ class InstructionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $Instruction = Instructions::find($id);
+            $Instruction->instructions_name = $request->input('name');
+            $Instruction->instructions_desc = $request->input('desc');
+            $Instruction->instructions_requirements_id = $request->input('select');
+            $Instruction->flag = $request->input('flag');
+            $Instruction->save();
+
+        return Redirect::to('admin/instruction'); 
     }
 
     /**

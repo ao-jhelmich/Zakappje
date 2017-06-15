@@ -88,10 +88,10 @@
                   <td>{{$Instruction->instructions_name}}</td>
                   <td>{{$Instruction->created_at}}</td>
                   <td>{{$Instruction->updated_at}}</td>
-                  <td><button class="btn btn-default">Edit</button></td>
                   <td>
-                       <a href="{{url('admin/instruction/' . $Instruction->instructions_nid . '/edit')}}"><button class="btn btn-default">Edit</button></a>
+                       <a href="{{url('admin/instruction/' . $Instruction->instructions_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
                   </td>
+                  <td><button class="btn btn-danger">delete</button></td>
                   <td><span class="label label-success">Active</span></td>
                   <td><button class="btn btn-danger">Change status</button></td>
                 </tr>

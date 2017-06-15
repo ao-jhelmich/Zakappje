@@ -70,6 +70,7 @@ class MainRequirementController extends Controller
     {
         $ranks = Ranks::pluck('rank_name', 'rank_id');
         $mainRequirement = Mainrequirements::find($id);
+        //return $mainRequirement;
         return view('admin.edit', ['Select' => $ranks, 'mainRequirement' => $mainRequirement]);
     }
 
@@ -82,7 +83,13 @@ class MainRequirementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $Mainrequirement = Mainrequirements::find($id);
+            $Mainrequirement->mainrequirements_name = $request->input('name');
+            $Mainrequirement->mainrequirements_description = $request->input('desc');
+            $Mainrequirement->flag = $request->input('flag');
+            $Mainrequirement->mainrequirements_rank_id = $request->input('select');
+            $Mainrequirement->save();
+            return Redirect::to('admin/mainrequirement');
     }
 
     /**
