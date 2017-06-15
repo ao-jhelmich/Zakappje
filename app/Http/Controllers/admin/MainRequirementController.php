@@ -12,8 +12,8 @@ class MainRequirementController extends Controller
 {
     public function index()
     {
-        $Mainrequirements = Mainrequirements::All();   
-        return view('admin.manage', ['Mainrequirements' => $Mainrequirements]);
+        $mainRequirements = Mainrequirements::All();   
+        return view('admin.manage', ['mainRequirements' => $mainRequirements]);
     }
 
     /**
@@ -68,7 +68,9 @@ class MainRequirementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ranks = Ranks::pluck('rank_name', 'rank_id');
+        $mainRequirement = Mainrequirements::find($id);
+        return view('admin.edit', ['Select' => $ranks, 'mainRequirement' => $mainRequirement]);
     }
 
     /**
@@ -91,8 +93,8 @@ class MainRequirementController extends Controller
      */
     public function destroy($id)
     {
-        $mainrequirement = Mainrequirements::findOrFail($id);
-        $mainrequirement->delete();
+        $mainRequirement = Mainrequirements::findOrFail($id);
+        $mainRequirement->delete();
 
         return Redirect::to('admin/mainrequirement');
     }
