@@ -19,7 +19,8 @@ class BookController extends Controller
 
     public static function GetInfo()
     {
-    	$results = Ranks
+
+    	/*$results = Ranks
     				::leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
 				    ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
 				    ->select('ranks.*', 'mainrequirements.*', 'requirements.*')
@@ -28,17 +29,15 @@ class BookController extends Controller
 
 
 
-	/*$array = array();
+	$array = array();
 	$first = 0;
 	$second = 0;
 	$currentRank = 0;
 	$currentMainRequirement = 0;
 	$currentRequirement = 0;
-	$i=0;
 
 
 		foreach ($results as $result) {
-		echo $i++;
 			if ($currentRank !== $result->rank_id)
 			{
 				$currentRank = $result->rank_id;
@@ -97,7 +96,7 @@ class BookController extends Controller
 
 
 
-			$array = array(
+			/*$array = array(
 				array('klas 1', 
 					array('mr 1.1', 
 						array('r 1.1.1'),
@@ -114,8 +113,8 @@ class BookController extends Controller
 					array('mr 3.2')
 				),
 				);*/
-
-    	return $results;
+				
+    	return $ranks;
     }
 
     public function show(Request $request, Requirements $requirement)

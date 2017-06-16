@@ -10,12 +10,11 @@
 
     <!-- Main content -->
     <section class="content">
-    	<p>books controller</p> 
       @isset ($requirement)
           <h1>{{$requirement->requirements_name}}</h1>
           @isset ($instructions)  
           @foreach ($instructions as $instruction)
-            <p>{{htmlspecialchars($instruction->instructions_desc)}}</p> 
+            <p class="pre">{{strip_tags($instruction->instructions_desc)}}</p> 
           @endforeach
              
           @endisset
