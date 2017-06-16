@@ -51,6 +51,19 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'lastName' => 'required|string|max:55|',
+            'streetAdress' => 'required|string|max:255|',
+            'houseNumber' => 'required|integer|min:1|',
+            'city' => 'required|string|max:255|',
+            'postal_code' => 'required|string|max:255|',
+            'user_phone_number' => 'required|integer|min:10|',
+            'birth_day_year' => 'required|integer|min:4|',
+            'birth_day_month' => 'required|integer|min:2|',
+            'birth_day_day' => 'required|integer|max:255|',
+            'user_parent_name' => 'required|string|max:255|',
+            'user_parent_email' => 'required|email|max:255|',
+            'user_parent_phone' => 'required|integer|min:10|',
+
         ]);
     }
 
@@ -66,6 +79,18 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'lastName' => $data['lastName'],
+            'streetAdress' => $data['streetAdress'],
+            'houseNumber' => $data['houseNumber'],
+            'city' => $data['city'],
+            'postal_code' => $data['postal_code'],
+            'user_phone_number' => $data['user_phone_number'],
+            'birth_day_year' => $data['birth_day_year'],
+            'birth_day_month' => $data['birth_day_month'],
+            'birth_day_day' => $data['birth_day_day'],
+            'user_parent_name' => $data['user_parent_name'],
+            'user_parent_email' => $data['user_parent_email'],
+            'user_parent_phone' => $data['user_parent_phone'],
         ]);
     }
 }

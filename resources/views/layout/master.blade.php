@@ -168,7 +168,11 @@
                   @if (!Auth::check())
                   <a href="{{ url('/login') }}" class="btn btn-default btn-flat">Log in</a>
                   @else
-                  <a href="{{ url('admin') }}" class="btn btn-default btn-flat">Admin</a>
+                    @if(isset(Auth::user()->accountRole))
+                      @if(Auth::user()->accountRole == 2)
+                        <a href="{{ url('admin') }}" class="btn btn-default btn-flat">Admin</a>
+                      @endif
+                    @endif
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Log uit</a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
@@ -198,7 +202,7 @@
           <img src="{{ asset('/images/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{{ isset(Auth::user()->name) ? 'welkom'  . Auth::user()->name : 'test'}}}</p>
+          <p>{{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'test'}}}</p>
           <!-- Status -->
           <p>status</p>
         </div>
@@ -278,8 +282,10 @@
                 @endforeach
               </ul>
           </li>
-          @if(Auth::Check())
-            <li><a href="{{ url('admin') }}"><i class="fa fa-database"></i><span>Admin</span></a></li>
+          @if(isset(Auth::user()->accountRole))
+            @if(Auth::user()->accountRole == 2)
+              <li><a href="{{ url('admin') }}"><i class="fa fa-database"></i><span>Admin</span></a></li>
+            @endif
           @endif
               
         <li><a href="#"><i class="fa fa-link"></i> <span>Uitleg</span></a></li>
