@@ -15,7 +15,7 @@
   $curmr = 0;
   $curr = 0;
 
-  $array = bookcontroller::GetInfo();
+  //$array = bookcontroller::GetInfo();
   //dd($array);
 @endphp
 
@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/skins/skin-green.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/datatables/dataTables.bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
   <script src="https://unpkg.com/vue"></script>
 </head>
 <body class="hold-transition skin-green sidebar-mini">
