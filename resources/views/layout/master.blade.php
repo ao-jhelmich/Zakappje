@@ -126,7 +126,8 @@
             </ul>
           </li>
        <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
+       @if (Auth::check())
+         <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
@@ -182,6 +183,14 @@
               </li>
             </ul>
           </li>
+       @else
+          <li>
+            <a href="{{ url('/login') }}">Log in</a>
+          </li>
+          <li>
+            <a href="{{ route('register') }}">Register</a>
+          </li>
+       @endif
           <!-- Control Sidebar Toggle Button -->
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
@@ -213,19 +222,9 @@
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-          @if (!Auth::check())
-          <li class="active"><a href="{{ url('/login') }}"><i class=" fa-caret-square-o-right"></i> <span>Log in</span></a></li>
-          @else
-          <li><a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-          Log uit
-          </a></li>
-
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           {{ csrf_field() }}
           </form>
-          @endif
           <li class="treeview">
               <a href="#">
                   <i class="fa fa-folder"></i>  klasseneisen
