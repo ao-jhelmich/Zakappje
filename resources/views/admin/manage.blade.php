@@ -7,9 +7,17 @@
             ZakAppje
         </h1>
     </section>
+    <div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+    </div> <!-- end .flash-message -->
     <!-- Main content -->
     <section class="content">
-    @if (isset($Mainrequirements))
+    @if (isset($mainRequirements))
     <a href="{{url('admin/mainrequirement/create')}}"><button class="btn btn-default">Create new</button></a>
     @elseif(isset($Requirements))
     <a href="{{url('admin/requirement/create')}}"><button class="btn btn-default">Create new</button></a>
@@ -36,22 +44,18 @@
                 </tr>
             </thead>
             <tbody>
-    @if (isset($Mainrequirements))
-                @foreach ($Mainrequirements as $Mainrequirement)
+    @if (isset($mainRequirements))
+                @foreach ($mainRequirements as $mainRequirement)
                     <tr>
-                        <td>{{$Mainrequirement->mainrequirements_name}}</td>
-                        <td>{{$Mainrequirement->created_at}}</td>
-                        <td>{{$Mainrequirement->updated_at}}</td>
+                        <td>{{$mainRequirement->mainrequirements_name}}</td>
+                        <td>{{$mainRequirement->created_at}}</td>
+                        <td>{{$mainRequirement->updated_at}}</td>
                         <td>
-                            {{ Form::open(['url' => 'admin/edit'])}}
-                            {{ Form::hidden('tablename', 'mainrequirements')}}
-                            {{ Form::hidden('id', $Mainrequirement->mainrequirements_id)}}
-                            {{ Form::submit('edit', array('class' => 'btn btn-default'))}}
-                            {{ Form::close()}}
+                            <a href="{{url('admin/mainrequirement/' . $mainRequirement->mainrequirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
                         </td>
                         <td> 
                             {{ Form::open(['method' => 'DELETE', 
-                                            'route' => ['mainrequirement.destroy', $Mainrequirement->mainrequirements_id]]) }}
+                                            'route' => ['mainrequirement.destroy', $mainRequirement->mainrequirements_id]]) }}
                             {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                             {{ Form::close() }}
                         </td>
@@ -66,11 +70,7 @@
                   <td>{{$Requirement->created_at}}</td>
                   <td>{{$Requirement->updated_at}}</td>
                   <td>
-                    {{ Form::open(['url' => 'admin/edit'])}}
-                    {{ Form::hidden('tablename', 'Requirements')}}
-                    {{ Form::hidden('id', $Requirement->requirements_id)}}
-                    {{ Form::submit('edit', array('class' => 'btn btn-default'))}}
-                    {{ Form::close()}}
+                    <a href="{{url('admin/requirement/' . $Requirement->requirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
                   </td>
                   <td>
                        {{ Form::open(['method' => 'DELETE', 
@@ -88,13 +88,10 @@
                   <td>{{$Instruction->instructions_name}}</td>
                   <td>{{$Instruction->created_at}}</td>
                   <td>{{$Instruction->updated_at}}</td>
-                  <td><button class="btn btn-default">Edit</button></td>
                   <td>
-                       {{ Form::open(['method' => 'DELETE', 
-                                            'route' => ['mainrequirement.destroy', $Instruction->instructions_name]]) }}
-                            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                            {{ Form::close() }}
+                       <a href="{{url('admin/instruction/' . $Instruction->instructions_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
                   </td>
+                  <td><button class="btn btn-danger">delete</button></td>
                   <td><span class="label label-success">Active</span></td>
                   <td><button class="btn btn-danger">Change status</button></td>
                 </tr>

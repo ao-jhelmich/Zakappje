@@ -7,35 +7,29 @@
         </section>
     <!-- Main content -->
     <section class="content">
-    @if ($tablename == 'mainrequirements')
-    @foreach ($Info as $inf)
+    @if (isset($mainRequirement))
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">Edit {{$tablename}}</h3>
+                <h3 class="box-title">Edit</h3>
             </div>
         <div class="box-body">   
-            {{Form::open(['url' => 'admin/' . $inf->mainrequirements_id, 'role' => 'form', 'method' => 'put'])}}
-                    {{ Form::hidden('tablename', $tablename)}}
+            {{Form::open(['url' => 'admin/mainrequirement/' . $mainRequirement->mainrequirements_id, 'role' => 'form', 'method' => 'put'])}}
+                    {{ Form::hidden('tablename', 'MainRequirement')}}
                 <div class="form-group">
-                    {{ Form::label('name', $tablename . ' name: ') }}
-                    {{ Form::text('name', $inf->mainrequirements_name, ['class' => 'form-control'])}}
+                    {{ Form::label('name', 'MainRequirement' . ' name: ') }}
+                    {{ Form::text('name', $mainRequirement->mainrequirements_name, ['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
-                    @if ($tablename == "Instruction")
                     {{ Form::label('desc', 'Desc: ') }}
-                    {{ Form::textarea('desc',null, ['id' => 'editor1']) }}
-                    @else
-                    {{ Form::label('desc', 'Desc: ') }}
-                    {{ Form::text('desc', $inf->mainrequirements_description,['class' => 'form-control'])}}
-                    @endif
+                    {{ Form::text('desc', $mainRequirement->mainrequirements_description,['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
                     {{ Form::label('select', 'Toekennen aan: ')}}
-                    {{Form::select('select', $Select, $inf->mainrequirements_class_id,['class' => 'form-control'])}}
+                    {{Form::select('select', $Select, $mainRequirement->mainrequirements_rank_id,['class' => 'form-control'])}}
                 </div>                
                 <div class="form-group">
                     {{ Form::label('flag', 'Flag: ')}}
-                    {{Form::select('flag', ['1' => 'Active', '0' => 'Unactive'], $inf->flag , ['class' => 'form-control'])}}
+                    {{Form::select('flag', ['1' => 'Active', '0' => 'Unactive'], $mainRequirement->flag , ['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
                 {{ Form::submit('Save')}}
@@ -43,25 +37,25 @@
             {{Form::close()}}
             </div>
         </div>
-    @endforeach
+    @elseif(isset($requirement))
     <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">Edit {{$tablename}}</h3>
+                <h3 class="box-title">Edit</h3>
             </div>
         <div class="box-body">   
-            {{Form::open(['url' => 'admin/' . $inf->requirements_id, 'role' => 'form', 'method' => 'put'])}}
-                    {{ Form::hidden('tablename', $tablename)}}
+            {{Form::open(['url' => 'admin/requirement/' . $requirement->requirements_id, 'role' => 'form', 'method' => 'put'])}}
+                    {{ Form::hidden('tablename', 'MainRequirement')}}
                 <div class="form-group">
-                    {{ Form::label('name', $tablename . ' name: ') }}
-                    {{ Form::text('name', $inf->requirements_name, ['class' => 'form-control'])}}
+                    {{ Form::label('name', 'MainRequirement' . ' name: ') }}
+                    {{ Form::text('name', $requirement->requirements_name, ['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
                     {{ Form::label('select', 'Toekennen aan: ')}}
-                    {{Form::select('select', $Select, $inf->requirements_mainrequirements_id,['class' => 'form-control'])}}
+                    {{Form::select('select', $select, $requirement->requirements_mainrequirements_id,['class' => 'form-control'])}}
                 </div>                
                 <div class="form-group">
                     {{ Form::label('flag', 'Flag: ')}}
-                    {{Form::select('flag', ['1' => 'Active', '0' => 'Unactive'], $inf->flag , ['class' => 'form-control'])}}
+                    {{Form::select('flag', ['1' => 'Active', '0' => 'Unactive'], $requirement->flag , ['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
                 {{ Form::submit('Save')}}
@@ -69,9 +63,36 @@
             {{Form::close()}}
             </div>
         </div>
-    @elseif($tablename == 'instructions')
-    @else
-    <p>Je bent nu in de else</p>
+    @elseif(isset($instruction))
+    <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Edit</h3>
+            </div>
+        <div class="box-body">   
+            {{Form::open(['url' => 'admin/instruction/' . $instruction->instructions_id, 'role' => 'form', 'method' => 'put'])}}
+                    {{ Form::hidden('tablename', 'MainRequirement')}}
+                <div class="form-group">
+                    {{ Form::label('name', 'Instruction' . ' name: ') }}
+                    {{ Form::text('name', $instruction->instructions_name, ['class' => 'form-control'])}}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('desc', 'Desc: ') }}
+                    {{ Form::textarea('desc',$instruction->instructions_desc, ['id' => 'editor1']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('select', 'Toekennen aan: ')}}
+                    {{Form::select('select', $select, $instruction->instructions_requirements_id,['class' => 'form-control'])}}
+                </div>                
+                <div class="form-group">
+                    {{ Form::label('flag', 'Flag: ')}}
+                    {{Form::select('flag', ['1' => 'Active', '0' => 'Unactive'], $instruction->flag , ['class' => 'form-control'])}}
+                </div>
+                <div class="form-group">
+                {{ Form::submit('Save')}}
+                </div>
+            {{Form::close()}}
+            </div>
+        </div>
     @endif
     </section>
     <!-- /.content -->

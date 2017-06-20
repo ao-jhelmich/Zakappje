@@ -2,7 +2,11 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\Instructions;
+use App\requirements;
+
+use Redirect;
 
 class InstructionController extends Controller
 {
@@ -20,7 +24,9 @@ class InstructionController extends Controller
      */
     public function create()
     {
-        //
+        $Requirements = Requirements::pluck('requirements_name', 'requirements_id'); 
+        return view('admin.create', ['select' => $Requirements]) 
+        -> with('tablename', 'instruction');
     }
 
     /**
@@ -31,7 +37,17 @@ class InstructionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Instruction = new Instructions;
+            $Instruction->instructions_name = $request->input('name');
+            $Instruction->instructions_desc = $request->input('desc');
+            $Instruction->instructions_requirements_id = $request->input('select');
+            $Instruction->flag = $request->input('flag');
+            $Instruction->save();
+
+        //Message about the store
+        $request->session()->flash('alert-success', 'instruction was successful added!');
+        //redirecting
+        return Redirect::to('admin/instruction');
     }
 
     /**
@@ -53,7 +69,9 @@ class InstructionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $requirements = Requirements::pluck('requirements_name', 'requirements_id');
+        $instruction = Instructions::find($id); 
+        return view('admin.edit', ['select' => $requirements , 'instruction' => $instruction]);
     }
 
     /**
@@ -65,7 +83,14 @@ class InstructionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $Instruction = Instructions::find($id);
+            $Instruction->instructions_name = $request->input('name');
+            $Instruction->instructions_desc = $request->input('desc');
+            $Instruction->instructions_requirements_id = $request->input('select');
+            $Instruction->flag = $request->input('flag');
+            $Instruction->save();
+
+        return Redirect::to('admin/instruction'); 
     }
 
     /**

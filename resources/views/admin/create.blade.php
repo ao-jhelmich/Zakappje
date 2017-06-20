@@ -11,14 +11,20 @@
             <div class="box-header with-border">
                 <h3 class="box-title">General Elements</h3>
             </div>
-        <div class="box-body">   
-            {{Form::open(['url' => 'admin/mainrequirement', 'role' => 'form'])}}
+        <div class="box-body"> 
+            @if ($tablename == 'mainrequirement')
+                {{Form::open(['url' => 'admin/mainrequirement', 'role' => 'form'])}}
+            @elseif($tablename == 'requirement')
+                {{Form::open(['url' => 'admin/requirement', 'role' => 'form'])}}
+            @elseif($tablename == 'instruction')
+                {{Form::open(['url' => 'admin/instruction', 'role' => 'form'])}}
+            @endif
                 <div class="form-group">
-                    {{ Form::label('name', 'Main Requirement name: ') }}
+                    {{ Form::label('name',  $tablename . ' name: ') }}
                     {{ Form::text('name', null, ['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
-                    @if ('test' == "Instruction")
+                    @if ($tablename == 'instruction')
                     {{ Form::label('desc', 'Desc: ') }}
                     {{ Form::textarea('desc',null, ['id' => 'editor1']) }}
                     @else
