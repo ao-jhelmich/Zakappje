@@ -186,14 +186,11 @@
           </li>
        @else
           <li>
-            <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Login</a>
-            <div id="light" class="white_content">This is the lightbox content. <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-            </div>
-            <div id="fade" class="black_overlay"></div>
+            <a data-toggle="modal" data-target="#loginModel" href="#" >login</a>
             <!--<a href="{{ url('/login') }}">Log in</a>-->
           </li>
           <li>
-            <a href="{{ route('register') }}">Register</a>
+            <a data-toggle="modal" data-target="#registerModel" href="#">Register</a>
           </li>
        @endif
           <!-- Control Sidebar Toggle Button -->
@@ -302,6 +299,285 @@
   <!-- Content Wrapper. Contains page content -->
 
   @yield('content')
+<div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="registerModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Naam:</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+                            <label for="lastName" class="col-md-4 control-label">Achternaam:</label>
+
+                            <div class="col-md-6">
+                                <input id="lastName" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" required>
+
+                                @if ($errors->has('lastName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('lastName') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">e-mail adres</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label for="city" class="col-md-4 control-label">Stad</label>
+
+                            <div class="col-md-6">
+                                <input id="streetAdress" type="text" class="form-control" name="city" value="{{ old('city') }}" required>
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('streetAdress') ? ' has-error' : '' }}">
+                            <label for="streetAdress" class="col-md-4 control-label">Adres + Huisnummer</label>
+
+                            <div class="col-md-6">
+                                <input style="width: 80%; float: left; margin-right: 2%" id="streetAdress" type="text" 
+                                class="form-control" name="streetAdress" value="{{ old('streetAdress') }}" required>
+                                <input style="width: 18%;" id="houseNumber" type="number" class="form-control" 
+                                name="houseNumber" value="{{ old('houseNumber') }}" required>
+
+                                @if ($errors->has('streetAdress'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('streetAdress') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('postal_code') ? ' has-error' : '' }}">
+                            <label for="postal_code" class="col-md-4 control-label">Postcode</label>
+
+                            <div class="col-md-6">
+                                <input id="postal_code" type="text" class="form-control" name="postal_code" 
+                                value="{{ old('postal_code') }}" required>
+
+                                @if ($errors->has('postal_code'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('postal_code') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group{{ $errors->has('user_phone_number') ? ' has-error' : '' }}">
+                            <label for="user_phone_number" class="col-md-4 control-label">Je eigen nummer</label>
+
+                            <div class="col-md-6">
+                                <input id="user_phone_number" type="number" class="form-control" name="user_phone_number" 
+                                value="{{ old('user_phone_number') }}" required>
+
+                                @if ($errors->has('user_phone_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_phone_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('birth_day') ? ' has-error' : '' }}">
+                            <label for="birth_day" class="col-md-4 control-label">Geboorte datum:</label>
+
+                            <div class="col-md-6">
+                                <input id="birth_day" type="date" class="form-control" name="birth_day"
+                                value="{{ old('birth_day') }}" required>
+
+                                @if ($errors->has('birth_day_year'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birth_day') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('user_parent_phone') ? ' has-error' : '' }}">
+                            <label for="user_parent_phone" class="col-md-4 control-label">Ouder telefoon nummer:</label>
+
+                            <div class="col-md-6">
+                                <input id="user_parent_phone" type="number" class="form-control" name="user_parent_phone" 
+                                value="{{ old('user_parent_phone') }}" required>
+
+                                @if ($errors->has('user_parent_phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_parent_phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('user_parent_name') ? ' has-error' : '' }}">
+                            <label for="user_parent_name" class="col-md-4 control-label">Ouder naam:</label>
+
+                            <div class="col-md-6">
+                                <input id="user_parent_name" type="text" class="form-control" name="user_parent_name"
+                                value="{{ old('user_parent_name') }}" required>
+
+                                @if ($errors->has('user_parent_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_parent_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('user_parent_email') ? ' has-error' : '' }}">
+                            <label for="user_parent_email" class="col-md-4 control-label">Ouder e-mail:</label>
+
+                            <div class="col-md-6">
+                                <input id="user_parent_email" type="email" class="form-control" name="user_parent_email" 
+                                value="{{ old('user_parent_email') }}" required>
+
+                                @if ($errors->has('user_parent_email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_parent_email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">Bevestig Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>  
+  <div id="fade" class="black_overlay"></div>
   <!-- /.content-wrapper -->
   <!-- Main Footer -->
   <footer class="main-footer">

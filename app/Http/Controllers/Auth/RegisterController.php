@@ -57,9 +57,7 @@ class RegisterController extends Controller
             'city' => 'required|string|max:255|',
             'postal_code' => 'required|string|max:255|',
             'user_phone_number' => 'required|integer|min:10|',
-            'birth_day_year' => 'required|integer|min:4|',
-            'birth_day_month' => 'required|integer|min:1',
-            'birth_day_day' => 'required|integer|min:1',
+            'birth_day' => 'required|date|min:1',
             'user_parent_name' => 'required|string|max:255|',
             'user_parent_email' => 'required|email|max:255|',
             'user_parent_phone' => 'required|integer|min:10|',
@@ -75,6 +73,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $birthday = explode('-', $data['birth_day']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -85,9 +84,9 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'postal_code' => $data['postal_code'],
             'user_phone_number' => $data['user_phone_number'],
-            'birth_day_year' => $data['birth_day_year'],
-            'birth_day_month' => $data['birth_day_month'],
-            'birth_day_day' => $data['birth_day_day'],
+            'birth_day_day' => $birthday[2],
+            'birth_day_month' => $birthday[1],
+            'birth_day_year' => $birthday[0],
             'user_parent_name' => $data['user_parent_name'],
             'user_parent_email' => $data['user_parent_email'],
             'user_parent_phone' => $data['user_parent_phone'],
