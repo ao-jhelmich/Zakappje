@@ -24,6 +24,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+                            <label for="lastName" class="col-md-4 control-label">lastName</label>
+
+                            <div class="col-md-6">
+                                <input id="lastName" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" required>
+
+                                @if ($errors->has('lastName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('lastName') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -60,6 +74,158 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label for="city" class="col-md-4 control-label">Stad</label>
+
+                            <div class="col-md-6">
+                                <input id="streetAdress" type="text" class="form-control" name="city" value="{{ old('city') }}" required>
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('streetAdress') ? ' has-error' : '' }}">
+                            <label for="streetAdress" class="col-md-4 control-label">Adress + Huisnummer</label>
+
+                            <div class="col-md-6">
+                                <input style="width: 80%; float: left; margin-right: 2%" id="streetAdress" type="text" 
+                                class="form-control" name="streetAdress" value="{{ old('streetAdress') }}" required>
+                                <input style="width: 18%;" id="houseNumber" type="number" class="form-control" 
+                                name="houseNumber" value="{{ old('houseNumber') }}" required>
+
+                                @if ($errors->has('streetAdress'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('streetAdress') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('postal_code') ? ' has-error' : '' }}">
+                            <label for="postal_code" class="col-md-4 control-label">postal_code</label>
+
+                            <div class="col-md-6">
+                                <input id="postal_code" type="text" class="form-control" name="postal_code" 
+                                value="{{ old('postal_code') }}" required>
+
+                                @if ($errors->has('postal_code'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('postal_code') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group{{ $errors->has('user_phone_number') ? ' has-error' : '' }}">
+                            <label for="user_phone_number" class="col-md-4 control-label">user_phone_number</label>
+
+                            <div class="col-md-6">
+                                <input id="user_phone_number" type="number" class="form-control" name="user_phone_number" 
+                                value="{{ old('user_phone_number') }}" required>
+
+                                @if ($errors->has('user_phone_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_phone_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('birth_day_year') ? ' has-error' : '' }}">
+                            <label for="birth_day_year" class="col-md-4 control-label">birth_day_year</label>
+
+                            <div class="col-md-6">
+                                <input id="birth_day_year" type="number" class="form-control" name="birth_day_year"
+                                value="{{ old('birth_day_year') }}" required>
+
+                                @if ($errors->has('birth_day_year'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birth_day_year') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('birth_day_month') ? ' has-error' : '' }}">
+                            <label for="birth_day_month" class="col-md-4 control-label">birth_day_month</label>
+
+                            <div class="col-md-6">
+                                <input id="birth_day_month" type="number" class="form-control" name="birth_day_month" 
+                                value="{{ old('birth_day_month') }}" required>
+
+                                @if ($errors->has('birth_day_month'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birth_day_month') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('birth_day_day') ? ' has-error' : '' }}">
+                            <label for="birth_day_day" class="col-md-4 control-label">birth_day_day</label>
+
+                            <div class="col-md-6">
+                                <input id="birth_day_day" type="number" class="form-control" name="birth_day_day" 
+                                value="{{ old('birth_day_day') }}" required>
+
+                                @if ($errors->has('birth_day_day'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birth_day_day') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('user_parent_phone') ? ' has-error' : '' }}">
+                            <label for="user_parent_phone" class="col-md-4 control-label">user_parent_phone</label>
+
+                            <div class="col-md-6">
+                                <input id="user_parent_phone" type="number" class="form-control" name="user_parent_phone" 
+                                value="{{ old('user_parent_phone') }}" required>
+
+                                @if ($errors->has('user_parent_phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_parent_phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('user_parent_name') ? ' has-error' : '' }}">
+                            <label for="user_parent_name" class="col-md-4 control-label">user_parent_name</label>
+
+                            <div class="col-md-6">
+                                <input id="user_parent_name" type="text" class="form-control" name="user_parent_name"
+                                value="{{ old('user_parent_name') }}" required>
+
+                                @if ($errors->has('user_parent_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_parent_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('user_parent_email') ? ' has-error' : '' }}">
+                            <label for="user_parent_email" class="col-md-4 control-label">user_parent_email</label>
+
+                            <div class="col-md-6">
+                                <input id="user_parent_email" type="email" class="form-control" name="user_parent_email" 
+                                value="{{ old('user_parent_email') }}" required>
+
+                                @if ($errors->has('user_parent_email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_parent_email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                                              
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

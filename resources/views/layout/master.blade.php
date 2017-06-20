@@ -127,7 +127,8 @@
             </ul>
           </li>
        <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
+       @if (Auth::check())
+         <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
@@ -169,7 +170,11 @@
                   @if (!Auth::check())
                   <a href="{{ url('/login') }}" class="btn btn-default btn-flat">Log in</a>
                   @else
-                  <a href="{{ url('admin') }}" class="btn btn-default btn-flat">Admin</a>
+                    @if(isset(Auth::user()->accountRole))
+                      @if(Auth::user()->accountRole == 2)
+                        <a href="{{ url('admin') }}" class="btn btn-default btn-flat">Admin</a>
+                      @endif
+                    @endif
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Log uit</a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
@@ -179,6 +184,18 @@
               </li>
             </ul>
           </li>
+       @else
+          <li>
+            <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Login</a>
+            <div id="light" class="white_content">This is the lightbox content. <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+            </div>
+            <div id="fade" class="black_overlay"></div>
+            <!--<a href="{{ url('/login') }}">Log in</a>-->
+          </li>
+          <li>
+            <a href="{{ route('register') }}">Register</a>
+          </li>
+       @endif
           <!-- Control Sidebar Toggle Button -->
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
@@ -199,7 +216,7 @@
           <img src="{{ asset('/images/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{{ isset(Auth::user()->name) ? 'welkom'  . Auth::user()->name : 'test'}}}</p>
+          <p>{{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'test'}}}</p>
           <!-- Status -->
           <p>status</p>
         </div>
@@ -210,19 +227,9 @@
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-          @if (!Auth::check())
-          <li class="active"><a href="{{ url('/login') }}"><i class=" fa-caret-square-o-right"></i> <span>Log in</span></a></li>
-          @else
-          <li><a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-          Log uit
-          </a></li>
-
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           {{ csrf_field() }}
           </form>
-          @endif
           <li class="treeview">
               <a href="#">
                   <i class="fa fa-folder"></i>  klasseneisen
@@ -279,8 +286,10 @@
                 @endforeach
               </ul>
           </li>
-          @if(Auth::Check())
-            <li><a href="{{ url('admin') }}"><i class="fa fa-database"></i><span>Admin</span></a></li>
+          @if(isset(Auth::user()->accountRole))
+            @if(Auth::user()->accountRole == 2)
+              <li><a href="{{ url('admin') }}"><i class="fa fa-database"></i><span>Admin</span></a></li>
+            @endif
           @endif
               
         <li><a href="#"><i class="fa fa-link"></i> <span>Uitleg</span></a></li>
