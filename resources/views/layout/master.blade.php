@@ -185,7 +185,11 @@
           </li>
        @else
           <li>
-            <a href="{{ url('/login') }}">Log in</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Login</a>
+            <div id="light" class="white_content">This is the lightbox content. <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+            </div>
+            <div id="fade" class="black_overlay"></div>
+            <!--<a href="{{ url('/login') }}">Log in</a>-->
           </li>
           <li>
             <a href="{{ route('register') }}">Register</a>
