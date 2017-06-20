@@ -37,6 +37,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
 	//Extra plugins
-	config.extraPlugins = 'embed', 'embedbase', 'dialog', 'widget', 'widgetselection', 'notificationaggregator', 'notification', 'toolbar', 'button', 'clipboard', 'lineutils', 'dialogui';
+	config.extraPlugins = 'youtube';
 };
 //C:\wamp64\www\LaravelZakappje\public\css\adminlte\plugins\ckeditor\plugins\

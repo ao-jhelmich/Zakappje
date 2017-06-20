@@ -14,8 +14,9 @@
           <h1>{{$requirement->requirements_name}}</h1>
           @isset ($instructions)  
           @foreach ($instructions as $instruction)
-            <p class="pre">{{strip_tags($instruction->instructions_desc)}}</p> 
+            <div class="pre">{{$instruction->instructions_desc}}</div> 
           @endforeach
+          <p><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/L_jWHffIx5E?rel=0" width="640"></iframe></p>
              
           @endisset
       @endisset

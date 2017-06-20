@@ -85,7 +85,7 @@ class InstructionController extends Controller
     {
          $Instruction = Instructions::find($id);
             $Instruction->instructions_name = $request->input('name');
-            $Instruction->instructions_desc = $request->input('desc');
+            $Instruction->instructions_desc = htmlspecialchars($request->input('desc'));
             $Instruction->instructions_requirements_id = $request->input('select');
             $Instruction->flag = $request->input('flag');
             $Instruction->save();
