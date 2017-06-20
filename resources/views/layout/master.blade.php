@@ -44,7 +44,7 @@
     <!-- Logo -->
     <a href="/" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>Z</b>ap</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Zak</b>Appje</span>
     </a>
@@ -132,18 +132,20 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{ asset('/images/user3-128x128.jpg')}}" class="user-image" alt="User Image">
+              <img src="{{ asset('/images/user8-128x128.jpg')}}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">User user</span>
+              <span class="hidden-xs">{{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'Quest'}}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{ asset('/images/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
+                <img src="{{ asset('/images/user8-128x128.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
-                  User User                  
-                  <small>Member since Nov. 2012</small>
+                  {{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'Quest'}}}                  
+                  <small>
+                    {{{ isset(Auth::user()->created_at) ? 'Lid sinds:  '  . Auth::user()->created_at : 'created_at not set'}}}
+                  </small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -210,12 +212,20 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('/images/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
+          <img src="{{ asset('/images/user8-128x128.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'test'}}}</p>
+          <p>{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'Quest'}}</p>
           <!-- Status -->
-          <p>status</p>
+          <p>
+            @if (isset(Auth::user()->accountRole))
+              @if (Auth::user()->accountRole == 1)
+                {{'Verkenner'}}
+              @elseif(Auth::user()->accountRole == 2)
+                {{'Leiding'}}
+              @endif
+            @endif
+          </p>
         </div>
       </div>
 
