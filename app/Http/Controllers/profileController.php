@@ -10,7 +10,7 @@ class profileController extends Controller
     public function index($id)
     {
     	$profile = User::find($id);
-    	return $profile;
+    	return view('profile.index');
     }
 
 }
