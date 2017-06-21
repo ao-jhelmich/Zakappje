@@ -9,8 +9,8 @@ class profileController extends Controller
 {
     public function index($id)
     {
-    	$profile = User::find($id);
-    	return view('profile.index');
+    	$profileResult = User::find($id);
+    	return view('profile.index', ['profile' => $profileResult]);
     }
 
 }
