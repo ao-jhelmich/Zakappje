@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('desc', 'Desc: ') }}
-                    {{ Form::textarea('desc',htmlspecialchars($instruction->instructions_desc), ['id' => 'editor1']) }}
+                    {{ Form::textarea('desc',$instruction->instructions_desc, ['id' => 'editor1']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('select', 'Toekennen aan: ')}}
