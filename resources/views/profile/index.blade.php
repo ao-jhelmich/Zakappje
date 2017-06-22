@@ -14,15 +14,60 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
-                <p>test balk</p>
+                @foreach ($books as $info)
+                  @if ($info->rank_id !== $curclass)
+                  @php$curclass=$info->rank_id;@endphp
+                    <li class="treeview">
+     
+                        <a href="#">
+                            {{$info->rank_name}}
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+
+                        <ul class="treeview-menu">
+                          @foreach ($books as $info)
+                            @if ($info->rank_id == $curclass)
+                              @if ($info->mainrequirements_id !== $curmr)
+                              @php$curmr=$info->mainrequirements_id;@endphp
+                                <li class="treeview">
+
+                                    <a href="#">
+                                        {{$info->mainrequirements_name}}
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </a>
+
+                                      <ul class="treeview-menu">
+                                        @foreach ($books as $info)
+                                          @if ($info->rank_id == $curclass)
+                                            @if ($info->mainrequirements_id == $curmr)
+                                              @if ($info->requirements_id !== $curr)
+                                              @php$curr=$info->requirements_id;@endphp
+                                                <li class="treeview">
+
+                                                <a href="/book/show/{{$info->requirements_id}}">{{$info->requirements_name}}</a>
+                                                    
+
+                                                </li>
+                                              @endif
+                                            @endif
+                                          @endif
+                                        @endforeach
+                                      </ul>
+                                </li>
+      
+                              @endif
+                            @endif
+                          @endforeach
+                        </ul>
+                    </li>
+                  @endif
+                @endforeach
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
                 <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="/images/user8-128x128.jpg" alt="User profile picture">
-
               <h3 class="profile-username text-center">{{$profile->name .' '. $profile->lastName}}</h3>
-
               <p class="text-muted text-center">
               @if (isset(Auth::user()->accountRole))
                 @if (Auth::user()->accountRole == 1)
