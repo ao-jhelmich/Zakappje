@@ -20,6 +20,8 @@ Route::resource('admin/requirement', 'admin\RequirementController');
 Route::resource('home', 'homecontroller');
 Route::resource('book', 'bookcontroller');
 Route::resource('admin', 'admin\admincontroller');
+Route::resource('leaderboard', 'LeaderboardController');
+Route::resource('test', 'testcontroller');
 
 // Post routes
 Route::get('profile/{profile}', 'profileController@index');
