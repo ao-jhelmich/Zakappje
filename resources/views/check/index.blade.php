@@ -12,7 +12,7 @@
     <section class="content">
         <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="/images/user4-128x128.jpg" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{$user->name . " " . $user->lastName}}</h3>
 
@@ -29,8 +29,13 @@
                   <b>Requirement in kwestie:</b> <a class="pull-right">{{$requirement->requirements_name}}</a>
                 </li>
               </ul>
-
-              <a href="#" class="btn btn-primary btn-block"><b>Afkruisen</b></a>
+                {{Form::open(['url' => 'check/final'])}}
+                    {{Form::hidden()}}
+                    {{Form::hidden()}}
+                    {{Form::submit()}}
+                {{Form::close()}}
+              <a href="check/final/{{$requirement->requirements_id}}/{{$user->id}}" 
+              class="btn btn-primary btn-block"><b>Afkruisen</b></a>
             </div>
             <!-- /.box-body -->
           </div>
