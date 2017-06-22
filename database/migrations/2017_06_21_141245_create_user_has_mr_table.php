@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstructionTable extends Migration
+class CreateUserHasMrTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateInstructionTable extends Migration
      */
     public function up()
     {
-        Schema::create('instruction', function (Blueprint $table) {
-            $table->increments('id');
-            $table->longText('instruction');
-            $table->integer('requirements_id');
+        Schema::create('user_has_mainrequirement', function (Blueprint $table) {
+            $table->integer('user_id');
+            $table->integer('mainrequirement_id');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateInstructionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instruction');
+        Schema::dropIfExists('user_has_mainRequirement');
     }
 }

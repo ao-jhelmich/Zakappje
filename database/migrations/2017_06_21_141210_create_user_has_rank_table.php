@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClassTable extends Migration
+class CreateUserHasRankTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateClassTable extends Migration
      */
     public function up()
     {
-        Schema::create('class', function (Blueprint $table) {
-            $table->increments('id');
-            $table->char('name', 25);
+        Schema::create('user_has_rank', function (Blueprint $table) {
+            $table->integer('user_id');
+            $table->integer('rank_id');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateClassTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class');
+        Schema::dropIfExists('user_has_rank');
     }
 }
