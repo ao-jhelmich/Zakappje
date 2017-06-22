@@ -689,6 +689,7 @@
 <script src="{{ asset('/css/adminlte/plugins/chartjs/Chart.min.js')}}"></script>
 <script src="{{ asset('/css/adminlte/plugins/ckeditor/ckeditor.js')}}"></script>
 <script>
+CKEDITOR.replace( 'editor1' );
   $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
