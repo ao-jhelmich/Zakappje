@@ -45,7 +45,7 @@
                                                 <li class="treeview">
 
                                                 <a href="/book/show/{{$info->requirements_id}}">{{$info->requirements_name}}</a>
-                                                    
+                                                <a href="/check/{{$info->requirements_id}}/{{Auth::user()->id}}"><button class="btn btn-primary">aftekenen</button></a>
 
                                                 </li>
                                               @endif
