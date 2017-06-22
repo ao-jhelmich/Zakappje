@@ -37,8 +37,15 @@ class checkController extends Controller
 		return Redirect::to('profile/' . $userid);
 	}
 
-    public function addUserHas($requirementid)
+    public function addUserHas(Request $request)
     {
-
+    	$checkUserHasReq = UserHasReq::find($request->user_id);
+    	$checkAmountOfReqForMainReq = Requirements::FindByMr_id();
+    	$mainRequirement = Requirements::find($request->requirement_id);
+    	$userHasR = new UserHasReq;
+    		$userHasR->user_id = $request->user_id;
+    		$userHasR->requirement_id = $request->requirement_id;
+    	$userHasR->save();
+    	return Redirect::to('/');
     }
 }

@@ -30,12 +30,10 @@
                 </li>
               </ul>
                 {{Form::open(['url' => 'check/final'])}}
-                    {{Form::hidden()}}
-                    {{Form::hidden()}}
-                    {{Form::submit()}}
+                    {{Form::hidden('requirement_id', $requirement->requirements_id)}}
+                    {{Form::hidden('user_id', $user->id)}}
+                    {{Form::submit('Afkruisen', ['class' => 'btn btn-primary btn-block', 'style' => 'font-weight: bold;'])}}
                 {{Form::close()}}
-              <a href="check/final/{{$requirement->requirements_id}}/{{$user->id}}" 
-              class="btn btn-primary btn-block"><b>Afkruisen</b></a>
             </div>
             <!-- /.box-body -->
           </div>
