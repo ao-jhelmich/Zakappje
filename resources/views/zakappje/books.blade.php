@@ -11,7 +11,9 @@
     <!-- Main content -->
     <section class="content">
       @isset ($requirement)
-          <h1>{{$requirement->requirements_name}}</h1>
+          <h1>{{$requirement->requirements_name}}<a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
+          <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
+          </h1>
           @isset ($instructions)  
             @foreach ($instructions as $instruction)
               <div class="pre">{!!htmlspecialchars_decode($instruction->instructions_desc)!!}</div> 

@@ -619,9 +619,9 @@
           @foreach ($adminRows as $adminRow)
             <li>
               <a href="{{url('check/final/' . $adminRow->requirement_id . '/' . $adminRow->user_id . '/' . $adminRow->id )}}">  
-                <h4 class="control-sidebar-subheading">
-                  {{$adminRow->user_name}}
-                </h4>
+                <label class="control-sidebar-subheading">
+                  {{$adminRow->user_name}} X
+                </label>
                 <p>{{$adminRow->requirement_name}}</p>
               </a>
             </li>

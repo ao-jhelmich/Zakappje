@@ -13,6 +13,7 @@ use App\UserHasMr;
 use App\UserWantsChk;
 
 use Redirect;
+use DB;
 
 class checkController extends Controller
 {
@@ -22,6 +23,16 @@ class checkController extends Controller
 		$checkId = $check_id;
 		$requirement = Requirements::Find($requirementid);
 		return view('check.index', ['user' => $user, 'requirement' =>$requirement, 'checkId' => $checkId]);
+	}
+
+	public function deleteChkFromAdminRow($checkid)
+	{
+		$adminRowCheck = UserWantsChk::find($checkid);
+			$adminRowCheck->delete();
+
+		return back();
+		return redirect()->back();
+
 	}
 
 	public function addCheckToAdminRow($requirementid, $userid)
@@ -48,7 +59,9 @@ class checkController extends Controller
     	$userHasR->save();
 		
     	$delUserWantsCheck = UserWantsChk::find($request->check_id);
-    	$delUserWantsCheck->delete();
+    	if(!empty($delUserWantsCheck)){
+    		$delUserWantsCheck->delete();
+    	}
 		
     	//Getting the Requirements needed for the main requirement
     	$reqNeededForMr = Requirements::find($request->requirement_id);
@@ -65,9 +78,16 @@ class checkController extends Controller
     			$userHasMr->user_id = $request->user_id;
     			$userHasMr->mainrequirement_id = $reqNeededForMr->requirements_mainrequirements_id;
     		$userHasMr->save();
-    	} else {
     	}
     	
+    	//checking if all main requirements are met for the main requirement
+    		//Getting the mainrequirements needed for class
+    	$checkUserHasMr = UserHasMr::where('user_id',$request->user_id)->count();
+    	$checkAmountOfMrForRank = Mainrequirements::where('mainrequirements_id', 
+    														$reqNeededForMr->requirements_mainrequirements_id)->count();
+    	if($checkUserHasMr == $checkAmountOfMrForRank){
+    		$userHasR = DB::table('users')->whereId($request->user_id)->increment('users_rank_id'); 
+    	}
 
     	return Redirect::to('/');
     }

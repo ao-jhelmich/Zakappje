@@ -22,6 +22,7 @@ Route::resource('book', 'bookcontroller');
 Route::resource('admin', 'admin\admincontroller');
 
 // Post routes
+Route::delete('check/{id}', 'checkController@deleteChkFromAdminRow');
 Route::get('profile/{profile}', 'profileController@index');
 Route::get('book/show/{requirement}', 'bookcontroller@show');
 Route::get('check/{requirement}/{user}', 'checkController@addCheckToAdminRow');

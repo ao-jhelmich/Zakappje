@@ -39,6 +39,7 @@
             <!-- /.box-body -->
           </div>
     </section>
+    
     <!-- /.content -->
   </div>
 @endsection
