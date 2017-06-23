@@ -9,6 +9,7 @@ use App\Ranks;
 use App\User;
 
 use App\UserHasReq;
+use App\UserHasMr;
 use App\UserWantsChk;
 
 use Redirect;
@@ -40,19 +41,33 @@ class checkController extends Controller
 
     public function addUserHas(Request $request)
     {
-    	//checking if al req are met for the Main requirement
-    	$checkUserHasReq = UserHasReq::find($request->user_id);
-    	$checkAmountOfReqForMainReq = Requirements::FindByMr_id();
-    	
-    	$mainRequirement = Requirements::find($request->requirement_id);
     	//Saves the requirement too the user and deletes it
     	$userHasR = new UserHasReq;
     		$userHasR->user_id = $request->user_id;
     		$userHasR->requirement_id = $request->requirement_id;
     	$userHasR->save();
-
+		
     	$delUserWantsCheck = UserWantsChk::find($request->check_id);
-    		$delUserWantsCheck->delete();
+    	$delUserWantsCheck->delete();
+		
+    	//Getting the Requirements needed for the main requirement
+    	$reqNeededForMr = Requirements::find($request->requirement_id);
+
+    	//checking if al req are met for the Main requirement
+    		//Getting the requirements from the user and the requirements available
+    	$checkUserHasReq = UserHasReq::where('user_id', $request->user_id)->count();
+    	$checkAmountOfReqForMainReq = Requirements::where('requirements_mainrequirements_id', 
+    														$reqNeededForMr->requirements_mainrequirements_id)->count();
+
+    		//Checcking the user has req with the available req
+    	if ($checkUserHasReq == $checkAmountOfReqForMainReq) {
+    		$userHasMr = new UserHasMr;
+    			$userHasMr->user_id = $request->user_id;
+    			$userHasMr->mainrequirement_id = $reqNeededForMr->requirements_mainrequirements_id;
+    		$userHasMr->save();
+    	} else {
+    	}
+    	
 
     	return Redirect::to('/');
     }

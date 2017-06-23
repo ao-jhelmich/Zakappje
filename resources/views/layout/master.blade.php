@@ -618,7 +618,7 @@
         @isset ($adminRows)
           @foreach ($adminRows as $adminRow)
             <li>
-              <a href="check/final/{{$adminRow->requirement_id}}/{{$adminRow->user_id}}/{{$adminRow->id}}">  
+              <a href="{{url('check/final/' . $adminRow->requirement_id . '/' . $adminRow->user_id . '/' . $adminRow->id )}}">  
                 <h4 class="control-sidebar-subheading">
                   {{$adminRow->user_name}}
                 </h4>
