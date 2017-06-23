@@ -47,7 +47,8 @@ class checkController extends Controller
 			$chkForAdmin->requirement_id = $requirementid;
 		$chkForAdmin->save();
 
-		return Redirect::to('profile/' . $userid);
+		return back();
+		return redirect()->back();
 	}
 
     public function addUserHas(Request $request)
