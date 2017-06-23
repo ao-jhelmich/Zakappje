@@ -15,11 +15,12 @@ use Redirect;
 
 class checkController extends Controller
 {
-	public function index($requirementid, $userid)
+	public function index($requirementid, $userid, $check_id)
 	{
 		$user = User::Find($userid);
+		$checkId = $check_id;
 		$requirement = Requirements::Find($requirementid);
-		return view('check.index', ['user' => $user, 'requirement' =>$requirement]);
+		return view('check.index', ['user' => $user, 'requirement' =>$requirement, 'checkId' => $checkId]);
 	}
 
 	public function addCheckToAdminRow($requirementid, $userid)
@@ -39,13 +40,20 @@ class checkController extends Controller
 
     public function addUserHas(Request $request)
     {
+    	//checking if al req are met for the Main requirement
     	$checkUserHasReq = UserHasReq::find($request->user_id);
     	$checkAmountOfReqForMainReq = Requirements::FindByMr_id();
+    	
     	$mainRequirement = Requirements::find($request->requirement_id);
+    	//Saves the requirement too the user and deletes it
     	$userHasR = new UserHasReq;
     		$userHasR->user_id = $request->user_id;
     		$userHasR->requirement_id = $request->requirement_id;
     	$userHasR->save();
+
+    	$delUserWantsCheck = UserWantsChk::find($request->check_id);
+    		$delUserWantsCheck->delete();
+
     	return Redirect::to('/');
     }
 }

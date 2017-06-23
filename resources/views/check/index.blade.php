@@ -32,6 +32,7 @@
                 {{Form::open(['url' => 'check/final'])}}
                     {{Form::hidden('requirement_id', $requirement->requirements_id)}}
                     {{Form::hidden('user_id', $user->id)}}
+                    {{Form::hidden('check_id', $checkId)}}
                     {{Form::submit('Afkruisen', ['class' => 'btn btn-primary btn-block', 'style' => 'font-weight: bold;'])}}
                 {{Form::close()}}
             </div>

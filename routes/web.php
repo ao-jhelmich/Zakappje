@@ -25,6 +25,6 @@ Route::resource('admin', 'admin\admincontroller');
 Route::get('profile/{profile}', 'profileController@index');
 Route::get('book/show/{requirement}', 'bookcontroller@show');
 Route::get('check/{requirement}/{user}', 'checkController@addCheckToAdminRow');
-Route::get('check/final/{requirement}/{user}', 'checkController@index');
+Route::get('check/final/{requirement}/{user}/{checkid}', 'checkController@index');
 Route::post('check/final', 'checkController@addUserHas');
 Auth::routes();
