@@ -1,6 +1,7 @@
 @php
   use App\Requirements;
   use App\Http\Controllers\bookcontroller;
+  use App\Http\Controllers\LeaderboardController;
   use App\UserWantsChk;
 
   
@@ -296,6 +297,7 @@
                 @endforeach
               </ul>
           </li>
+          <li><a href="{{ url('leaderboard') }}"><i class="fa fa-line-chart"></i><span>Leaderboard</span></a></li>
           @if(isset(Auth::user()->accountRole))
             @if(Auth::user()->accountRole == 2)
               <li><a href="{{ url('admin') }}"><i class="fa fa-database"></i><span>Admin</span></a></li>

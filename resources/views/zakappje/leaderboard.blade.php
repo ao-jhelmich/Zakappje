@@ -1,5 +1,8 @@
 @extends('layout.master')
 @section('content')
+@php
+  use App\Http\Controllers\LeaderboardController;
+@endphp
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -41,13 +44,26 @@
                     @foreach ($users as $user) 
                     @if ($user->users_rank_id == $rank->rank_id)
                       @php
-                        $i++
-                      @endphp   
+                        $i++;
+                        $requirements = LeaderboardController::getUsersRequirements($user->id);
+                        @endphp 
                         <tr>
                           <td>{{$i}}</td>
                           <td>{{$user->name}} {{$user->lastName}}</td>
-                          <td>aantal afgeronde eisen</td>
+                          <td>
+                          @isset ($requirements[0])
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{count($requirements)}}</button>
+                              <ul class="dropdown-menu" role="menu">
+                                @foreach ($requirements as $requirement)
+                                  <li><a href="/book/show/{{$requirement[0]->requirements_id}}">{{$requirement[0]->requirements_name}}</a></li>
+                                @endforeach
+                              </ul>
+                            </div>
+                          </td>
                         </tr>
+                        @else nog geen klasseneisen voor deze klas gedaan
+                        @endisset
                       @endif
                     @endforeach
                   </table>
