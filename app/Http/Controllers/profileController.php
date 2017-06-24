@@ -4,30 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\user;
-use DB;
+use App\UserHasReq;
+use App\requirements;
+use App\mainrequirements;
+use App\UserHasMr;
 
 class profileController extends Controller
 {
     public function index($id)
     {	
-    	$book = 
-    		DB::table('ranks')
-  			->select('ranks.*', 'mainrequirements.*', 'requirements.*')
-            ->leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
-            ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
-            ->orderby('rank_id')
-            ->get();
+    	
+        $userInfo = User::find($id);
+        //User has requirements and info about the Requirements
+        //$userHasReq = UserHasReq::find($id)->get();
+          //  $requirementInfo = Requirements::find($userHasReq->requirement_id);
 
-            $curclass = 0;
-  $curmr = 0;
-  $curr = 0;
-    	$profileResult = User::find($id);
-    	return view('profile.index', [
-    		'profile' => $profileResult, 
-    		'books' => $book, 
-    		'curclass' => 0, 
-    		'curmr' => 0, 
-    		'curr' => 0]);
+        //Getting mainrequirement info
+        //$userHasMr = UserHasMr::find($userInfo->id)->get();
+          //  $mainrequirementInfo = Mainrequirements::find($userHasMr->mainrequirement_id);
+
+        return view('profile.index', ['profile' => $userInfo
+
+            //, 'userHasR' => $requirementInfo, 'userHasMr' => $mainrequirementInfo
+            ]);
     }
 
 }

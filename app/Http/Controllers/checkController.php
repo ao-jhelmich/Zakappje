@@ -83,11 +83,14 @@ class checkController extends Controller
     	
     	//checking if all main requirements are met for the main requirement
     		//Getting the mainrequirements needed for class
+        $mainReqNeededForRank = Mainrequirements::find($reqNeededForMr->requirements_mainrequirements_id);
     	$checkUserHasMr = UserHasMr::where('user_id',$request->user_id)->count();
     	$checkAmountOfMrForRank = Mainrequirements::where('mainrequirements_id', 
     														$reqNeededForMr->requirements_mainrequirements_id)->count();
     	if($checkUserHasMr == $checkAmountOfMrForRank){
-    		$userHasR = DB::table('users')->whereId($request->user_id)->increment('users_rank_id'); 
+    		$userHasR = User::find($request->user_id);
+                $userHasR->users_rank_id = $mainReqNeededForRank->mainrequirements_rank_id;
+            $userHasR->save(); 
     	}
 
     	return Redirect::to('/');

@@ -200,9 +200,13 @@
           </li>
        @endif
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          @if (Auth::check())
+            @if (Auth::user()->accountRole ==2)
+              <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+              </li>
+            @endif
+          @endif
         </ul>
       </div>
     </nav>
@@ -605,6 +609,9 @@
   </footer>
 
   <!-- Control Sidebar -->
+@if (Auth::check())
+  @if (Auth::user()->accountRole == 2)
+
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -664,7 +671,8 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-
+  @endif
+@endif
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->

@@ -14,54 +14,12 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
-                @foreach ($books as $info)
-                  @if ($info->rank_id !== $curclass)
-                  @php$curclass=$info->rank_id;@endphp
-                    <li class="treeview">
-     
-                        <a href="#">
-                            {{$info->rank_name}}
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Huidige Klasse:</b> <a class="pull-right">{{$profile->users_rank_id}}</a>
+                </li>
+              </ul>
 
-                        <ul class="treeview-menu">
-                          @foreach ($books as $info)
-                            @if ($info->rank_id == $curclass)
-                              @if ($info->mainrequirements_id !== $curmr)
-                              @php$curmr=$info->mainrequirements_id;@endphp
-                                <li class="treeview">
-
-                                    <a href="#">
-                                        {{$info->mainrequirements_name}}
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </a>
-
-                                      <ul class="treeview-menu">
-                                        @foreach ($books as $info)
-                                          @if ($info->rank_id == $curclass)
-                                            @if ($info->mainrequirements_id == $curmr)
-                                              @if ($info->requirements_id !== $curr)
-                                              @php$curr=$info->requirements_id;@endphp
-                                                <li class="treeview">
-
-                                                <a href="/book/show/{{$info->requirements_id}}">{{$info->requirements_name}}</a>
-                                                <a href="/check/{{$info->requirements_id}}/{{Auth::user()->id}}"><button class="btn btn-primary">aftekenen</button></a>
-
-                                                </li>
-                                              @endif
-                                            @endif
-                                          @endif
-                                        @endforeach
-                                      </ul>
-                                </li>
-      
-                              @endif
-                            @endif
-                          @endforeach
-                        </ul>
-                    </li>
-                  @endif
-                @endforeach
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
