@@ -35,4 +35,8 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	//Extra plugins
+	config.extraPlugins = 'youtube';
 };
+//C:\wamp64\www\LaravelZakappje\public\css\adminlte\plugins\ckeditor\plugins\
