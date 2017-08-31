@@ -73,7 +73,7 @@ class checkController extends Controller
     	$checkAmountOfReqForMainReq = Requirements::where('requirements_mainrequirements_id', 
     														$reqNeededForMr->requirements_mainrequirements_id)->count();
 
-    		//Checcking the user has req with the available req
+    		//Checcking the user obtained requirements with the available requirements
     	if ($checkUserHasReq == $checkAmountOfReqForMainReq) {
     		$userHasMr = new UserHasMr;
     			$userHasMr->user_id = $request->user_id;
