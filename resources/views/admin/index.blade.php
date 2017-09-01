@@ -13,9 +13,7 @@
     	<p>Admin index</p> 
     
     <p>What would you like to manage?</p>
-    <a href="admin/mainrequirement"><button class="btn btn-default">Mainrequirements</button></a>
-    <a href="admin/requirement"><button class="btn btn-default">Requirements</button></a>
-    <a href="admin/instruction"><button class="btn btn-default">instructions</button></a>
+    <a href="admin/manage"><button class="btn btn-default">Beheer eisen</button></a>
     <!-- /.content -->
   </div>
 @endsection

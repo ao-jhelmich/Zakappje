@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\mainrequirements;
+use App\Instructions;
+use App\requirements;
+
 
 class AdminController extends Controller
 {
@@ -14,5 +18,15 @@ class AdminController extends Controller
     public function index()
     {
     	return view('admin.index');
+    }
+
+    public function manageBookPage()
+    {
+    	$mainRequirements = Mainrequirements::All();
+        $Instructions = Instructions::All();
+        $Requirements = Requirements::All();
+    	return view('admin.manage' , [	'Requirements' => $Requirements ,
+    									'Instructions' => $Instructions ,
+    									'mainRequirements' => $mainRequirements ]);
     }
 }
