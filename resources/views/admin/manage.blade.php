@@ -36,12 +36,9 @@
             <thead>
                 <tr>
                     <th>Pagina Naam</th>
-                    <th>Date created</th>
-                    <th>Last updated</th>
                     <th>Edit</th>
                     <th>Delete</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,8 +46,6 @@
                 @foreach ($mainRequirements as $mainRequirement)
                     <tr>
                         <td>{{$mainRequirement->mainrequirements_name}}</td>
-                        <td>{{$mainRequirement->created_at}}</td>
-                        <td>{{$mainRequirement->updated_at}}</td>
                         <td>
                             <a href="{{url('admin/mainrequirement/' . $mainRequirement->mainrequirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
                         </td>
@@ -61,7 +56,6 @@
                             {{ Form::close() }}
                         </td>
                         <td><span class="label label-success">Active</span></td>
-                        <td><button class="btn btn-danger">Change status</button></td>
                     </tr>
                 @endforeach
             @endif
