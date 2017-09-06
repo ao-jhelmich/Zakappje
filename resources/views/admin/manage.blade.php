@@ -17,17 +17,74 @@
     </div> <!-- end .flash-message -->
     <!-- Main content -->
     <section class="content">
-    @if (isset($mainRequirements))
-    <a href="{{url('admin/mainrequirement/create')}}"><button class="btn btn-default">Create new</button></a>
-    @elseif(isset($Requirements))
-    <a href="{{url('admin/requirement/create')}}"><button class="btn btn-default">Create new</button></a>
-    @elseif(isset($Instructions))
-    <a href="{{url('admin/instruction/create')}}"><button class="btn btn-default">Create new</button></a>
-    @endif
     <br><br>
+        <!-- Container 1 -->
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Alle</h3>
+                <a href="{{url('admin/mainrequirement/create')}}"><button class="btn btn-default"><h3 class="box-title">Create new
+                 mainrequirement</h3></button></a>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                          <i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                          <i class="fa fa-times"></i></button>
+                    </div>
+            </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Pagina Naam</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (isset($mainRequirements))
+                @foreach ($mainRequirements as $mainRequirement)
+                    <tr>
+                        <td>{{$mainRequirement->mainrequirements_name}}</td>
+                        <td>
+                            <a href="{{url('admin/mainrequirement/' . $mainRequirement->mainrequirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
+                        </td>
+                        <td> 
+                            {{ Form::open(['method' => 'DELETE', 
+                                            'route' => ['mainrequirement.destroy', $mainRequirement->mainrequirements_id]]) }}
+                            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                            {{ Form::close() }}
+                        </td>
+                        <td><span class="label label-success">Active</span></td>
+                    </tr>
+                @endforeach
+            @endif
+            </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Pagina Naam</th>
+                        <th>Date created</th>
+                        <th>Last updated</th>
+                        <th>Edit</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        </div>
+
+        <!-- Container 2 -->
+        <div class="box">
+            <div class="box-header">
+                <a href="{{url('admin/requirement/create')}}"><button class="btn btn-default"><h3 class="box-title">Create new
+                 requirement</h3></button></a>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                          <i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                          <i class="fa fa-times"></i></button>
+                    </div>
             </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -44,62 +101,92 @@
                 </tr>
             </thead>
             <tbody>
-    @if (isset($mainRequirements))
-                @foreach ($mainRequirements as $mainRequirement)
+            @if(isset($Requirements))
+                @foreach ($Requirements as $Requirement)
                     <tr>
-                        <td>{{$mainRequirement->mainrequirements_name}}</td>
-                        <td>{{$mainRequirement->created_at}}</td>
-                        <td>{{$mainRequirement->updated_at}}</td>
-                        <td>
-                            <a href="{{url('admin/mainrequirement/' . $mainRequirement->mainrequirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
-                        </td>
-                        <td> 
-                            {{ Form::open(['method' => 'DELETE', 
-                                            'route' => ['mainrequirement.destroy', $mainRequirement->mainrequirements_id]]) }}
-                            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                            {{ Form::close() }}
-                        </td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td><button class="btn btn-danger">Change status</button></td>
+                      <td>{{$Requirement->requirements_name}}</td>
+                      <td>{{$Requirement->created_at}}</td>
+                      <td>{{$Requirement->updated_at}}</td>
+                      <td>
+                        <a href="{{url('admin/requirement/' . $Requirement->requirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
+                      </td>
+                      <td>
+                           {{ Form::open(['method' => 'DELETE', 
+                                                'route' => ['mainrequirement.destroy', $Requirement->requirements_id]]) }}
+                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                {{ Form::close() }}
+                      </td>
+                      <td><span class="label label-success">Active</span></td>
+                      <td><button class="btn btn-danger">Change status</button></td>
                     </tr>
-                @endforeach         
-    @elseif(isset($Requirements))
-            @foreach ($Requirements as $Requirement)
+                @endforeach
+            @else
                 <tr>
-                  <td>{{$Requirement->requirements_name}}</td>
-                  <td>{{$Requirement->created_at}}</td>
-                  <td>{{$Requirement->updated_at}}</td>
-                  <td>
-                    <a href="{{url('admin/requirement/' . $Requirement->requirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
-                  </td>
-                  <td>
-                       {{ Form::open(['method' => 'DELETE', 
-                                            'route' => ['mainrequirement.destroy', $Requirement->requirements_id]]) }}
-                            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                            {{ Form::close() }}
-                  </td>
-                  <td><span class="label label-success">Active</span></td>
-                  <td><button class="btn btn-danger">Change status</button></td>
+                    <td>No Requirements yet Create some!</td>
                 </tr>
-            @endforeach
-    @elseif(isset($Instructions))
-            @foreach ($Instructions as $Instruction)
+            @endif
+            </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Pagina Naam</th>
+                        <th>Date created</th>
+                        <th>Last updated</th>
+                        <th>Edit</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        </div>
+
+        <!-- Container 3 -->
+        <div class="box">
+            <div class="box-header">
+                <a href="{{url('admin/instruction/create')}}"><button class="btn btn-default"><h3 class="box-title">Create new
+                 instruction</h3></button></a>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                          <i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                          <i class="fa fa-times"></i></button>
+                    </div>
+            </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+            <thead>
                 <tr>
-                  <td>{{$Instruction->instructions_name}}</td>
-                  <td>{{$Instruction->created_at}}</td>
-                  <td>{{$Instruction->updated_at}}</td>
-                  <td>
-                       <a href="{{url('admin/instruction/' . $Instruction->instructions_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
-                  </td>
-                  <td><button class="btn btn-danger">delete</button></td>
-                  <td><span class="label label-success">Active</span></td>
-                  <td><button class="btn btn-danger">Change status</button></td>
+                    <th>Pagina Naam</th>
+                    <th>Date created</th>
+                    <th>Last updated</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
-            @endforeach
-    @else
-        <h1>Page 404 not found</h1>
-    @endif
-        </tbody>
+            </thead>
+            <tbody>
+            @if(isset($Instructions))
+                @foreach ($Instructions as $Instruction)
+                    <tr>
+                      <td>{{$Instruction->instructions_name}}</td>
+                      <td>{{$Instruction->created_at}}</td>
+                      <td>{{$Instruction->updated_at}}</td>
+                      <td>
+                           <a href="{{url('admin/instruction/' . $Instruction->instructions_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
+                      </td>
+                      <td><button class="btn btn-danger">delete</button></td>
+                      <td><span class="label label-success">Active</span></td>
+                      <td><button class="btn btn-danger">Change status</button></td>
+                    </tr>
+                @endforeach
+            @else
+                <tr>
+                    <td>No Instructions yet Create some!</td>
+                </tr>
+            @endif
+            </tbody>
                 <tfoot>
                     <tr>
                         <th>Pagina Naam</th>

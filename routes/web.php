@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'homecontroller@index');
+Route::get('admin/manage', 'admin\admincontroller@manageBookPage');
 
 // All the resource routes
 Route::resource('admin/mainrequirement', 'admin\MainRequirementController');
