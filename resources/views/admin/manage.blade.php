@@ -32,7 +32,7 @@
             </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="container1" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Pagina Naam</th>
@@ -63,10 +63,8 @@
                 <tfoot>
                     <tr>
                         <th>Pagina Naam</th>
-                        <th>Date created</th>
-                        <th>Last updated</th>
                         <th>Edit</th>
-                        <th>Status</th>
+                        <th>Delete</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -88,7 +86,7 @@
             </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="container1" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Pagina Naam</th>
@@ -154,7 +152,7 @@
             </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="container1" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Pagina Naam</th>
