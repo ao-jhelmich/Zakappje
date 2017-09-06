@@ -32,3 +32,12 @@ Route::get('check/{requirement}/{user}', 'checkController@addCheckToAdminRow');
 Route::get('check/final/{requirement}/{user}/{checkid}', 'checkController@index');
 Route::post('check/final', 'checkController@addUserHas');
 Auth::routes();
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+{
+  	Route::get('admin/manage', 'admin\admincontroller@manageBookPage');
+   	Route::resource('admin/mainrequirement', 'admin\MainRequirementController');
+	Route::resource('admin/instruction', 'admin\InstructionController');
+	Route::resource('admin/requirement', 'admin\RequirementController');
+	Route::resource('admin', 'admin\admincontroller');
+});
