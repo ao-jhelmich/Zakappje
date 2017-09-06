@@ -702,7 +702,7 @@ CKEDITOR.replace( 'editor1' );
 </script>
 <script>
   $(function () {
-    $("#example1").DataTable();
+    $("#container1").DataTable();
   });
 </script>
 </body>
