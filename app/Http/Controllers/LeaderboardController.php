@@ -29,11 +29,30 @@ class LeaderboardController  extends Controller
 
     public static function getUsersRequirements($user_id)
     {
-		$requirement_ids = DB::table('user_has_requirement')
+		/*$requirement_ids = DB::table('user_has_requirement')
 							->where('user_id', '=', $user_id)
 							->select('user_id', 'requirement_id')
+							->get();*/
+
+		$mainrequirement_ids = DB::table('user_has_mainrequirement')
+							->where('user_id', '=', $user_id)
+							->select('user_id', 'mainrequirement_id')
 							->get();
-		if (isset($requirement_ids[0])) {
+		if (isset($mainrequirement_ids[0])) {
+
+			$i=0;
+			foreach ($mainrequirement_ids as $mainrequirement_id) {
+				$mainrequirement = DB::table('mainrequirements')
+									->where('mainrequirements_id', '=', $mainrequirement_id->mainrequirement_id)
+									->select('mainrequirements_name', 'mainrequirements_id')
+									->get();
+				$mainrequirements[$i] = $mainrequirement;
+				$i++;
+			}	
+			return $mainrequirements;
+			}	
+
+		/*if (isset($requirement_ids[0])) {
 		
 			$i=0;
 			foreach ($requirement_ids as $requirement_id) {
@@ -44,8 +63,8 @@ class LeaderboardController  extends Controller
 				$requirements[$i] = $requirement;
 				$i++;
 			}
-		 return $requirements;
-		}
+		 return $mainrequirements;
+		}*/
 
     }
 }
