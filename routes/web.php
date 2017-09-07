@@ -13,6 +13,11 @@
 
 Route::get('/', 'homecontroller@index');
 Route::get('admin/manage', 'admin\admincontroller@manageBookPage');
+Route::get('admin/mod', 'admin\admincontroller@setMainrequirementOfTheDay');
+Route::get('profile/', 'profileController@index');
+Route::get('book/show/{requirement}', 'bookcontroller@show');
+Route::get('check/{requirement}/{user}', 'checkController@addCheckToAdminRow');
+Route::get('check/final/{requirement}/{user}/{checkid}', 'checkController@index');
 
 // All the resource routes
 Route::resource('admin/mainrequirement', 'admin\MainRequirementController');
@@ -26,12 +31,11 @@ Route::resource('test', 'testcontroller');
 
 // Post routes
 Route::delete('check/{id}', 'checkController@deleteChkFromAdminRow');
-Route::get('profile/', 'profileController@index');
-Route::get('book/show/{requirement}', 'bookcontroller@show');
-Route::get('check/{requirement}/{user}', 'checkController@addCheckToAdminRow');
-Route::get('check/final/{requirement}/{user}/{checkid}', 'checkController@index');
 Route::post('check/final', 'checkController@addUserHas');
 Auth::routes();
+
+// Routes for the check
+
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {

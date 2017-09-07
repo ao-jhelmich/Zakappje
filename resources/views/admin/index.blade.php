@@ -12,8 +12,8 @@
     <section class="content">
     	<p>Admin index</p> 
     
-    <p>What would you like to manage?</p>
-    <a href="admin/manage"><button class="btn btn-default">Beheer eisen</button></a>
+    <a href="admin/manage"><button class="btn btn-default">Beheer Het boekje</button></a>
+    <a href="admin/mod"><button class="btn btn-default">Zet de klasseneis van de dag</button></a>
     <!-- /.content -->
   </div>
 @endsection

@@ -30,4 +30,10 @@ class AdminController extends Controller
     									'Instructions' => $Instructions ,
     									'mainRequirements' => $mainRequirements ]);
     }
+
+    public function setMainrequirementOfTheDay()
+    {
+        $mainRequirements = Mainrequirements::All();
+        return view('admin.mod', ['mainRequirements' => $mainRequirements ]);
+    }
 }
