@@ -170,7 +170,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{url('profile/' . Auth::user()->id)}}" class="btn btn-default btn-flat">Mijn Profiel</a>
+                  <a href="{{url('profile/')}}" class="btn btn-default btn-flat">Mijn Profiel</a>
                 </div>
                 <div class="pull-right">
                   @if (!Auth::check())

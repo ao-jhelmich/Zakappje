@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\user;
 use App\UserHasReq;
 use App\requirements;
@@ -11,10 +13,11 @@ use App\UserHasMr;
 
 class profileController extends Controller
 {
-    public function index($id)
+    public function index()
     {	
-    	
+        $id = Auth::user()->id;
         $userInfo = User::find($id);
+
         //User has requirements and info about the Requirements
         //$userHasReq = UserHasReq::find($id)->get();
           //  $requirementInfo = Requirements::find($userHasReq->requirement_id);
@@ -28,5 +31,6 @@ class profileController extends Controller
             //, 'userHasR' => $requirementInfo, 'userHasMr' => $mainrequirementInfo
             ]);
     }
+
 
 }
