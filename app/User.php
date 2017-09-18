@@ -33,4 +33,10 @@ class User extends Authenticatable
     {
         return User::where('accountRole', $role)->get();
     }
+
+    public function rank_id()
+    {
+        $id = Auth::user()->id;
+        return User::where('users_rank_id', $id)->get();
+    }
 }

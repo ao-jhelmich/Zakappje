@@ -26,8 +26,10 @@
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fa fa-minus"></i></button>
             @if(Auth::check())
-              <a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
-              <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
+              @if(Auth::user()->users_rank_id == 2)
+                <a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
+                <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
+              @endif
             @endif
           </div>
         </div>
