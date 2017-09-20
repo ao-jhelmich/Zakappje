@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Requirements;
+use App\mainrequirements;
 use App\Ranks;
 use App\Instructions;
 use Redirect;
@@ -11,7 +12,8 @@ use Redirect;
 class BookController extends Controller
 {
     public function index()
-    {        
+    {   
+
     	$requirements = Requirements::all();
         return View('zakappje.books')
         	->with('requirements', $requirements);
@@ -119,11 +121,12 @@ class BookController extends Controller
 
     public function show(Request $request, Requirements $requirement)
     {
+    	$mainrequirement = mainrequirements::find($requirement->requirements_mainrequirements_id);
+    	$rank = Ranks::find($mainrequirement->mainrequirements_rank_id);
     	$instructions = Instructions::select('instructions.*')
     									->where('instructions.instructions_requirements_id', '=', $requirement->requirements_id)->get();
 
-    	return View('zakappje.books')
-    		->with('requirement', $requirement)->with('instructions', $instructions);
+    	return View('zakappje.books', ['requirement' => $requirement, 'instructions' => $instructions, 'mainrequirement' => $mainrequirement, 'rank' => $rank]);
     }
    
 }

@@ -156,38 +156,31 @@
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Lorem</a>
+                    @if(Auth::check())
+                      @if(Auth::user()->accountRole == 2)
+                        <a href="{{ url('admin') }}" class="">Admin</a>
+                      @else
+                        <a href="#">Halfjaarplanning</a>
+                      @endif
+                    @endif
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Lorem</a>
+                    <a href="{{url('profile/')}}" class="">Profiel</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Lorem</a>
+                  @if (!Auth::check())
+                    <a href="{{ url('/login') }}" class="">Log in</a>
+                    @else
+                    <a href="{{ route('logout') }}" class="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Log uit</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                    </form>
+                  @endif
                   </div>
                 </div>
                 <!-- /.row -->
               </li>
               <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="{{url('profile/')}}" class="btn btn-default btn-flat">Mijn Profiel</a>
-                </div>
-                <div class="pull-right">
-                  @if (!Auth::check())
-                  <a href="{{ url('/login') }}" class="btn btn-default btn-flat">Log in</a>
-                  @else
-                    @if(isset(Auth::user()->accountRole))
-                      @if(Auth::user()->accountRole == 2)
-                        <a href="{{ url('admin') }}" class="btn btn-default btn-flat">Admin</a>
-                      @endif
-                    @endif
-                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Log uit</a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  {{ csrf_field() }}
-                  </form>
-                  @endif
-                </div>
-              </li>
             </ul>
           </li>
        @else

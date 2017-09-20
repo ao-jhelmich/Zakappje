@@ -4,8 +4,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Klasse eis
-        <small>Mainrequirement</small>
+        {{$rank->rank_name}}
+        <small>{{$mainrequirement->mainrequirements_name}}</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Work</a></li>
@@ -24,9 +24,9 @@
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
+              <i class="fa fa-minus"></i></button> 
             @if(Auth::check())
-              @if(Auth::user()->users_rank_id == 2)
+              @if(Auth::user()->users_rank_id == $rank->rank_id -1)
                 <a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
                 <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
               @endif
