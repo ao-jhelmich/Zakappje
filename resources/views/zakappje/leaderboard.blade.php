@@ -51,6 +51,12 @@
                           <td>{{$i}}</td>
                           <td>{{$user->name}} {{$user->lastName}}</td>
                           <td>
+                            {{$user->count}}
+                          @isset ($user->mainrequirements[0])
+                            @foreach ($user->mainrequirements as $mainrequirement)
+                              {{$mainrequirement->mainrequirement_id}}
+                            @endforeach
+                          @endisset
                           @isset ($mainrequirements[0])
                             <div class="btn-group">
                             @foreach ($mainrequirements as $mainrequirement)
