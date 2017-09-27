@@ -83,7 +83,7 @@
                   <b>Geboorte datum</b> <a class="pull-right">{{$profile->birth_day_day ." ". $month ." ".  $profile->birth_day_year}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Ouder gegevens</b> <a class="pull-right">{{$profile->user_parent_name . $profile->user_parent_email}}</a>
+                  <b>Ouder gegevens</b> <a class="pull-right">{{$profile->user_parent_name . " " . $profile->user_parent_email}}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Ouder telefoon</b> <a class="pull-right">{{$profile->user_parent_phone}}</a>

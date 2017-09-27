@@ -46,7 +46,7 @@ class MainRequirementController extends Controller
         //Message about the store
         $request->session()->flash('alert-success', 'mainrequirement was successful added!');
         //redirecting
-        return Redirect::to('admin/mainrequirement');
+        return Redirect::to('admin/manage');
     }
 
     /**
@@ -89,7 +89,7 @@ class MainRequirementController extends Controller
             $Mainrequirement->flag = $request->input('flag');
             $Mainrequirement->mainrequirements_rank_id = $request->input('select');
             $Mainrequirement->save();
-            return Redirect::to('admin/mainrequirement');
+            return Redirect::to('admin/manage');
     }
 
     /**
@@ -103,6 +103,6 @@ class MainRequirementController extends Controller
         $mainRequirement = Mainrequirements::findOrFail($id);
         $mainRequirement->delete();
 
-        return Redirect::to('admin/mainrequirement');
+        return Redirect::to('admin/manage');
     }
 }

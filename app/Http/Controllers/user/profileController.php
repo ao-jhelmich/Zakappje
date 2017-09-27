@@ -1,8 +1,7 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\user;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 use App\user;
@@ -27,9 +26,8 @@ class profileController extends Controller
           //  $mainrequirementInfo = Mainrequirements::find($userHasMr->mainrequirement_id);
 
         return view('profile.index', ['profile' => $userInfo
-
             //, 'userHasR' => $requirementInfo, 'userHasMr' => $mainrequirementInfo
-            ]);
+        ]);
     }
 
 

@@ -14,6 +14,7 @@
     
     <a href="admin/manage"><button class="btn btn-default">Beheer Het boekje</button></a>
     <a href="admin/mod"><button class="btn btn-default">Zet de klasseneis van de dag</button></a>
+    <a href="admin/user"><button class="btn btn-default">UserBeheer</button></a>
     <!-- /.content -->
   </div>
 @endsection
