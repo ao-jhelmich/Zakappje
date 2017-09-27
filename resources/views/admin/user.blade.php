@@ -36,7 +36,7 @@
                 <tr>
                     <th>Pagina Naam</th>
                     <th>Rol</th>
-                    <th>Delete</th>
+                    <th>Show</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -52,16 +52,52 @@
                             {{'Leiding'}}
                           @endif
                         </td>
-                          @if (Auth::user()->accountRole == 2)
-                            <td>
-                              {{ Form::open(['method' => 'DELETE', 
-                                            'route' => ['user.destroy', $user->users_id]]) }}
-                              {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                              {{ Form::close() }}   
-                            </td>
-                          @elseif(Auth::user()->accountRole == 2)
-                            {{'Leiding'}}
-                          @endif
+                          <td>
+                            <!-- Button trigger modal -->
+                          <button type="button" class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#{{$user->id}}">
+                          </button>
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Wijzig: {{$user->name}}</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  {{Form::open(['url' => 'admin/user/' . $user->id, 'role' => 'form', 'method' => 'put'])}}
+                                    <div class="form-group">
+                                        {{ Form::label('name', 'MainRequirement' . ' name: ') }}
+                                        {{ Form::text('name', $mainRequirement->mainrequirements_name, ['class' => 'form-control'])}}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label('desc', 'Desc: ') }}
+                                        {{ Form::text('desc', $mainRequirement->mainrequirements_description,['class' => 'form-control'])}}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label('select', 'Toekennen aan: ')}}
+                                        {{Form::select('select', $Select, $mainRequirement->mainrequirements_rank_id,['class' => 'form-control'])}}
+                                    </div>                
+                                    <div class="form-group">
+                                        {{ Form::label('flag', 'Flag: ')}}
+                                        {{Form::select('flag', ['1' => 'Active', '0' => 'Unactive'], $mainRequirement->flag , ['class' => 'form-control'])}}
+                                    </div>
+                                    <div class="form-group">
+                                    {{ Form::submit('Save')}}
+                                    </div>
+                                {{Form::close()}}
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </td>
                         <td><span class="label label-success">Active</span></td>
                     </tr>
                 @endforeach
@@ -71,7 +107,7 @@
                     <tr>
                         <th>Pagina Naam</th>
                         <th>Rol</th>
-                        <th>Delete</th>
+                        <th>Show</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
