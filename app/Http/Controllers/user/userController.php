@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 
+use Redirect;
+
 class userController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class userController extends Controller
     public function index()
     {
         $users = User::All();
-        return view('admin.user', ['users' => $users]);
+        return view('admin.user.index', ['users' => $users]);
     }
 
     /**
@@ -57,7 +59,9 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        //
+        $userInfo = User::find($id);
+        return view('admin.user.edit', ['profile' => $userInfo]);
+
     }
 
     /**
@@ -81,5 +85,19 @@ class userController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function rankup(Request $request)
+    {
+        $id = $request->userid;
+        $foundUser = User::find($id);
+        if ($foundUser->accountRole == 1) {
+            $foundUser->accountRole = $foundUser->accountRole + 1;
+                $foundUser->save();
+            return Redirect::to('admin/user');
+        }elseif ($foundUser->accountRole <= 2) {
+            return Redirect::to('/');
+        }
+        return $request->userid;
     }
 }

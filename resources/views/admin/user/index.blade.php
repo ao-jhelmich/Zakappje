@@ -37,7 +37,7 @@
                     <th>Pagina Naam</th>
                     <th>Rol</th>
                     <th>Show</th>
-                    <th>Status</th>
+                    <th>Upgrade Account</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,7 +55,12 @@
                           <td>
                             <a href="user/{{$user->id}}/edit"><button>Edit</button></a>
                           </td>
-                        <td><span class="label label-success">Active</span></td>
+                        <td>
+                            {{ Form::open(['url' => 'admin/user/rankup', 'method' => 'post', 'role' => 'form'])}}
+                                {{ Form::hidden('userid', $user->id)}}
+                            {{ Form::submit('Upgrade', ['class' => 'btn btn-primary btn-flat'])}}
+                            {{ Form::close()}}
+                        </td>
                     </tr>
                 @endforeach
             @endif
@@ -65,7 +70,7 @@
                         <th>Pagina Naam</th>
                         <th>Rol</th>
                         <th>Show</th>
-                        <th>Action</th>
+                        <th>Upgrade Account</th>
                     </tr>
                 </tfoot>
             </table>
