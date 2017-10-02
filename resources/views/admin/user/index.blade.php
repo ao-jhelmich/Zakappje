@@ -56,9 +56,16 @@
                             <a href="user/{{$user->id}}/edit"><button>Edit</button></a>
                           </td>
                         <td>
+                            @php
+                                if ($user->accountRole >= 2) {
+                                    $csstext = 'btn btn-primary disabled';
+                                }else{
+                                    $csstext = 'btn btn-primary';
+                                }
+                            @endphp
                             {{ Form::open(['url' => 'admin/user/rankup', 'method' => 'post', 'role' => 'form'])}}
                                 {{ Form::hidden('userid', $user->id)}}
-                            {{ Form::submit('Upgrade', ['class' => 'btn btn-primary btn-flat'])}}
+                            {{ Form::submit('Upgrade', ['class' => $csstext])}}
                             {{ Form::close()}}
                         </td>
                     </tr>
