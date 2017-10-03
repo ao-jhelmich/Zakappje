@@ -36,9 +36,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/skins/skin-green.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/datatables/dataTables.bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
   <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
-  <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://unpkg.com/vue"></script>
 </head>
 <body class="hold-transition skin-green sidebar-mini">
