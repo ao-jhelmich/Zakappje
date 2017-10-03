@@ -470,7 +470,7 @@
 
                         <div class="form-group">
                           <div class="col-md-6 col-md-offset-4">
-                            <div class="g-recaptcha" data-sitekey="6Lfq_jIUAAAAAHaEyF6-nadKRAoKKiV9SJUfa8AT"></div>
+                            
                           </div>
                         </div>
 
