@@ -8,12 +8,12 @@
     <section class="content">
             <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">ZakAppje Gegevens</a></li>
-              <li><a href="#timeline" data-toggle="tab">Contact gegevens</a></li>
+              <li><a href="#activity" data-toggle="tab">ZakAppje Gegevens</a></li>
+              <li class="active"><a href="#timeline" data-toggle="tab">Contact gegevens</a></li>
               <li><a href="#settings" data-toggle="tab">Settings</a></li>
             </ul>
             <div class="tab-content">
-              <div class="active tab-pane" id="activity">
+              <div class="tab-pane" id="activity">
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
                   <b>Huidige Klasse:</b> <a class="pull-right">{{$profile->users_rank_id}}</a>
@@ -22,7 +22,7 @@
 
               </div>
               <!-- /.tab-pane -->
-              <div class="tab-pane" id="timeline">
+              <div class="active tab-pane" id="timeline">
                 <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="/images/user8-128x128.jpg" alt="User profile picture">
               <h3 class="profile-username text-center">{{$profile->name .' '. $profile->lastName}}</h3>
@@ -83,7 +83,7 @@
                   <b>Geboorte datum</b> <a class="pull-right">{{$profile->birth_day_day ." ". $month ." ".  $profile->birth_day_year}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Ouder gegevens</b> <a class="pull-right">{{$profile->user_parent_name . $profile->user_parent_email}}</a>
+                  <b>Ouder gegevens</b> <a class="pull-right">{{$profile->user_parent_name . " " . $profile->user_parent_email}}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Ouder telefoon</b> <a class="pull-right">{{$profile->user_parent_phone}}</a>
