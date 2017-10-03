@@ -595,9 +595,11 @@
 CKEDITOR.replace( 'editor1' );
 </script>
 <script>
-  $(function () {
+$(function () {
     $("#container1").DataTable();
-  });
+    $("#container2").DataTable();
+    $("#container3").DataTable();
+});
 </script>
 </body>
 </html>

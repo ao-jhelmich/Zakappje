@@ -86,7 +86,7 @@
             </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="container1" class="table table-bordered table-striped">
+            <table id="container2" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Pagina Naam</th>
@@ -152,7 +152,7 @@
             </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="container1" class="table table-bordered table-striped">
+            <table id="container3" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Pagina Naam</th>

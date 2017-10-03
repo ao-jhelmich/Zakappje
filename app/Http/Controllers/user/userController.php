@@ -98,6 +98,5 @@ class userController extends Controller
         }elseif ($foundUser->accountRole <= 2) {
             return Redirect::to('/');
         }
-        return $request->userid;
     }
 }
