@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddTimeStampsTableToUserHasMainRequirement' => $baseDir . '/database/migrations/2017_10_03_092651_AddTimeStampsTableToUserHasMainRequirement.php',
+    'AddTimeStampsTableToUserHasRequirement' => $baseDir . '/database/migrations/2017_10_03_092645_AddTimeStampsTableToUserHasRequirement.php',
     'AltercolummlengthMainrequirementName' => $baseDir . '/database/migrations/2017_09_22_100008_altercolummlengthMainrequirementName.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -22,7 +24,8 @@ return array(
     'App\\Http\\Controllers\\admin\\MainRequirementController' => $baseDir . '/app/Http/Controllers/admin/MainRequirementController.php',
     'App\\Http\\Controllers\\admin\\RequirementController' => $baseDir . '/app/Http/Controllers/admin/RequirementController.php',
     'App\\Http\\Controllers\\checkController' => $baseDir . '/app/Http/Controllers/checkController.php',
-    'App\\Http\\Controllers\\profileController' => $baseDir . '/app/Http/Controllers/profileController.php',
+    'App\\Http\\Controllers\\user\\profileController' => $baseDir . '/app/Http/Controllers/user/profileController.php',
+    'App\\Http\\Controllers\\user\\userController' => $baseDir . '/app/Http/Controllers/user/userController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',

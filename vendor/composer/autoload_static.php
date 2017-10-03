@@ -306,6 +306,8 @@ class ComposerStaticInitc86489d169a3b64de6ca7452ddfbd46b
     );
 
     public static $classMap = array (
+        'AddTimeStampsTableToUserHasMainRequirement' => __DIR__ . '/../..' . '/database/migrations/2017_10_03_092651_AddTimeStampsTableToUserHasMainRequirement.php',
+        'AddTimeStampsTableToUserHasRequirement' => __DIR__ . '/../..' . '/database/migrations/2017_10_03_092645_AddTimeStampsTableToUserHasRequirement.php',
         'AltercolummlengthMainrequirementName' => __DIR__ . '/../..' . '/database/migrations/2017_09_22_100008_altercolummlengthMainrequirementName.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -322,7 +324,8 @@ class ComposerStaticInitc86489d169a3b64de6ca7452ddfbd46b
         'App\\Http\\Controllers\\admin\\MainRequirementController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/MainRequirementController.php',
         'App\\Http\\Controllers\\admin\\RequirementController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/RequirementController.php',
         'App\\Http\\Controllers\\checkController' => __DIR__ . '/../..' . '/app/Http/Controllers/checkController.php',
-        'App\\Http\\Controllers\\profileController' => __DIR__ . '/../..' . '/app/Http/Controllers/profileController.php',
+        'App\\Http\\Controllers\\user\\profileController' => __DIR__ . '/../..' . '/app/Http/Controllers/user/profileController.php',
+        'App\\Http\\Controllers\\user\\userController' => __DIR__ . '/../..' . '/app/Http/Controllers/user/userController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
