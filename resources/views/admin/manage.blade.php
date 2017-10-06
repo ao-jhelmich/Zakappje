@@ -90,8 +90,6 @@
             <thead>
                 <tr>
                     <th>Pagina Naam</th>
-                    <th>Date created</th>
-                    <th>Last updated</th>
                     <th>Edit</th>
                     <th>Delete</th>
                     <th>Status</th>
@@ -103,14 +101,12 @@
                 @foreach ($Requirements as $Requirement)
                     <tr>
                       <td>{{$Requirement->requirements_name}}</td>
-                      <td>{{$Requirement->created_at}}</td>
-                      <td>{{$Requirement->updated_at}}</td>
                       <td>
                         <a href="{{url('admin/requirement/' . $Requirement->requirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
                       </td>
                       <td>
                            {{ Form::open(['method' => 'DELETE', 
-                                                'route' => ['mainrequirement.destroy', $Requirement->requirements_id]]) }}
+                                                'route' => ['requirement.destroy', $Requirement->requirements_id]]) }}
                                 {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                                 {{ Form::close() }}
                       </td>
@@ -127,8 +123,6 @@
                 <tfoot>
                     <tr>
                         <th>Pagina Naam</th>
-                        <th>Date created</th>
-                        <th>Last updated</th>
                         <th>Edit</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -156,8 +150,6 @@
             <thead>
                 <tr>
                     <th>Pagina Naam</th>
-                    <th>Date created</th>
-                    <th>Last updated</th>
                     <th>Edit</th>
                     <th>Delete</th>
                     <th>Status</th>
@@ -169,12 +161,15 @@
                 @foreach ($Instructions as $Instruction)
                     <tr>
                       <td>{{$Instruction->instructions_name}}</td>
-                      <td>{{$Instruction->created_at}}</td>
-                      <td>{{$Instruction->updated_at}}</td>
                       <td>
                            <a href="{{url('admin/instruction/' . $Instruction->instructions_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
                       </td>
-                      <td><button class="btn btn-danger">delete</button></td>
+                      <td>
+                            {{ Form::open(['method' => 'DELETE', 
+                                            'route' => ['instruction.destroy', $Instruction->instructions_id]]) }}
+                            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                            {{ Form::close() }}
+                      </td>
                       <td><span class="label label-success">Active</span></td>
                       <td><button class="btn btn-danger">Change status</button></td>
                     </tr>
@@ -188,8 +183,6 @@
                 <tfoot>
                     <tr>
                         <th>Pagina Naam</th>
-                        <th>Date created</th>
-                        <th>Last updated</th>
                         <th>Edit</th>
                         <th>Status</th>
                         <th>Action</th>

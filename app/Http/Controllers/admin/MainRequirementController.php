@@ -103,6 +103,7 @@ class MainRequirementController extends Controller
         $mainRequirement = Mainrequirements::findOrFail($id);
         $mainRequirement->delete();
 
+        session()->flash('alert-warning', 'mainrequirement was successful deleted!');
         return Redirect::to('admin/manage');
     }
 }

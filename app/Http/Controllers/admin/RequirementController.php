@@ -99,6 +99,10 @@ class RequirementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Requirement = Requirements::findOrFail($id);
+        $Requirement->delete();
+
+        session()->flash('alert-warning', 'requirement was successful deleted!');
+        return Redirect::to('admin/manage');
     }
 }

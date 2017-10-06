@@ -101,6 +101,10 @@ class InstructionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Instruction = Instructions::findOrFail($id);
+        $Instruction->delete();
+
+        session()->flash('alert-warning', 'Instruction was successful deleted!');
+        return Redirect::to('admin/manage');
     }
 }
