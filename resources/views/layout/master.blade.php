@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/skins/skin-green.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
-  <script src='https://www.google.com/recaptcha/api.js'></script>
   <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://unpkg.com/vue"></script>
 </head>
 <body class="hold-transition skin-green sidebar-mini">
@@ -471,7 +471,7 @@
 
                         <div class="form-group">
                           <div class="col-md-6 col-md-offset-4">
-                            <div class="g-recaptcha" data-sitekey="6Lfq_jIUAAAAAHaEyF6-nadKRAoKKiV9SJUfa8AT"></div>
+                              {!! Recaptcha::render() !!}
                           </div>
                         </div>
 

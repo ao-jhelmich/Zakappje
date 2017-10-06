@@ -31,7 +31,6 @@ class checkController extends Controller
 			$adminRowCheck->delete();
 
 		return back();
-		return redirect()->back();
 
 	}
 
@@ -48,7 +47,6 @@ class checkController extends Controller
 		$chkForAdmin->save();
 
 		return back();
-		return redirect()->back();
 	}
 
     public function addUserHas(Request $request)
