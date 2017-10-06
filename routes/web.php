@@ -26,6 +26,7 @@ Route::get('profile/', 'user\profileController@index');
 Route::get('book/show/{requirement}', 'bookcontroller@show');
 Route::get('check/{requirement}/{user}', 'checkController@addCheckToAdminRow');
 Route::get('check/final/{requirement}/{user}/{checkid}', 'checkController@index');
+Route::post('edit-user', 'user\userController@update');
 
 // All the resource routes
 Route::get('home', 'homecontroller@index');
