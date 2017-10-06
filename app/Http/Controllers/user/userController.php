@@ -21,6 +21,31 @@ class userController extends Controller
         return view('admin.user.index', ['users' => $users]);
     }
 
+    public function extraInfo()
+    {
+        return view('admin.user.extraInfo');
+    }
+
+    public function storeExtraInfo(Request $request)
+    {
+        $id = $request->input('userid');
+        $userFound = User::find($id);
+            $userFound->streetAdress = $request->input('streetAdress');
+            $userFound->houseNumber = $request->input('houseNumber');
+            $userFound->city = $request->input('city');
+            $userFound->postal_code = $request->input('postal_code');
+            $userFound->user_phone_number = $request->input('user_phone_number');
+            $userFound->user_parent_name = $request->input('user_parent_name');
+            $userFound->user_parent_email = $request->input('user_parent_email');
+            $userFound->user_parent_phone = $request->input('user_parent_phone');
+        $userFound->save();
+
+        //Message about the store
+        $request->session()->flash('alert-success', 'Extra info is succesvol toegevoegd!');
+        //redirecting
+        return Redirect::to('/');   
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -37,4 +38,16 @@
     </section>
     <!-- /.content -->
 </div>
+@if (Auth::check())
+  @if (!isset(Auth::user()->streetAdress, Auth::user()->houseNumber, Auth::user()->city, Auth::user()->postal_code, Auth::user()->user_phone_number, Auth::user()->user_parent_name, Auth::user()->user_parent_email, Auth::user()->user_parent_phone))
+      <script>
+        function AlertIt() {
+        var answer = confirm ("We missen nog wat info van je! wil je die nu invullen?")
+        if (answer)
+        window.location="home/info";
+        }
+        AlertIt()
+      </script>
+  @endif
+@endif
 @endsection
