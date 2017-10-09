@@ -24,8 +24,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 Route::post('home/info/store', 'user\userController@storeExtraInfo');
 Route::get('home/info', 'user\userController@extraInfo');
 
+Route::get('uitleg', 'homecontroller@uitlegIndex');
 Route::get('/', 'homecontroller@index');
-Route::get('admin/manage', 'admin\admincontroller@manageBookPage');
 Route::get('admin/mod', 'admin\admincontroller@setMainrequirementOfTheDay');
 Route::get('profile/', 'user\profileController@index');
 Route::get('book/show/{requirement}', 'bookcontroller@show');
