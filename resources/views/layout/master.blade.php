@@ -136,15 +136,15 @@ $adminRows = UserWantsChk::all();
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="{{ asset('/images/user8-128x128.jpg')}}" class="img-circle" alt="User Image">
-                <p>
-                  {{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'Quest'}}}
-                  <small>
-                  {{{ isset(Auth::user()->created_at) ? 'Lid sinds:  '  . Auth::user()->created_at : 'created_at not set'}}}
-                  </small>
-                </p>
-              </li>
+                <li class="user-header">
+                  <img src="{{ asset('/images/user8-128x128.jpg')}}" class="img-circle" alt="User Image">
+                  <p>
+                    {{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'Quest'}}}
+                    <small>
+                    {{{ isset(Auth::user()->created_at) ? 'Lid sinds:  '  . Auth::user()->created_at : 'created_at not set'}}}
+                    </small>
+                  </p>
+                </li>
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
@@ -202,6 +202,7 @@ $adminRows = UserWantsChk::all();
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel (optional) -->
+      @if (Auth::check())
       <div class="user-panel">
         <div class="pull-left image">
           <img src="{{ asset('/images/user8-128x128.jpg')}}" class="img-circle" alt="User Image">
@@ -220,6 +221,7 @@ $adminRows = UserWantsChk::all();
           </p>
         </div>
       </div>
+      @endif
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
@@ -339,9 +341,6 @@ $adminRows = UserWantsChk::all();
                 <button type="submit" class="btn btn-primary">
                 Login
                 </button>
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                  Forgot Your Password?
-                </a>
               </div>
             </div>
           </form>
