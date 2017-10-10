@@ -120,7 +120,7 @@
       <div class="modal-body">
 
           {{ Form::open(['url' => '/edit-user', 'method' => 'Post']) }}
-          <div class="form-group">
+          <div class="form-horizontal">
               
 
                         {{ csrf_field() }}
@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">e-mail adres</label>
+                            <label for="email" class="col-md-4 control-label">e-mail adres:</label>
 
                             <div class="col-md-6">
                                 {{ Form::email('email', $profile->email, array('class' => 'form-control')) }}
@@ -169,7 +169,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">Stad</label>
+                            <label for="city" class="col-md-4 control-label">Stad:</label>
 
                             <div class="col-md-6">
                                 {{ Form::text('city', $profile->city, array('class' => 'form-control')) }}
@@ -183,7 +183,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('streetAdress') ? ' has-error' : '' }}">
-                            <label for="streetAdress" class="col-md-4 control-label">Adres + Huisnummer</label>
+                            <label for="streetAdress" class="col-md-4 control-label">Adres + Huisnummer:</label>
 
                             <div class="col-md-6">
                                 
@@ -199,7 +199,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('postal_code') ? ' has-error' : '' }}">
-                            <label for="postal_code" class="col-md-4 control-label">Postcode</label>
+                            <label for="postal_code" class="col-md-4 control-label">Postcode:</label>
 
                             <div class="col-md-6">
                                 {{ Form::text('postal_code', $profile->postal_code, array('class' => 'form-control')) }}
@@ -214,7 +214,7 @@
 
                         
                         <div class="form-group{{ $errors->has('user_phone_number') ? ' has-error' : '' }}">
-                            <label for="user_phone_number" class="col-md-4 control-label">Je eigen nummer</label>
+                            <label for="user_phone_number" class="col-md-4 control-label">Je eigen nummer:</label>
 
                             <div class="col-md-6">
                                 {{ Form::number('user_phone_number', $profile->user_phone_number, array('class' => 'form-control')) }}
@@ -231,7 +231,9 @@
                             <label for="birth_day" class="col-md-4 control-label">Geboorte datum:</label>
 
                             <div class="col-md-6">
-                                {{ Form::date('birth_day', $profile->birth_day, array('class' => 'form-control')) }}
+                                <input type="date" class="form-control" name="birth_day" value="{{$profile->birth_day_year}}-{{$profile->birth_day_month}}-{{$profile->birth_day_day}}" />
+
+                                
 
                                 @if ($errors->has('birth_day_year'))
                                     <span class="help-block">
