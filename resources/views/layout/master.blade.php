@@ -5,15 +5,13 @@
   use App\UserWantsChk;
 
   
-  $requirements = Requirements::all();
-  $allInfo = DB::table('ranks')
-  ->select('ranks.*', 'mainrequirements.*', 'requirements.*')
-            ->leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
-            ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
-            
-            ->orderby('rank_id')
-            ->get();
-                
+$requirements = Requirements::all();
+$allInfo = DB::table('ranks')
+->select('ranks.*', 'mainrequirements.*', 'requirements.*')
+->leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
+->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
+->orderby('rank_id')
+->get();
   $curclass = 0;
   $curmr = 0;
   $curr = 0;
@@ -583,6 +581,8 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
 <!-- jQuery 2.2.3 -->
 <script src="{{ asset('/css/adminlte/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->

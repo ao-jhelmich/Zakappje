@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\mainrequirements;
 use App\Instructions;
 use App\requirements;
+use App\Ranks;
 
 
 class AdminController extends Controller
@@ -33,7 +34,8 @@ class AdminController extends Controller
 
     public function setMainrequirementOfTheDay()
     {
-        $mainRequirements = Mainrequirements::All();
-        return view('admin.mod', ['mainRequirements' => $mainRequirements ]);
+        $mainrequirements = Mainrequirements::pluck("mainrequirements_name", "mainrequirements_id");
+        $rank = Ranks::pluck("rank_name");
+        return view('admin.mod', ['rank' => $rank, 'selectMainrequirement' => $mainrequirements ]);
     }
 }

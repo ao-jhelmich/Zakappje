@@ -3,58 +3,33 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
-        ZakAppje
-        </h1>
     </section>
-    @php
-    dd($mainRequirements);
-    @endphp
     <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
-        @foreach ($mainRequirements->mainrequirements_rank_id as $id)
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">{{$id->mainrequirements_rank_id}}</h3>
+                <h3 class="box-title">Klassen eisen van de dag</h3>
             </div>
             <div class="box-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Naam</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (isset($mainRequirements))
-                        @foreach ($mainRequirements as $mainRequirement)
-                        <tr>
-                            <td>{{$mainRequirement->mainrequirements_name}}</td>
-                            <td>
-                                <a href="{{url('admin/mainrequirement/' . $mainRequirement->mainrequirements_id . '/edit')}}"><button class="btn btn-default">Edit</button></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                        @endif
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Status</th>
-                    </tr>
-                    </tfoot>
-                </table>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    Footer
-                </div>
-                <!-- /.box-footer-->
+                <h3>Zet hieronder de klassen eis die bij jouw programma past!</h3>
+                {{Form::open(['url' => 'mod/store', 'role' => 'form', 'method' => 'put'])}}
+                {{Form::label('mainrequirement', 'mainrequirement', 'Sub klassen:' )}}
+                {{Form::select('mainrequirement', $selectMainrequirement ,['class' => 'form-control'])}}
+                {{Form::submit()}}
+                {{Form::close()}}
             </div>
-            <!-- /.box -->
-            @endforeach
-            
-        </section>
-        <!-- /.content -->
-    </div>
-    @endsection
+            <!-- /.box-body -->
+            <div class="box-footer">
+            </div>
+            <!-- /.box-footer-->
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$("#select option").val(function(idx, val) {
+  $(this).siblings("[value='"+ val +"']").remove();
+});
+</script>
+@endsection
