@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +24,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 //Route for extra info from the user 
 Route::post('home/info/store', 'user\userController@storeExtraInfo'); 
 Route::get('home/info', 'user\userController@extraInfo'); 
+ 
+Route::get('uitleg', 'homecontroller@uitlegIndex'); 
 
 Route::get('/', 'homecontroller@index');
 Route::get('admin/manage', 'admin\admincontroller@manageBookPage');
