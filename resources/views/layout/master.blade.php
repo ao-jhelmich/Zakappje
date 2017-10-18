@@ -201,7 +201,9 @@ $adminRows = UserWantsChk::all();
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel (optional) -->
+        @if (Auth::check())
       <div class="user-panel">
+          {{-- expr --}}
         <div class="pull-left image">
           <img src="{{ asset('/images/user8-128x128.jpg')}}" class="img-circle" alt="User Image">
         </div>
@@ -219,6 +221,7 @@ $adminRows = UserWantsChk::all();
           </p>
         </div>
       </div>
+        @endif
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">Menu</li>

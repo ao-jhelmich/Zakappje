@@ -34,8 +34,18 @@ class AdminController extends Controller
 
     public function setMainrequirementOfTheDay()
     {
-        $mainrequirements = Mainrequirements::pluck("mainrequirements_name", "mainrequirements_id");
+        $mainrequirementsRank1s = Mainrequirements::where('mainrequirements_rank_id', '1')-> get();
+        $mainrequirementsRank2s = Mainrequirements::where('mainrequirements_rank_id', '2')-> get();
+        $mainrequirementsRank3s = Mainrequirements::where('mainrequirements_rank_id', '3')-> get();
+        $mainrequirementsRank4s = Mainrequirements::where('mainrequirements_rank_id', '4')-> get();
+
         $rank = Ranks::pluck("rank_name");
-        return view('admin.mod', ['rank' => $rank, 'selectMainrequirement' => $mainrequirements ]);
+        return view('admin.mod',[
+                                'rank' => $rank, 
+                                'mainrequirementsRank1s' => $mainrequirementsRank1s,
+                                'mainrequirementsRank2s' => $mainrequirementsRank2s,
+                                'mainrequirementsRank3s' => $mainrequirementsRank3s,
+                                'mainrequirementsRank4s' => $mainrequirementsRank4s,
+                                 ]);
     }
 }

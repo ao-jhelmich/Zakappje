@@ -13,14 +13,49 @@
             <div class="box-body">
                 <h3>Zet hieronder de klassen eis die bij jouw programma past!</h3>
                 {{Form::open(['url' => 'mod/store', 'role' => 'form', 'method' => 'put'])}}
+                
+                
+                <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+                    <label for="lastName" class="col-md-4 control-label">Klasse 1:</label>
+                    <div class="col-md-6">
+                        <select id="select1" class="form-control select2" style="width: 100%;" required>
+                            @foreach ($mainrequirementsRank1s as $mainrequirementsRank1)
+                            <option>
+                                {{$mainrequirementsRank1->mainrequirements_name}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <label>
+                    Klasse 2:
+                </label>
                 <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
+                    @foreach ($mainrequirementsRank2s as $mainrequirementsRank2)
+                    <option>
+                        {{$mainrequirementsRank2->mainrequirements_name}}
+                    </option>
+                    @endforeach
+                </select>
+                <label>
+                    Klasse 3:
+                </label>
+                <select class="form-control select2" style="width: 100%;">
+                    @foreach ($mainrequirementsRank3s as $mainrequirementsRank3)
+                    <option>
+                        {{$mainrequirementsRank3->mainrequirements_name}}
+                    </option>
+                    @endforeach
+                </select>
+                <label>
+                    Klasse 4:
+                </label>
+                <select class="form-control select2" style="width: 100%;">
+                    @foreach ($mainrequirementsRank4s as $mainrequirementsRank4)
+                    <option>
+                        {{$mainrequirementsRank4->mainrequirements_name}}
+                    </option>
+                    @endforeach
                 </select>
                 {{Form::submit()}}
                 {{Form::close()}}
