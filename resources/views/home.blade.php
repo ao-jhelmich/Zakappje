@@ -26,7 +26,7 @@
                 //}
               #}
             @endphp-->
-              <a href="#">{{$test}}</a>
+              <a href="#"></a>
 
             <p>Nu je ingelogd bent kan je gaan beginnen met het behalen van de eisen. Klik hieronder om naar de uitleg te gaan!</p>
             <p><a href="/uitleg"><button class="btn btn-block btn-succes" type="button">Uitleg!</button></a></p>
