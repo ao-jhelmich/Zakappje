@@ -18,14 +18,8 @@
         @if (Auth::check())
           <h3>Je bent ingelogd wat nu?</h3>
             
-            <h4>De klassen eisen van de dag is vandaag!</h4>
-            <!--@php
-              //foreach ($allInfo as $key => $value) {
-                //if ($value->ModFlag == 2 AND Auth::user()->users_rank_id == $value->mainrequirements_rank_id) {
-                 //echo "Test";
-                //}
-              #}
-            @endphp-->
+            <h4>De klassen eisen van de dag is:</h4>
+            
               <a href="#"></a>
 
             <p>Nu je ingelogd bent kan je gaan beginnen met het behalen van de eisen. Klik hieronder om naar de uitleg te gaan!</p>
