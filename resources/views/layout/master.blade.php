@@ -67,6 +67,78 @@ $test = "test";
                     <ul class="menu">
                     </ul>
                     <!-- /.menu -->
+<<<<<<< HEAD
+=======
+=======
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ZakAppje</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="{{ asset('css/adminlte/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/skins/skin-green.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
+  <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
+  <meta name="google-site-verification" content="cwIUPfQgf_fhSnFf2KzRt5hmCNboB9BBlmGiPkuzkxM" />
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body class="hold-transition skin-green sidebar-mini">
+<div class="wrapper">
+<!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>Z</b>ap</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Zak</b>Appje</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown messages-menu">
+            <!-- Menu toggle button -->
+            <ul class="dropdown-menu">
+              <li class="header">You have 4 messages</li>
+              <li>
+                <!-- inner menu: contains the messages -->
+                <ul class="menu">
+                </ul>
+                <!-- /.menu -->
+              </li>
+              <li class="footer"><a href="#">See All Messages</a></li>
+            </ul>
+          </li>
+          <!-- /.messages-menu -->
+
+          <!-- Notifications Menu -->
+          <li class="dropdown notifications-menu">
+            <!-- Menu toggle button -->
+            
+            <ul class="dropdown-menu">
+              <li class="header">You have 10 notifications</li>
+              <li>
+                <!-- Inner Menu: contains the notifications -->
+                <ul class="menu">
+                  <li><!-- start notification -->
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    </a>
+>>>>>>> master
+>>>>>>> master
                   </li>
                   <li class="footer"><a href="#">See All Messages</a></li>
                 </ul>
