@@ -15,6 +15,7 @@ $curclass = 0;
 $curmr = 0;
 $curr = 0;
 $adminRows = UserWantsChk::all();
+$test = "test";
 //$array = bookcontroller::GetInfo();
 //dd($array);
 @endphp
@@ -561,7 +562,6 @@ $(function () {
 $("#container1").DataTable();
 $("#container2").DataTable();
 $("#container3").DataTable();
-$(".select2").select2();
 });
 </script>
 </body>

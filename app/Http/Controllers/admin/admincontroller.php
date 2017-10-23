@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Redirect;
 
 use App\mainrequirements;
 use App\Instructions;
@@ -32,7 +33,7 @@ class AdminController extends Controller
     									'mainRequirements' => $mainRequirements ]);
     }
 
-    public function setMainrequirementOfTheDay()
+    public function MainrequirementOfTheDayPage()
     {
         $mainrequirementsRank1s = Mainrequirements::where('mainrequirements_rank_id', '1')-> get();
         $mainrequirementsRank2s = Mainrequirements::where('mainrequirements_rank_id', '2')-> get();
@@ -47,5 +48,15 @@ class AdminController extends Controller
                                 'mainrequirementsRank3s' => $mainrequirementsRank3s,
                                 'mainrequirementsRank4s' => $mainrequirementsRank4s,
                                  ]);
+    }
+
+    public function setMainrequirementOfTheDay(Request $request)
+    {
+        $mainRequirement = Mainrequirements::find($request["mainrequirementsRank4"]);
+        $mainRequirement->ModFlag = 2;
+        $mainRequirement->save();
+
+        $request->session()->flash('alert-success', 'Klasseneissen van de dag Succesvol toegevoegd');
+        return Redirect::to('admin/mod');
     }
 }

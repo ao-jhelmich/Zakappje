@@ -18,7 +18,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::resource('admin/user', 'user\userController');
   	Route::get('admin/manage', 'admin\admincontroller@manageBookPage');
   	Route::post('admin/user/rankup', 'user\userController@rankup');
-	Route::get('admin/mod', 'admin\admincontroller@setMainrequirementOfTheDay');
+	Route::get('admin/mod', 'admin\admincontroller@MainrequirementOfTheDayPage');
+	Route::put('mod/set', 'admin\admincontroller@setMainrequirementOfTheDay');
 });
 
 //Route for extra info from the user 

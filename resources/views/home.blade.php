@@ -17,8 +17,20 @@
 
         @if (Auth::check())
           <h3>Je bent ingelogd wat nu?</h3>
+            
+            <h4>De klassen eisen van de dag is vandaag!</h4>
+            <!--@php
+              //foreach ($allInfo as $key => $value) {
+                //if ($value->ModFlag == 2 AND Auth::user()->users_rank_id == $value->mainrequirements_rank_id) {
+                 //echo "Test";
+                //}
+              #}
+            @endphp-->
+              <a href="#">{{$test}}</a>
+
             <p>Nu je ingelogd bent kan je gaan beginnen met het behalen van de eisen. Klik hieronder om naar de uitleg te gaan!</p>
             <p><a href="/uitleg"><button class="btn btn-block btn-succes" type="button">Uitleg!</button></a></p>
+          
         @else
           <h3>Log eerst even in!</h3>
             <p>Je kan inloggen door rechts boven in op inloggen te drukken of druk hieronder op inloggen</p>
@@ -41,12 +53,12 @@
   @if (Auth::check())
     @if (!isset(Auth::user()->streetAdress, Auth::user()->houseNumber, Auth::user()->city, Auth::user()->postal_code, Auth::user()->user_phone_number, Auth::user()->user_parent_name, Auth::user()->user_parent_email, Auth::user()->user_parent_phone))
       <script>
-      function AlertIt() {
+      function askExtraInfo() {
       var answer = confirm ("We missen nog wat info van je! wil je die nu invullen?")
       if (answer)
       window.location="home/info";
       }
-      AlertIt()
+      askExtraInfo()
       </script>
     @endif
   @endif
