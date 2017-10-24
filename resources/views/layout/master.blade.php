@@ -295,7 +295,17 @@ $test = "test";
             <li><a href="/admin/mod">Klasseneisen van de dag</a></li>
             <li><a href="/admin/user">Beheer de gebruikers</a></li>
           </ul>
-        </li>
+        </li><ul>
+                        <li class="treeview">test
+                          <a href="#">
+                            <i class="fa fa-database"></i>
+                            <i class="fa fa-angle-left pull-right"></i>
+                          </a>
+                          <ul class="treeview-menu">
+                            <li>test</li>
+                          </ul>
+                        </li>
+                      </ul>
         @endif
         @endif
         
