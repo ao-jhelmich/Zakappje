@@ -36,18 +36,19 @@ class MainRequirementController extends Controller
      */
     public function store(Request $request)
     {
-        $mainRequirement = new Mainrequirements;
-            $mainRequirement->mainrequirements_name = $request->input('name');
-            $mainRequirement->mainrequirements_description = $request->input('desc');
-            $mainRequirement->flag = $request->input('flag');
-            $mainRequirement->mainrequirements_rank_id = $request->input('select');
-            $mainRequirement->save();
-
+        Mainrequirements::create([
+            'mainrequirements_name' => $request->input('name'),
+            'mainrequirements_description' => $request->input('desc'), 
+            'flag' => $request->input('flag'),
+            'mainrequirements_rank_id' => $request->input('select')]);
+        
         //Message about the store
-        $request->session()->flash('alert-success', 'mainrequirement was successful added!');
+        $request->session()->flash('alert-success', 'Sub eis succesvol toegevoegd!');
         //redirecting
         return Redirect::to('admin/manage');
     }
+
+
 
     /**
      * Display the specified resource.

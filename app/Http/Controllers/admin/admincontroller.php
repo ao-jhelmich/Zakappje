@@ -3,10 +3,12 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Redirect;
 
 use App\mainrequirements;
 use App\Instructions;
 use App\requirements;
+use App\Ranks;
 
 
 class AdminController extends Controller
@@ -31,9 +33,30 @@ class AdminController extends Controller
     									'mainRequirements' => $mainRequirements ]);
     }
 
-    public function setMainrequirementOfTheDay()
+    public function MainrequirementOfTheDayPage()
     {
-        $mainRequirements = Mainrequirements::All();
-        return view('admin.mod', ['mainRequirements' => $mainRequirements ]);
+        $mainrequirementsRank1s = Mainrequirements::where('mainrequirements_rank_id', '1')-> get();
+        $mainrequirementsRank2s = Mainrequirements::where('mainrequirements_rank_id', '2')-> get();
+        $mainrequirementsRank3s = Mainrequirements::where('mainrequirements_rank_id', '3')-> get();
+        $mainrequirementsRank4s = Mainrequirements::where('mainrequirements_rank_id', '4')-> get();
+
+        $rank = Ranks::pluck("rank_name");
+        return view('admin.mod',[
+                                'rank' => $rank, 
+                                'mainrequirementsRank1s' => $mainrequirementsRank1s,
+                                'mainrequirementsRank2s' => $mainrequirementsRank2s,
+                                'mainrequirementsRank3s' => $mainrequirementsRank3s,
+                                'mainrequirementsRank4s' => $mainrequirementsRank4s,
+                                 ]);
+    }
+
+    public function setMainrequirementOfTheDay(Request $request)
+    {
+        $mainRequirement = Mainrequirements::find($request["mainrequirementsRank4"]);
+        $mainRequirement->ModFlag = 2;
+        $mainRequirement->save();
+
+        $request->session()->flash('alert-success', 'Klasseneissen van de dag Succesvol toegevoegd');
+        return Redirect::to('admin/mod');
     }
 }

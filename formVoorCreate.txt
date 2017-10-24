@@ -1,0 +1,20 @@
+{{Form::open(['url' => 'mod/store', 'role' => 'form', 'method' => 'put'])}}
+                {{Form::label('rank', 'rank', 'Klasse:' )}}
+                {{Form::select('rank', $selectRank ,['class' => 'form-control'])}}
+                {{Form::label('mainrequirement', 'mainrequirement', 'Sub klassen:' )}}
+                {{Form::select('mainrequirement', $selectMainrequirement ,['class' => 'form-control'])}}
+                {{Form::submit()}}
+                {{Form::close()}}
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+$("#rank").change(function() {
+if ($(this).data('options') === undefined) {
+/*Taking an array of all options-2 and kind of embedding it on the select1*/
+$(this).data('options', $('#mainrequirement option').clone());
+}
+var id = $(this).val();
+var options = $(this).data('options').filter('[value=' + id + ']');
+$('#mainrequirement').html(options);
+});
+</script>
