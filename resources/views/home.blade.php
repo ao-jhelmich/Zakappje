@@ -20,7 +20,7 @@
       <div class="box-body">
         @php
         foreach ($MainrequirementOfTheDay as $key => $value) {
-         if ($value->mainrequirements_rank_id == Auth::user()->users_rank_id) {
+         if ($value->mainrequirements_rank_id == Auth::user()->users_rank_id OR $value->mainrequirements_rank_id == 1) {
               $mrName = $value->mainrequirements_name;
               $mrDesc = $value->mainrequirements_description;
            }  

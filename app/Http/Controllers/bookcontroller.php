@@ -7,7 +7,10 @@ use App\Requirements;
 use App\mainrequirements;
 use App\Ranks;
 use App\Instructions;
+use App\userWantsChk;
 use Redirect;
+use DB;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -19,106 +22,6 @@ class BookController extends Controller
         	->with('requirements', $requirements);
     }
 
-    public static function GetInfo()
-    {
-
-    	/*$results = Ranks
-    				::leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
-				    ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
-				    ->select('ranks.*', 'mainrequirements.*', 'requirements.*')
-				    ->orderby('rank_id')
-				    ->get();
-
-
-
-	$array = array();
-	$first = 0;
-	$second = 0;
-	$currentRank = 0;
-	$currentMainRequirement = 0;
-	$currentRequirement = 0;
-
-
-		foreach ($results as $result) {
-			if ($currentRank !== $result->rank_id)
-			{
-				$currentRank = $result->rank_id;
-				$array[$first] = array($result->rank_name);
-				$second = 0;
-				$first++;
-
-				if (isset($result->mainrequirements_id)){
-					if ($currentMainRequirement !== $result->mainrequirements_id)
-					{
-						$currentMainRequirement = $result->mainrequirement_id;
-						$array[$first][$second] = array($result->mainrequirements_name);
-						$third = 0;
-						$second++;
-
-							if (isset($result->requirements_id)){
-								$array[$first][$second][$third] = array($result->requirements_name, $result->rquirements_id);
-								$third++;
-							}
-					}
-					else
-					{
-						if (isset($result->requirements_id)){
-							$array[$first][$second][$third] = array($result->requirements_name, $result->rquirements_id);
-						}
-					}
-				}
-			}
-			else
-			{
-				if (isset($result->mainrequirements_id)){
-					if ($currentMainRequirement !== $result->mainrequirements_id)
-					{
-						$currentMainRequirement = $result->mainrequirement_id;
-						$array[$first][$second] = array($result->mainrequirements_name);
-						$third = 0;
-						$second++;
-
-							if (isset($result->requirements_id)){
-								$array[$first][$second][$third] = array($result->requirements_name, $result->rquirements_id);
-								$third++;
-							}
-					}
-					else
-					{
-						if (isset($result->requirements_id)){
-							$array[$first][$second][$third] = array($result->requirements_name, $result->rquirements_id);
-						}
-					}
-				}
-			}
-		}
-
-
-
-
-
-
-			/*$array = array(
-				array('klas 1', 
-					array('mr 1.1', 
-						array('r 1.1.1'),
-						array('r 1.1.2')
-					),
-					array('mr 1.2')
-				),
-				array('klas 2',
-					array('mr 2.1'),
-					array('mr 2.2')
-				),
-				array('klas 3',
-					array('mr 3.1'),
-					array('mr 3.2')
-				),
-				);*/
-				
-    	return $ranks;
-    }
-
     public function show(Request $request, Requirements $requirement)
     {
     	$mainrequirement = mainrequirements::find($requirement->requirements_mainrequirements_id);
@@ -126,7 +29,38 @@ class BookController extends Controller
     	$instructions = Instructions::select('instructions.*')
     									->where('instructions.instructions_requirements_id', '=', $requirement->requirements_id)->get();
 
-    	return View('zakappje.books', ['requirement' => $requirement, 'instructions' => $instructions, 'mainrequirement' => $mainrequirement, 'rank' => $rank]);
+    	$userid = Auth::user()->id;
+
+        //Check if the user already has that requirement
+        $userHasRequirement = DB::table('user_has_requirement')->where('user_id', $userid)->where('requirement_id',$requirement->requirements_id)->get();
+        
+        $inrow = true;
+
+        if (isset($userHasRequirement)) {
+            foreach ($userHasRequirement as $key => $value) {
+                if ($value->requirement_id == $requirement->requirements_id) {
+                    $inrow = false; 
+                }
+            }
+        }
+
+    if($inrow == true){
+        //Check if the requirement is in the user wants checked db
+        $userWantsChecked = DB::table('user_want_checked')->where('user_id', $userid)->where('requirement_id',$requirement->requirements_id)->get();
+        
+        //The value that is given to the homepage to make it show or not show
+
+        //check if the db entry is the entry about the requirement
+    	if (isset($userWantsChecked)) {
+    		foreach ($userWantsChecked as $key => $value) {
+    			if ($value->requirement_id == $requirement->requirements_id) {
+    				$inrow = false; 
+    			}
+    		}
+    	}
+    }
+
+    		return View('zakappje.books', ['requirement' => $requirement, 'instructions' => $instructions, 'mainrequirement' => $mainrequirement, 'rank' => $rank, 'inrow' => $inrow,]);	
     }
    
 }
