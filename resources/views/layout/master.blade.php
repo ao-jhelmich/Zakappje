@@ -38,7 +38,8 @@
   <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/skins/skin-green.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
   <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+  <meta name="google-site-verification" content="cwIUPfQgf_fhSnFf2KzRt5hmCNboB9BBlmGiPkuzkxM" />
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://unpkg.com/vue"></script>
 </head>
 <body class="hold-transition skin-green sidebar-mini">
