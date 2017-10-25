@@ -1,14 +1,16 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Mail\Controllers;
 
-use Mail;
-
+use App\Order;
+use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
-class EmailController extends Controller
+class OrderController extends Controller
 {
-     public function send(){
-        Mail::to('jasper.helmich@gmail.com')->send('emails.send');
-
-        return response()->json(['message' => 'Request completed']);
-    }        
+    public function ship()
+    {
+        Mail::to('jasper.helmich@gmail.com')->send(new TestMail());
+    }
 }
+
