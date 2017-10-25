@@ -22,7 +22,7 @@ class LeaderboardController  extends Controller
 
     	//Count the amount of mainrequirements for each user
     	foreach ($users as $user) {
-    		$count = DB::table('user_has_mainrequirement')
+    		$count = DB::table('user_has_requirement')
     						->selectRaw('COUNT(user_id) as count')
     						->where('user_id', '=', $user->id)
   							->orderBy('count', 'desc')
@@ -43,22 +43,27 @@ class LeaderboardController  extends Controller
     public static function getUsersRequirements($user_id)
     {
 
-		$mainrequirement_ids = DB::table('user_has_mainrequirement')
-							->where('user_id', '=', $user_id)
-							->select('user_id', 'mainrequirement_id')
-							->get();
-		if (isset($mainrequirement_ids[0])) {
+        $requirement_ids = DB::table('user_has_requirement')
+                            ->where('user_id', '=', $user_id)
+                            ->select('user_id', 'requirement_id')
+                            ->get();
 
-			$i=0;
-			foreach ($mainrequirement_ids as $mainrequirement_id) {
-				$mainrequirement = DB::table('mainrequirements')
-									->where('mainrequirements_id', '=', $mainrequirement_id->mainrequirement_id)
-									->select('mainrequirements_name', 'mainrequirements_id')
-									->get();
-				$mainrequirements[$i] = $mainrequirement;
-				$i++;
-			}	
-			return $mainrequirements;
+        if (isset($requirement_ids[0])) {
+
+            $i=0;
+            foreach ($requirement_ids as $requirement_id) {
+                $requirement = DB::table('requirements')
+                                    ->where('requirements_id', '=', $requirement_id->requirement_id)
+                                    ->select('requirements_name', 'requirements_id')
+                                    ->get();
+                $requirements[$i]['name'] = $requirement[0]->requirements_name;
+                $requirements[$i]['id'] = $requirement[0]->requirements_id;
+                $i++;
+            }
+            //dd($requirements);
+            return($requirements);
+
+
 		}
 
     }
