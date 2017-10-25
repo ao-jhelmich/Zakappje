@@ -28,7 +28,7 @@ class BookController extends Controller
     	$rank = Ranks::find($mainrequirement->mainrequirements_rank_id);
     	$instructions = Instructions::select('instructions.*')
     									->where('instructions.instructions_requirements_id', '=', $requirement->requirements_id)->get();
-
+        if(Auth::check()){
     	$userid = Auth::user()->id;
 
         //Check if the user already has that requirement
@@ -59,7 +59,7 @@ class BookController extends Controller
     		}
     	}
     }
-
+    }
     		return View('zakappje.books', ['requirement' => $requirement, 'instructions' => $instructions, 'mainrequirement' => $mainrequirement, 'rank' => $rank, 'inrow' => $inrow,]);	
     }
    
