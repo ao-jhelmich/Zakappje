@@ -28,13 +28,13 @@ class BookController extends Controller
     	$rank = Ranks::find($mainrequirement->mainrequirements_rank_id);
     	$instructions = Instructions::select('instructions.*')
     									->where('instructions.instructions_requirements_id', '=', $requirement->requirements_id)->get();
+        $inrow = true;
         if(Auth::check()){
-    	$userid = Auth::user()->id;
+        $userid = Auth::user()->id;
 
         //Check if the user already has that requirement
         $userHasRequirement = DB::table('user_has_requirement')->where('user_id', $userid)->where('requirement_id',$requirement->requirements_id)->get();
         
-        $inrow = true;
 
         if (isset($userHasRequirement)) {
             foreach ($userHasRequirement as $key => $value) {
