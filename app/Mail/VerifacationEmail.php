@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class mailcontroller extends Mailable
+class VerifacationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,12 +28,6 @@ class mailcontroller extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.send');
+        return $this->view('view.name');
     }
-
-    public function send()
-    {
-        Mail::to('jasper.helmich@gmail.com')->send('emails.send');
-    }
-
 }

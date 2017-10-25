@@ -7,6 +7,8 @@
   <!-- Main content -->
   <section class="content">
     <!-- Default box -->
+    @if (Auth::check())
+      {{-- expr --}}
     <div class="box box-info">
       <div class="box-header with-border">
         <h3 class="box-title">Klasseneisen van de dag!</h3>
@@ -34,6 +36,7 @@
       </div>
       <!-- /.box-footer-->
     </div>
+    @endif
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Welkom bij het Zakappje!</h3>
