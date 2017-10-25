@@ -27,9 +27,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function hasRole($role)
+    public function hasInCheck($userId)
     {
-        return User::where('accountRole', $role)->get();
+        //get the user id
+        
+        //search the user wants checked db
+        //if not in row for checking check if user already has requirement.
+        return User::where('users_rank_id', $userId)->get();
     }
 
     public function rank_id()

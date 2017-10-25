@@ -45,34 +45,32 @@ use App\Http\Controllers\LeaderboardController;
                   @if ($user->users_rank_id == $rank->rank_id)
                   @php
                   $i++;
-                  $mainrequirements = LeaderboardController::getUsersRequirements($user->id);
+                  $requirements = LeaderboardController::getUsersRequirements($user->id);
+
                   @endphp
                   <tr>
                     <td>{{$i}}</td>
                     <td>{{$user->name}} {{$user->lastName}}</td>
                     <td>
-                      {{$user->count}}
-                      @isset ($user->mainrequirements[0])
-                      @foreach ($user->mainrequirements as $mainrequirement)
-                      {{$mainrequirement->mainrequirement_id}}
-                      @endforeach
-                      @endisset
-                      @isset ($mainrequirements[0])
-                      <div class="btn-group">
-                        @foreach ($mainrequirements as $mainrequirement)
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        
-                        {{$mainrequirement[0]->mainrequirements_name}}
-                        
-                        </button>
-                        @endforeach
-                        <ul class="dropdown-menu" role="menu">
-                        </ul>
-                      </div>
+                      @if (is_array($requirements) || is_object($requirements))
+                        <div class="dropdown">
+                            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html">
+                                {{$user->count}} <span class="caret"></span>
+                            </a>
+                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                              <li class="dropdown-submenu">
+                                
+                                  @foreach ($requirements as $requirement)
+                                    <li><a href="/book/show/{{$requirement['id']}}">{{$requirement['name']}}</a></li>
+                                  @endforeach
+                                      
+                              </li>
+                            </ul>
+                        </div>
                     </td>
                   </tr>
                   @else nog geen klasseneisen voor deze klas gedaan
-                  @endisset
+                  @endif
                   @endif
                   @endforeach
                 </table>

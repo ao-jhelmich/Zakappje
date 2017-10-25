@@ -35,12 +35,15 @@ Route::get('book/show/{requirement}', 'bookcontroller@show');
 Route::get('check/{requirement}/{user}', 'checkController@addCheckToAdminRow');
 Route::get('check/final/{requirement}/{user}/{checkid}', 'checkController@index');
 Route::post('edit-user', 'user\userController@update');
+Route::get('home', 'homecontroller@index');
 
 // All the resource routes
-Route::get('home', 'homecontroller@index');
 Route::resource('book', 'bookcontroller');
 Route::resource('admin', 'admin\admincontroller');
 Route::resource('leaderboard', 'LeaderboardController');
+
+//Mail routes
+Route::get('/send', 'EmailController@send');
 
 // Post routes
 Route::delete('check/{id}', 'checkController@deleteChkFromAdminRow');
