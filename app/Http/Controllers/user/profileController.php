@@ -17,17 +17,8 @@ class profileController extends Controller
         $id = Auth::user()->id;
         $userInfo = User::find($id);
 
-        //User has requirements and info about the Requirements
-        //$userHasReq = UserHasReq::find($id)->get();
-          //  $requirementInfo = Requirements::find($userHasReq->requirement_id);
-
-        //Getting mainrequirement info
-        //$userHasMr = UserHasMr::find($userInfo->id)->get();
-          //  $mainrequirementInfo = Mainrequirements::find($userHasMr->mainrequirement_id);
-
-        return view('profile.index', ['profile' => $userInfo
-            //, 'userHasR' => $requirementInfo, 'userHasMr' => $mainrequirementInfo
-        ]);
+        $userHasMainrequirementsId = UserHasMr::where('user_id' ,'=', $id);
+        return view('profile.index', ['profile' => $userInfo]);
     }
 
 
