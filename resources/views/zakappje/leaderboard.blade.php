@@ -45,25 +45,36 @@ use App\Http\Controllers\LeaderboardController;
                   @if ($user->users_rank_id == $rank->rank_id)
                   @php
                   $i++;
-                  $requirements = LeaderboardController::getUsersRequirements($user->id);
+                  $mainrequirements = LeaderboardController::getUsersRequirements($user->id);
 
                   @endphp
                   <tr>
                     <td>{{$i}}</td>
                     <td>{{$user->name}} {{$user->lastName}}</td>
                     <td>
-                      @if (is_array($requirements) || is_object($requirements))
+                      @if (is_array($mainrequirements) || is_object($mainrequirements))
                         <div class="dropdown">
                             <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html">
                                 {{$user->count}} <span class="caret"></span>
                             </a>
                         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                               <li class="dropdown-submenu">
-                                
-                                  @foreach ($requirements as $requirement)
-                                    <li><a href="/book/show/{{$requirement['id']}}">{{$requirement['name']}}</a></li>
+                                  @foreach ($mainrequirements as $mainrequirement)
+                                    <li class="dropdown-submenu">
+                                      <a tabindex="-1" href="#">{{$mainrequirement['mainrequirement']}}</a>
+                                      <ul class="dropdown-menu">
+                                        @php
+                                          $j=0;
+                                        @endphp
+                                        @foreach ($mainrequirement as $requirement)        
+                                          <li><a href="/book/show/{{$mainrequirement['requirement'][$j]->requirements_id}}">{{$mainrequirement['requirement'][$j]->requirements_name}}</a></li>
+                                          @php
+                                            $j++;
+                                          @endphp
+                                        @endforeach
+                                      </ul>
+                                    </li>
                                   @endforeach
-                                      
                               </li>
                             </ul>
                         </div>

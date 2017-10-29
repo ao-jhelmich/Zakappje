@@ -295,17 +295,7 @@ $test = "test";
             <li><a href="/admin/mod">Klasseneisen van de dag</a></li>
             <li><a href="/admin/user">Beheer de gebruikers</a></li>
           </ul>
-        </li><ul>
-                        <li class="treeview">test
-                          <a href="#">
-                            <i class="fa fa-database"></i>
-                            <i class="fa fa-angle-left pull-right"></i>
-                          </a>
-                          <ul class="treeview-menu">
-                            <li>test</li>
-                          </ul>
-                        </li>
-                      </ul>
+        </li>
         @endif
         @endif
         
@@ -572,6 +562,9 @@ $(function () {
 $("#container1").DataTable();
 $("#container2").DataTable();
 $("#container3").DataTable();
+$('.tree-toggle').click(function () {
+  $(this).parent().children('ul.tree').toggle(200);
+});
 });
 </script>
 </body>

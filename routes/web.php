@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use App\Mail\TestMail;
+
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
    	Route::resource('admin/mainrequirement', 'admin\MainRequirementController');
@@ -20,6 +23,12 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
   	Route::post('admin/user/rankup', 'user\userController@rankup');
 	Route::get('admin/mod', 'admin\admincontroller@MainrequirementOfTheDayPage');
 	Route::put('mod/set', 'admin\admincontroller@setMainrequirementOfTheDay');
+});
+
+Route::get('send', function () {
+    // send an email to "batman@batcave.io"
+    Mail::to('jasper.helmich@gmail.com')->send(new TestMail);
+    return view('home');
 });
 
 //Route for extra info from the user 
@@ -41,9 +50,6 @@ Route::get('home', 'homecontroller@index');
 Route::resource('book', 'bookcontroller');
 Route::resource('admin', 'admin\admincontroller');
 Route::resource('leaderboard', 'LeaderboardController');
-
-//Mail routes
-Route::get('/send', 'EmailController@send');
 
 // Post routes
 Route::delete('check/{id}', 'checkController@deleteChkFromAdminRow');

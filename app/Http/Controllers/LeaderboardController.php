@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use App\Mainrequirements;
 use App\User;
 
 class LeaderboardController  extends Controller
@@ -50,21 +51,24 @@ class LeaderboardController  extends Controller
 
         if (isset($requirement_ids[0])) {
 
+            $allMainrequirements = mainrequirements::all();
+
             $i=0;
-            foreach ($requirement_ids as $requirement_id) {
-                $requirement = DB::table('requirements')
-                                    ->where('requirements_id', '=', $requirement_id->requirement_id)
-                                    ->select('requirements_name', 'requirements_id')
-                                    ->get();
-                $requirements[$i]['name'] = $requirement[0]->requirements_name;
-                $requirements[$i]['id'] = $requirement[0]->requirements_id;
+            foreach ($allMainrequirements as $mainrequirement) {
+
+                $result = DB::table('requirements')
+                                ->join('user_has_requirement', 'requirements.requirements_id', '=', 'user_has_requirement.requirement_id')
+                                ->where('user_has_requirement.user_id', '=', $user_id)
+                                ->where('requirements.requirements_mainrequirements_id', '=', $mainrequirement->mainrequirements_id)
+                                ->select('requirements.requirements_name', 'requirements.requirements_id')
+                                ->get();
+
+                $array[$i]['mainrequirement'] = $mainrequirement->mainrequirements_name;
+                $array[$i]['requirement'] = $result;
+
                 $i++;
+                return($array);
             }
-            //dd($requirements);
-            return($requirements);
-
-
 		}
-
     }
 }

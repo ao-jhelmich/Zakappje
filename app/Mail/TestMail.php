@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerifacationEmail extends Mailable
+class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,6 +28,15 @@ class VerifacationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $address = 'zakappje@gmail.com';
+        $name = 'Mex Lataster';
+        $subject = 'About mailing';
+
+        return $this->view('emails.send')
+                    ->from($address, $name)
+                    ->cc($address, $name)
+                    ->bcc($address, $name)
+                    ->replyTo($address, $name)
+                    ->subject($subject);
     }
 }
