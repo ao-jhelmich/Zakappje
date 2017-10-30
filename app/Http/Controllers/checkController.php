@@ -34,7 +34,7 @@ class checkController extends Controller
 
 	}
 
-	public function addCheckToAdminRow($requirementid, $userid)
+	public function addCheckToAdminRow($requirementid, $userid, Request $request)
 	{
 		$requirementName = Requirements::Find($requirementid);
 		$userName = User::Find($userid);
@@ -45,6 +45,8 @@ class checkController extends Controller
 			$chkForAdmin->requirement_name = $requirementName->requirements_name;
 			$chkForAdmin->requirement_id = $requirementid;
 		$chkForAdmin->save();
+
+        $request->session()->flash('alert-success', 'Aftekenen aangevraagd!');
 
 		return back();
 	}

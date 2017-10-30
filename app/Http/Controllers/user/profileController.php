@@ -12,13 +12,18 @@ use App\UserHasMr;
 
 class profileController extends Controller
 {
+	public function __construct()
+	{
+	    $this->middleware('auth', ['only' => ['index']]);
+	}
+	
     public function index()
     {	
-        $id = Auth::user()->id;
-        $userInfo = User::find($id);
+	        $id = Auth::user()->id;
+	        $userInfo = User::find($id);
 
-        $userHasMainrequirementsId = UserHasMr::where('user_id' ,'=', $id);
-        return view('profile.index', ['profile' => $userInfo]);
+	        $userHasMainrequirementsId = UserHasMr::where('user_id' ,'=', $id);
+	        return view('profile.index', ['profile' => $userInfo]);
     }
 
 
