@@ -4,12 +4,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="flash-message">
-        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-        @if(Session::has('alert-' . $msg))
-        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-        @endif
-        @endforeach
-        </div> 
+      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+      @endforeach
+    </div>
     <h1>
     {{$rank->rank_name}}
     <small>{{$mainrequirement->mainrequirements_name}}</small>
@@ -30,13 +30,39 @@
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
           <i class="fa fa-minus"></i></button>
           @if(Auth::check())
-            @if(Auth::user()->users_rank_id == $rank->rank_id -1)
-              @if($inrow)
-                <a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
-                <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
+            @if($rank->rank_id == 4)
+              @if(Auth::user()->users_rank_id == 0)
+                @if($inrow)
+                  <a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
+                  <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
+                @endif
               @endif
             @endif
-          @endif
+              @if($rank->rank_id == 3)
+                @if(Auth::user()->users_rank_id == 4)
+                  @if($inrow)
+                    <a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
+                    <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
+                  @endif
+                @endif
+              @endif
+              @if($rank->rank_id == 2)
+                @if(Auth::user()->users_rank_id == 3)
+                  @if($inrow)
+                    <a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
+                    <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
+                  @endif
+                @endif
+              @endif
+              @if($rank->rank_id == 1)
+                @if(Auth::user()->users_rank_id == 2)
+                  @if($inrow)
+                    <a href="/check/{{$requirement->requirements_id}}/{{Auth::user()->id}}">
+                    <button class="btn bg-olive margin pull-right">Aftekenen</button></a>
+                  @endif
+                @endif
+              @endif
+            @endif
         </div>
       </div>
       <div class="box-body">

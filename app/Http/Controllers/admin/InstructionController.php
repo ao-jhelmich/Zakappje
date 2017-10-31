@@ -47,7 +47,7 @@ class InstructionController extends Controller
         //Message about the store
         $request->session()->flash('alert-success', 'Instructie succesvol toegevoegd!');
         //redirecting
-        return Redirect::to('admin/instruction');
+        return Redirect::to('admin/manage');
     }
 
     /**
@@ -90,7 +90,7 @@ class InstructionController extends Controller
             $Instruction->flag = $request->input('flag');
             $Instruction->save();
 
-        return Redirect::to('admin/instruction'); 
+        return Redirect::to('admin/manage'); 
     }
 
     /**
