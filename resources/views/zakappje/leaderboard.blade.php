@@ -59,21 +59,27 @@ use App\Http\Controllers\LeaderboardController;
                             </a>
                         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                               <li class="dropdown-submenu">
+                                @php
+                                  $k=0;
+                                @endphp
                                   @foreach ($mainrequirements as $mainrequirement)
                                     <li class="dropdown-submenu">
-                                      <a tabindex="-1" href="#">{{$mainrequirement['mainrequirement']}}</a>
+                                      <a tabindex="-1" href="#">{{$mainrequirement['mainrequirement']->mainrequirements_name}}</a>
                                       <ul class="dropdown-menu">
                                         @php
                                           $j=0;
                                         @endphp
-                                        @foreach ($mainrequirement as $requirement)        
-                                          <li><a href="/book/show/{{$mainrequirement['requirement'][$j]->requirements_id}}">{{$mainrequirement['requirement'][$j]->requirements_name}}</a></li>
+                                        @foreach ($mainrequirement['requirement'] as $requirement)
+                                          <li><a href="/book/show/{{$requirement->requirements_id}}">{{$requirement->requirements_name}}</a></li>
                                           @php
                                             $j++;
                                           @endphp
                                         @endforeach
                                       </ul>
                                     </li>
+                                    @php
+                                      $k++;
+                                    @endphp
                                   @endforeach
                               </li>
                             </ul>

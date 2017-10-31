@@ -51,7 +51,10 @@ class LeaderboardController  extends Controller
 
         if (isset($requirement_ids[0])) {
 
-            $allMainrequirements = mainrequirements::all();
+            $allMainrequirements = DB::table('mainrequirements')
+                                    ->where('mainrequirements.mainrequirements_rank_id', '=', 1)
+                                    ->select('*')
+                                    ->get();
 
             $i=0;
             foreach ($allMainrequirements as $mainrequirement) {
@@ -60,15 +63,20 @@ class LeaderboardController  extends Controller
                                 ->join('user_has_requirement', 'requirements.requirements_id', '=', 'user_has_requirement.requirement_id')
                                 ->where('user_has_requirement.user_id', '=', $user_id)
                                 ->where('requirements.requirements_mainrequirements_id', '=', $mainrequirement->mainrequirements_id)
-                                ->select('requirements.requirements_name', 'requirements.requirements_id')
+                                ->select('*')
                                 ->get();
-
-                $array[$i]['mainrequirement'] = $mainrequirement->mainrequirements_name;
+                if (isset($result[0])) {
+                    # code...
+                
+                $array[$i]['mainrequirement'] = $mainrequirement;
                 $array[$i]['requirement'] = $result;
 
                 $i++;
-                return($array);
             }
+
+            }
+            //dd($array);
+                return($array);
 		}
     }
 }

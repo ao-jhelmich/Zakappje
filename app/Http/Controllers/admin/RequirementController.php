@@ -46,7 +46,7 @@ class RequirementController extends Controller
         //Message about the store
         $request->session()->flash('alert-success', 'Requirement was successful added!');
         //redirecting
-        return Redirect::to('admin/requirement');
+        return Redirect::to('admin/manage');
     }
 
     /**
@@ -88,7 +88,7 @@ class RequirementController extends Controller
         $Requirement->flag = $request->input('flag');
         $Requirement->save();
 
-        return Redirect::to('admin/requirement');
+        return Redirect::to('admin/manage');
     }
 
     /**
