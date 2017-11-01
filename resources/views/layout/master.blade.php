@@ -307,7 +307,7 @@ $test = "test";
   </aside>
   <!-- Content Wrapper. Contains page content -->
   @yield('content')
-  <div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade in" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -555,7 +555,10 @@ $test = "test";
 <script src="{{ asset('/css/adminlte/plugins/chartjs/Chart.min.js')}}"></script>
 <script src="{{ asset('/css/adminlte/plugins/ckeditor/ckeditor.js')}}"></script>
 <script>
-CKEDITOR.replace( 'editor1' );
+var editor = document.getElementById('editor1');
+if(editor){
+  CKEDITOR.replace( 'editor1' );
+}
 </script>
 <script>
 $(function () {
