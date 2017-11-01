@@ -562,6 +562,7 @@ if(editor){
 </script>
 <script>
 $(function () {
+$('#loginModel').modal('show');
 $("#container1").DataTable({
   "ordering": false
 });
