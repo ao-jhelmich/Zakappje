@@ -107,6 +107,8 @@ class checkController extends Controller
             $userHasR->save(); 
     	}
 
+        $request->session()->flash('alert-warning', 'Klasse eis afgekruist!');
+
     	return Redirect::to('/');
     }
 }
