@@ -14,11 +14,6 @@
     {{$rank->rank_name}}
     <small>{{$mainrequirement->mainrequirements_name}}</small>
     </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Work</a></li>
-      <li><a href="#">to</a></li>
-      <li class="active">do</li>
-    </ol>
   </section>
   <!-- Main content -->
   <section class="content">
