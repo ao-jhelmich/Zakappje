@@ -149,7 +149,7 @@ class userController extends Controller
             
             $user->save();
 
-            //Session::flash('success', 'Your profile was updated.');
+            Session::flash('success', 'Your profile was updated.');
             return Redirect::to('/profile');
         }
     }

@@ -34,7 +34,6 @@ $test = "test";
     <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/select2/select2.min.css') }}">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://unpkg.com/vue"></script>
   </head>
   <body class="hold-transition skin-green sidebar-mini">
@@ -562,7 +561,6 @@ if(editor){
 </script>
 <script>
 $(function () {
-$('#loginModel').modal('show');
 $("#container1").DataTable({
   "ordering": false
 });
@@ -571,6 +569,10 @@ $("#container3").DataTable();
 $('.tree-toggle').click(function () {
   $(this).parent().children('ul.tree').toggle(200);
 });
+var checkerror = document.getElementsByClassName('has-error')
+if (checkerror.length > 0) {
+  $('#editModel').modal('show');
+}
 });
 </script>
 </body>
