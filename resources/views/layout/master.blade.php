@@ -34,7 +34,6 @@ $test = "test";
     <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/datatables/dataTables.bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/adminlte/plugins/select2/select2.min.css') }}">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://unpkg.com/vue"></script>
   </head>
   <body class="hold-transition skin-green sidebar-mini">
@@ -233,7 +232,7 @@ $test = "test";
         
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-folder"></i>  Klasseneisen
+            <i class="fa fa-folder"></i><span>Klasseneisen</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
@@ -287,7 +286,7 @@ $test = "test";
         @if(Auth::user()->accountRole == 2)
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-database"></i>  Admin
+            <i class="fa fa-database"></i><span>Admin</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
@@ -307,7 +306,7 @@ $test = "test";
   </aside>
   <!-- Content Wrapper. Contains page content -->
   @yield('content')
-  <div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade in" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -555,16 +554,25 @@ $test = "test";
 <script src="{{ asset('/css/adminlte/plugins/chartjs/Chart.min.js')}}"></script>
 <script src="{{ asset('/css/adminlte/plugins/ckeditor/ckeditor.js')}}"></script>
 <script>
-CKEDITOR.replace( 'editor1' );
+var editor = document.getElementById('editor1');
+if(editor){
+  CKEDITOR.replace( 'editor1' );
+}
 </script>
 <script>
 $(function () {
-$("#container1").DataTable();
+$("#container1").DataTable({
+  "ordering": false
+});
 $("#container2").DataTable();
 $("#container3").DataTable();
 $('.tree-toggle').click(function () {
   $(this).parent().children('ul.tree').toggle(200);
 });
+var checkerror = document.getElementsByClassName('has-error')
+if (checkerror.length > 0) {
+  $('#editModel').modal('show');
+}
 });
 </script>
 </body>

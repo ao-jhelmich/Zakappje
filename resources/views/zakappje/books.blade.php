@@ -5,20 +5,15 @@
   <section class="content-header">
     <div class="flash-message">
       @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has('alert-' . $msg))
-      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      @endif
+        @if(Session::has('alert-' . $msg))
+          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+        @endif
       @endforeach
     </div>
     <h1>
     {{$rank->rank_name}}
     <small>{{$mainrequirement->mainrequirements_name}}</small>
     </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Work</a></li>
-      <li><a href="#">to</a></li>
-      <li class="active">do</li>
-    </ol>
   </section>
   <!-- Main content -->
   <section class="content">
