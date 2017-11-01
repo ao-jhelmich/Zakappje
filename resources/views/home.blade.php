@@ -15,14 +15,12 @@
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
           <i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-          <i class="fa fa-times"></i></button>
         </div>
       </div>
       <div class="box-body">
         @php
         foreach ($MainrequirementOfTheDay as $key => $value) {
-         if ($value->mainrequirements_rank_id == Auth::user()->users_rank_id OR $value->mainrequirements_rank_id == 1) {
+         if ($value->mainrequirements_rank_id == Auth::user()->users_rank_id OR $value->mainrequirements_rank_id == 4) {
               $mrName = $value->mainrequirements_name;
               $mrDesc = $value->mainrequirements_description;
            }  
