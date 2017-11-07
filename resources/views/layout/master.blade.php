@@ -316,24 +316,24 @@ $test = "test";
         <div class="modal-body">
           <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->login->has('email') ? ' has-error' : '' }}">
               <label for="email" class="col-md-4 control-label">E-Mail Address</label>
               <div class="col-md-6">
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
                 @if ($errors->has('email'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('email') }}</strong>
+                  <strong>{{ $errors->login->first('email') }}</strong>
                 </span>
                 @endif
               </div>
             </div>
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->login->has('password') ? ' has-error' : '' }}">
               <label for="password" class="col-md-4 control-label">Password</label>
               <div class="col-md-6">
                 <input id="password" type="password" class="form-control" name="password" required>
                 @if ($errors->has('password'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('password') }}</strong>
+                  <strong>{{ $errors->login->first('password') }}</strong>
                 </span>
                 @endif
               </div>
@@ -374,58 +374,58 @@ $test = "test";
         <div class="modal-body">
           <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->register->has('name') ? ' has-error' : '' }}">
               <label for="name" class="col-md-4 control-label">Naam:</label>
               <div class="col-md-6">
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-                @if ($errors->has('name'))
+                @if ($errors->register->has('name'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('name') }}</strong>
+                  <strong>{{ $errors->register->first('name') }}</strong>
                 </span>
                 @endif
               </div>
             </div>
-            <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->register->has('lastName') ? ' has-error' : '' }}">
               <label for="lastName" class="col-md-4 control-label">Achternaam:</label>
               <div class="col-md-6">
                 <input id="lastName" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" required>
-                @if ($errors->has('lastName'))
+                @if ($errors->register->has('lastName'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('lastName') }}</strong>
+                  <strong>{{ $errors->register->first('lastName') }}</strong>
                 </span>
                 @endif
               </div>
             </div>
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <div class="form-group">
               <label for="email" class="col-md-4 control-label">e-mail adres</label>
               <div class="col-md-6">
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-                @if ($errors->has('email'))
+                @if ($errors->register->has('email'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('email') }}</strong>
+                  <strong>{{ $errors->register->first('email') }}</strong>
                 </span>
                 @endif
               </div>
             </div>
-            <div class="form-group{{ $errors->has('birth_day') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->register->has('birth_day') ? ' has-error' : '' }}">
               <label for="birth_day" class="col-md-4 control-label">Geboorte datum:</label>
               <div class="col-md-6">
                 <input id="birth_day" type="date" class="form-control" name="birth_day"
                 value="{{ old('birth_day') }}" required>
-                @if ($errors->has('birth_day_year'))
+                @if ($errors->register->has('birth_day_year'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('birth_day') }}</strong>
+                  <strong>{{ $errors->register->first('birth_day') }}</strong>
                 </span>
                 @endif
               </div>
             </div>
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->register->has('password') ? ' has-error' : '' }}">
               <label for="password" class="col-md-4 control-label">password</label>
               <div class="col-md-6">
                 <input id="password" type="password" class="form-control" name="password" required>
                 @if ($errors->has('password'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('password') }}</strong>
+                  <strong>{{ $errors->register->first('password') }}</strong>
                 </span>
                 @endif
               </div>
@@ -570,15 +570,20 @@ $('.tree-toggle').click(function () {
   $(this).parent().children('ul.tree').toggle(200);
 });
 
-var checkRegisterError = modelRegister.document.getElementsByClassName('has-error');
-if (checkRegisterError.length > 0) {
-  $('#registerModel').modal('show');
-}
+var checkRegisterError = document.getElementById('registerModel').getElementsByClassName('has-error');
+  if (checkRegisterError.length > 0) {
+    $('#registerModel').modal('show');
+  }
 
-var checkerror = document.getElementsByClassName('has-error')
-if (checkerror.length > 0) {
-  $('#editModel').modal('show');
-}
+var checkLoginError = document.getElementById('loginModel').getElementsByClassName('has-error');
+  if (checkLoginError.length > 0) {
+    $('#loginModel').modal('show');
+  }
+
+var checkerror = document.getElementById('editModel').getElementsByClassName('has-error')
+  if (checkerror.length > 0) {
+    $('#editModel').modal('show');
+  }
 });
 </script>
 </body>

@@ -29,6 +29,8 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home/info';
 
+    protected $errorBag = 'register';
+
     /**
      * Create a new controller instance.
      *
