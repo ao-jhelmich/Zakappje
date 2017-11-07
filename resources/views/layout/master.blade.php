@@ -569,6 +569,12 @@ $("#container3").DataTable();
 $('.tree-toggle').click(function () {
   $(this).parent().children('ul.tree').toggle(200);
 });
+
+var checkRegisterError = modelRegister.document.getElementsByClassName('has-error');
+if (checkRegisterError.length > 0) {
+  $('#registerModel').modal('show');
+}
+
 var checkerror = document.getElementsByClassName('has-error')
 if (checkerror.length > 0) {
   $('#editModel').modal('show');
