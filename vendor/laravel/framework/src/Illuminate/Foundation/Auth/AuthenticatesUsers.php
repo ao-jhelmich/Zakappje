@@ -132,7 +132,7 @@ trait AuthenticatesUsers
 
         return redirect()->back()
             ->withInput($request->only($this->username(), 'remember'))
-            ->withErrors($errors);
+            ->withErrors($errors, 'login');
     }
 
     /**
