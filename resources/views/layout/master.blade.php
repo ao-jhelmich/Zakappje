@@ -575,8 +575,6 @@ $('.tree-toggle').click(function () {
       $('#registerModel').modal('show');
     }
 
-alert('Git bash test');
-
 var checkLoginError = document.getElementById('loginModel').getElementsByClassName('has-error');
 if (checkLoginError.length > 0) {
   $('#loginModel').modal('show');
