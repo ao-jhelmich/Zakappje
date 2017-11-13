@@ -26,9 +26,16 @@
                     <label for="lastName" class="col-md-4 control-label">Klasse 1:</label>
                     <select name="mainrequirementsRank1" class="form-control select2" style="width: 100%;" required>
                         @foreach ($mainrequirementsRank1s as $mainrequirementsRank1)
-                        <option value="{{$mainrequirementsRank1->mainrequirements_id}}">
-                            {{$mainrequirementsRank1->mainrequirements_name}}
-                        </option>
+                            @php
+                                if ($mainrequirementsRank1->ModFlag == 2){
+                                    $selected = "selected";
+                                }else{
+                                    $selected = 'class';
+                                }
+                            @endphp
+                            <option value="{{$mainrequirementsRank1->mainrequirements_id}}" {{$selected}}>
+                                {{$mainrequirementsRank1->mainrequirements_name}}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -36,7 +43,14 @@
                     <label for="lastName" class="col-md-4 control-label">Klasse 2:</label>
                     <select name="mainrequirementsRank2" class="form-control select2" style="width: 100%;">
                         @foreach ($mainrequirementsRank2s as $mainrequirementsRank2)
-                        <option value="{{$mainrequirementsRank2->mainrequirements_id}}">
+                         @php
+                                if ($mainrequirementsRank2->ModFlag == 2){
+                                    $selected = "selected";
+                                }else{
+                                    $selected = 'class';
+                                }
+                            @endphp
+                        <option value="{{$mainrequirementsRank2->mainrequirements_id}}" {{$selected}}>
                             {{$mainrequirementsRank2->mainrequirements_name}}
                         </option>
                         @endforeach
@@ -46,7 +60,14 @@
                     <label for="lastName" class="col-md-4 control-label">Klasse 3:</label>
                     <select name="mainrequirementsRank3" class="form-control select2" style="width: 100%;">
                         @foreach ($mainrequirementsRank3s as $mainrequirementsRank3)
-                        <option value="{{$mainrequirementsRank3->mainrequirements_id}}">
+                        @php
+                                if ($mainrequirementsRank3->ModFlag == 2){
+                                    $selected = "selected";
+                                }else{
+                                    $selected = 'class';
+                                }
+                            @endphp
+                        <option value="{{$mainrequirementsRank3->mainrequirements_id}}"{{$selected}}>
                             {{$mainrequirementsRank3->mainrequirements_name}}
                         </option>
                         @endforeach
@@ -56,7 +77,14 @@
                     <label for="lastName" class="col-md-4 control-label">Klasse 4:</label>
                     <select name="mainrequirementsRank4" class="form-control select2" style="width: 100%;">
                         @foreach ($mainrequirementsRank4s as $mainrequirementsRank4)
-                        <option value="{{$mainrequirementsRank4->mainrequirements_id}}">
+                        @php
+                                if ($mainrequirementsRank4->ModFlag == 2){
+                                    $selected = "selected";
+                                }else{
+                                    $selected = 'class';
+                                }
+                            @endphp
+                        <option value="{{$mainrequirementsRank4->mainrequirements_id}}"{{$selected}}>
                             {{$mainrequirementsRank4->mainrequirements_name}}
                         </option>
                         @endforeach
@@ -73,12 +101,4 @@
     </section>
     <!-- /.content -->
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="{{ asset('/css/adminlte/plugins/select2/select2.full.min.js')}}"></script>
-<script>
-$(function () {
-//Initialize Select2 Elements
-$(".select2").select2();
-}
-</script>
 @endsection

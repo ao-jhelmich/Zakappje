@@ -52,9 +52,21 @@ class AdminController extends Controller
 
     public function setMainrequirementOfTheDay(Request $request)
     {
-        $mainRequirement = Mainrequirements::find($request["mainrequirementsRank4"]);
-        $mainRequirement->ModFlag = 2;
-        $mainRequirement->save();
+        $mainRequirementRank1 = Mainrequirements::find($request["mainrequirementsRank1"]);
+        $mainRequirementRank1->ModFlag = 2;
+        $mainRequirementRank1->save();
+
+        $mainRequirementRank2 = Mainrequirements::find($request["mainrequirementsRank2"]);
+        $mainRequirementRank2->ModFlag = 2;
+        $mainRequirementRank2->save();
+
+        $mainRequirementRank3 = Mainrequirements::find($request["mainrequirementsRank3"]);
+        $mainRequirementRank3->ModFlag = 2;
+        $mainRequirementRank3->save();
+
+        $mainRequirementRank4 = Mainrequirements::find($request["mainrequirementsRank4"]);
+        $mainRequirementRank4->ModFlag = 2;
+        $mainRequirementRank4->save();
 
         $request->session()->flash('alert-success', 'Klasseneissen van de dag Succesvol toegevoegd');
         return Redirect::to('admin/mod');
