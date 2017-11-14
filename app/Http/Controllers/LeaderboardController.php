@@ -41,11 +41,11 @@ class LeaderboardController  extends Controller
 
     }
 
-    public static function getUsersRequirements($user_id)
+    public static function getUsersRequirements($user_id, $rank_id)
     {
 
         $allMainrequirements = DB::table('mainrequirements')
-                                ->where('mainrequirements.mainrequirements_rank_id', '=', 1)
+                                ->where('mainrequirements.mainrequirements_rank_id', '=', $rank_id)
                                 ->select('*')
                                 ->get();
 

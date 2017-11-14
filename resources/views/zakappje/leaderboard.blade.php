@@ -45,7 +45,7 @@ use App\Http\Controllers\LeaderboardController;
                   @if ($user->users_rank_id == $rank->rank_id)
                   @php
                   $i++;
-                  $mainrequirements = LeaderboardController::getUsersRequirements($user->id);
+                  $mainrequirements = LeaderboardController::getUsersRequirements($user->id, $user->users_rank_id);
 
                   @endphp
                   <tr>
