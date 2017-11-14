@@ -110,11 +110,11 @@ class userController extends Controller
             'houseNumber' => 'required|integer|min:1|',
             'city' => 'required|string|max:255|',
             'postal_code' => 'required|string|max:255|',
-            'user_phone_number' => 'required|numeric|min:10|',
+            'user_phone_number' => 'required|numeric|digits:10|',
             'birth_day' => 'required|date|min:1|',
             'user_parent_name' => 'required|string|max:255|',
             'user_parent_email' => 'required|email|max:255|',
-            'user_parent_phone' => 'required|numeric|min:10|',
+            'user_parent_phone' => 'required|numeric|digits:10|',
         ];
 
         $messages = [
