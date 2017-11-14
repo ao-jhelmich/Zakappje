@@ -52,6 +52,13 @@ class AdminController extends Controller
 
     public function setMainrequirementOfTheDay(Request $request)
     {
+        $mainrequirementsWithModflag = Mainrequirements::where('ModFlag', 2)->get();
+
+        foreach ($mainrequirementsWithModflag as $key => $value) {
+            $value->ModFlag = 1;
+            $value->save();
+        }
+        
         $mainRequirementRank1 = Mainrequirements::find($request["mainrequirementsRank1"]);
         $mainRequirementRank1->ModFlag = 2;
         $mainRequirementRank1->save();
@@ -67,7 +74,7 @@ class AdminController extends Controller
         $mainRequirementRank4 = Mainrequirements::find($request["mainrequirementsRank4"]);
         $mainRequirementRank4->ModFlag = 2;
         $mainRequirementRank4->save();
-
+        
         $request->session()->flash('alert-success', 'Klasseneissen van de dag Succesvol toegevoegd');
         return Redirect::to('admin/mod');
     }
