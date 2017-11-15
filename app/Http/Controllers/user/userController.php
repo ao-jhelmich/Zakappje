@@ -27,7 +27,33 @@ class userController extends Controller
  
     public function storeExtraInfo(Request $request) 
     { 
-        $id = $request->input('userid'); 
+        $id = $request->input('userid');
+
+
+            $rules = [
+            'streetAdress' => 'required|string|max:255|',
+            'houseNumber' => 'required|integer|min:1|',
+            'city' => 'required|string|max:255|',
+            'postal_code' => 'required|string|max:255|',
+            'user_phone_number' => 'required|numeric|digits:10|',
+            'user_parent_name' => 'required|string|max:255|',
+            'user_parent_email' => 'required|email|max:255|',
+            'user_parent_phone' => 'required|numeric|digits:10|',
+        ];
+
+        $messages = [
+            'name.required'   =>  'Your first name is required.'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails())
+        {
+            return Redirect::to('home/info')
+                ->withErrors($validator)
+                ->withInput();
+        }else{
+
         $userFound = User::find($id); 
             $userFound->streetAdress = $request->input('streetAdress'); 
             $userFound->houseNumber = $request->input('houseNumber'); 
@@ -42,7 +68,9 @@ class userController extends Controller
         //Message about the store 
         $request->session()->flash('alert-success', 'Extra info is succesvol toegevoegd!'); 
         //redirecting 
-        return Redirect::to('/');    
+        return Redirect::to('/'); 
+
+        }   
     } 
     /**
      * Show the form for creating a new resource.
