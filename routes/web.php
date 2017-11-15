@@ -55,3 +55,5 @@ Route::resource('leaderboard', 'LeaderboardController');
 Route::delete('check/{id}', 'checkController@deleteChkFromAdminRow');
 Route::post('check/final', 'checkController@addUserHas');
 Auth::routes();
+
+Route::get('/{slug}', 'homecontroller@index')->where('slug', '([A-Za-z0-9:/]+)');
