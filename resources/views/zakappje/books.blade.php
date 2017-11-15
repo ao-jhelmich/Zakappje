@@ -69,7 +69,7 @@
       </div>
       <!-- /.box-body -->
       <div class="box-footer">
-        possible admin info (last updated created BY and on)
+        
       </div>
       <!-- /.box-footer-->
     </div>

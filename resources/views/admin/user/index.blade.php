@@ -51,7 +51,7 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="user/{{$user->id}}/edit"><button>Edit</button></a>
+                                <a href="#"><button class="btn btn-primary">Bekijk</button></a>
                             </td>
                             <td>
                                 @php

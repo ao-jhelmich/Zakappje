@@ -20,8 +20,7 @@
             <!-- Container 1 -->
             <div class="box">
                 <div class="box-header">
-                    <a href="{{url('admin/mainrequirement/create')}}"><button class="btn btn-default"><h3 class="box-title">Create new
-                    mainrequirement</h3></button></a>
+                    <a href="{{url('admin/mainrequirement/create')}}"><button class="btn btn-default"><h3 class="box-title">Creeër een nieuwe klassen eis.</h3></button></a>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>
@@ -73,8 +72,7 @@
             <!-- Container 2 -->
             <div class="box">
                 <div class="box-header">
-                    <a href="{{url('admin/requirement/create')}}"><button class="btn btn-default"><h3 class="box-title">Create new
-                    requirement</h3></button></a>
+                    <a href="{{url('admin/requirement/create')}}"><button class="btn btn-default"><h3 class="box-title">Creeër een nieuwe sub klassen eis.</h3></button></a>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>
@@ -132,8 +130,7 @@
             <!-- Container 3 -->
             <div class="box">
                 <div class="box-header">
-                    <a href="{{url('admin/instruction/create')}}"><button class="btn btn-default"><h3 class="box-title">Create new
-                    instruction</h3></button></a>
+                    <a href="{{url('admin/instruction/create')}}"><button class="btn btn-default"><h3 class="box-title">Creeër een nieuwe instructie.</h3></button></a>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>

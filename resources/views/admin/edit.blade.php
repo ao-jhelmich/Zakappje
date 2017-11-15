@@ -20,7 +20,7 @@
                     {{ Form::text('name', $mainRequirement->mainrequirements_name, ['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('desc', 'Desc: ') }}
+                    {{ Form::label('desc', 'Omschrijving: ') }}
                     {{ Form::text('desc', $mainRequirement->mainrequirements_description,['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">

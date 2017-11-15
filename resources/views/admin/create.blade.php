@@ -9,7 +9,15 @@
     <section class="content">
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">General Elements</h3>
+                <h3 class="box-title">
+                @if ($tablename == 'mainrequirement')
+                Creeër een nieuwe klassen eis.
+                @elseif($tablename == 'requirement')
+                Creeër een nieuwe sub klassen eis.
+                @elseif($tablename == 'instruction')
+                Creeër een nieuwe instructie.
+                @endif
+                </h3>
             </div>
             <div class="box-body">
                 @if ($tablename == 'mainrequirement')
@@ -28,7 +36,7 @@
                     {{ Form::label('desc', 'Desc: ') }}
                     {{ Form::textarea('desc',null, ['id' => 'editor1']) }}
                     @else
-                    {{ Form::label('desc', 'Desc: ') }}
+                    {{ Form::label('desc', 'Omschrijving: ') }}
                     {{ Form::text('desc',null,['class' => 'form-control'])}}
                     @endif
                 </div>
