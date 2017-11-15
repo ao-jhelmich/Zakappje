@@ -4,16 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc86489d169a3b64de6ca7452ddfbd46b
+class ComposerStaticInit82ca0e72832175ddd289525d7bfc9643
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
@@ -3759,10 +3759,10 @@ class ComposerStaticInitc86489d169a3b64de6ca7452ddfbd46b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc86489d169a3b64de6ca7452ddfbd46b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc86489d169a3b64de6ca7452ddfbd46b::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitc86489d169a3b64de6ca7452ddfbd46b::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitc86489d169a3b64de6ca7452ddfbd46b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit82ca0e72832175ddd289525d7bfc9643::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit82ca0e72832175ddd289525d7bfc9643::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit82ca0e72832175ddd289525d7bfc9643::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit82ca0e72832175ddd289525d7bfc9643::$classMap;
 
         }, null, ClassLoader::class);
     }
