@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Requirements;
-use App\mainrequirements;
-use App\Ranks;
-use App\Instructions;
-use App\userWantsChk;
+use App\Model\Book\Requirements;
+use App\Model\Book\Mainrequirements;
+use App\Model\Book\Ranks;
+use App\Model\Book\Instructions;
+use App\Model\Admin\userWantsChk;
 use Redirect;
 use DB;
 use Illuminate\Support\Facades\Auth;

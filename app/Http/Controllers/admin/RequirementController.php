@@ -3,8 +3,8 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Mainrequirements;
-use App\Requirements;
+use App\Model\Book\Mainrequirements;
+use App\Model\Book\Requirements;
 
 use Redirect;
 

@@ -1,8 +1,8 @@
 @php
-use App\Requirements;
+use App\Model\Book\Requirements;
 use App\Http\Controllers\bookcontroller;
 use App\Http\Controllers\LeaderboardController;
-use App\UserWantsChk;
+use App\Model\Admin\UserWantsChk;
 
 $requirements = Requirements::all();
 $allInfo = DB::table('ranks')

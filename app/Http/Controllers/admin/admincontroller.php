@@ -5,10 +5,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
 
-use App\mainrequirements;
-use App\Instructions;
-use App\requirements;
-use App\Ranks;
+use App\Model\Book\mainrequirements;
+use App\Model\Book\Instructions;
+use App\Model\Book\requirements;
+use App\Model\Book\Ranks;
 
 
 class AdminController extends Controller

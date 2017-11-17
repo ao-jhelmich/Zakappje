@@ -5,10 +5,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 use App\user;
-use App\UserHasReq;
-use App\requirements;
-use App\mainrequirements;
-use App\UserHasMr;
+use App\Model\Admin\UserHasReq;
+use App\Model\Book\requirements;
+use App\Model\Book\mainrequirements;
+use App\Model\Admin\UserHasMr;
 
 class profileController extends Controller
 {

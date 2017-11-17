@@ -3,8 +3,8 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Mainrequirements;
-use App\Ranks;
+use App\Model\Book\Mainrequirements;
+use App\Model\Book\Ranks;
 
 use Redirect;
 

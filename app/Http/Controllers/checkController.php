@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Requirements;
-use App\Mainrequirements;
+use App\Model\Book\Requirements;
+use App\Model\Book\Mainrequirements;
 use App\Ranks;
 use App\User;
 
-use App\UserHasReq;
-use App\UserHasMr;
-use App\UserWantsChk;
+use App\Model\Admin\UserHasReq;
+use App\Model\Admin\UserHasMr;
+use App\Model\Admin\UserWantsChk;
 
 use Redirect;
 use DB;

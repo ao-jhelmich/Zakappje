@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use App\Mainrequirements;
-use App\User;
+use App\Model\Book\Mainrequirements;
+use App\Mode\User\User;
 
 class LeaderboardController  extends Controller
 {
