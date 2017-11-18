@@ -8,6 +8,7 @@ class AdminMiddleware {
     {
         if ($request->user()->accountRole < 2)
         {
+        	$request->session()->flash('alert-danger', 'Toegang verboden');
             return redirect('/');
         }
 
