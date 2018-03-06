@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMainrequirementColummToUserHasMainrequirement extends Migration
+class CreateUserHasRequirement extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class AddMainrequirementColummToUserHasMainrequirement extends Migration
      */
     public function up()
     {
-        Schema::table('user_has_requirement', function($table)
-        {
+        Schema::create('user_has_requirement', function (Blueprint $table) {
+            $table->increments('user_has_requirement_id');
+            $table->integer('user_id');
+            $table->integer('requirement_id');
             $table->integer('user_has_requirement_mainrequirement_id');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ class AddMainrequirementColummToUserHasMainrequirement extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('user_has_requirement');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddModFlagMainrequirements extends Migration
+class CreateRanks extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddModFlagMainrequirements extends Migration
      */
     public function up()
     {
-        Schema::table('mainrequirements', function($table)
-        {
-            $table->integer('ModFlag')->default(1);
+        Schema::create('ranks', function (Blueprint $table) {
+            $table->increments('rank_id');
+            $table->string('rank_name');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ class AddModFlagMainrequirements extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('ranks');
     }
 }

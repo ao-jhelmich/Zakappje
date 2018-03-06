@@ -10,6 +10,11 @@ use Redirect;
 
 class RequirementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
+
     public function index()
     {
         $Requirements = Requirements::All();
@@ -23,9 +28,9 @@ class RequirementController extends Controller
      */
     public function create()
     {
-        $Mainrequirements = Mainrequirements::pluck('mainrequirements_description', 'mainrequirements_id'); 
-        return view('admin.create', ['select' => $Mainrequirements])
-        ->with('tablename', 'requirement');
+        $select = Mainrequirements::pluck('mainrequirements_description', 'mainrequirements_id'); 
+
+        return view('admin.create', compact('select'))->with('tablename', 'requirement');
     }
 
     /**
@@ -47,17 +52,6 @@ class RequirementController extends Controller
         $request->session()->flash('alert-success', 'Requirement was successful added!');
         //redirecting
         return Redirect::to('admin/manage');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

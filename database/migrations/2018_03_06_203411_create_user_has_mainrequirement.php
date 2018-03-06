@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRankColummToUserHasMainrequirement extends Migration
+class CreateUserHasMainrequirement extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddRankColummToUserHasMainrequirement extends Migration
      */
     public function up()
     {
-        Schema::table('user_has_mainrequirement', function($table)
-        {
+        Schema::create('user_has_mainrequirement', function (Blueprint $table) {
+            $table->increments('user_has_mainrequirement_id');
             $table->integer('user_has_mainrequirement_rank_id');
+            $table->integer('user_id');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class AddRankColummToUserHasMainrequirement extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('user_has_mainrequirement');
     }
 }

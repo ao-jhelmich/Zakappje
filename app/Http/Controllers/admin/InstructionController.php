@@ -10,6 +10,11 @@ use Redirect;
 
 class InstructionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
+
     public function index()
     {
         $Instruction = Instructions::All();
@@ -48,17 +53,6 @@ class InstructionController extends Controller
         $request->session()->flash('alert-success', 'Instructie succesvol toegevoegd!');
         //redirecting
         return Redirect::to('admin/manage');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

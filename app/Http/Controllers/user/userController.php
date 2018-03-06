@@ -72,49 +72,19 @@ class userController extends Controller
 
         }   
     } 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
-     * Store a newly created resource in storage.
+     * Edit the user
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     * @return response
      */
     public function edit($id)
     {
-        $userInfo = User::find($id);
-        return view('admin.user.edit', ['profile' => $userInfo]);
+        $profile = User::find($id);
 
+        return view('admin.user.edit', compact('profile'));
     }
 
     /**

@@ -10,6 +10,11 @@ use Redirect;
 
 class MainRequirementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
+
     public function index()
     {
         $mainRequirements = Mainrequirements::All();   
@@ -46,19 +51,6 @@ class MainRequirementController extends Controller
         $request->session()->flash('alert-success', 'Sub eis succesvol toegevoegd!');
         //redirecting
         return Redirect::to('admin/manage');
-    }
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
