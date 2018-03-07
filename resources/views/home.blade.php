@@ -24,8 +24,10 @@
           <i class="fa fa-minus"></i></button>
         </div>
       </div>
-      <div class="box-body">
+
+      {{-- <div class="box-body">
         @php
+        $MainrequirementOfTheDay = '';
         foreach ($MainrequirementOfTheDay as $key => $value) {
          if ($value->mainrequirements_rank_id == Auth::user()->users_rank_id OR $value->mainrequirements_rank_id == 4) {
               $mrName = $value->mainrequirements_name;
@@ -35,7 +37,7 @@
         @endphp 
         Vandaag staat, {{$mrName}} in het zonnetje.
         Dit betekent dat je dit tegen komt tijdens het programma. 
-      </div>
+      </div> --}}
       <!-- /.box-body -->
       <div class="box-footer">
       </div>

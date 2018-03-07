@@ -26,7 +26,7 @@ $test = "test";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ZakAppje</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="{{ asset('css/adminlte/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('/css/adminlte/dist/css/AdminLTE.min.css') }}">
@@ -328,9 +328,9 @@ $test = "test";
               </div>
             </div>
             <div class="form-group{{ $errors->login->has('password') ? ' has-error' : '' }}">
-              <label for="password" class="col-md-4 control-label">Password</label>
+              <label for="password_login" class="col-md-4 control-label">Password</label>
               <div class="col-md-6">
-                <input id="password" type="password" class="form-control" name="password" required>
+                <input id="password_login" type="password" class="form-control" name="password" required>
                 @if ($errors->login->has('password'))
                 <span class="help-block">
                   <strong>{{ $errors->login->first('password') }}</strong>
@@ -397,9 +397,9 @@ $test = "test";
               </div>
             </div>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-              <label for="email" class="col-md-4 control-label">e-mail adres</label>
+              <label for="email_register" class="col-md-4 control-label">e-mail adres</label>
               <div class="col-md-6">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                <input id="email_register" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                 @if ($errors->has('email'))
                 <span class="help-block">
                   <strong>{{ $errors->first('email') }}</strong>
@@ -434,11 +434,6 @@ $test = "test";
               <label for="password-confirm" class="col-md-4 control-label">Bevestig Password</label>
               <div class="col-md-6">
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-6 col-md-offset-4">
-                {!! Recaptcha::render() !!}
               </div>
             </div>
             <div class="form-group">
@@ -561,29 +556,17 @@ if(editor){
 </script>
 <script>
 $(function () {
-$("#container1").DataTable({
-  "ordering": false
-});
-$("#container2").DataTable();
-$("#container3").DataTable();
-$('.tree-toggle').click(function () {
-  $(this).parent().children('ul.tree').toggle(200);
-});
+  $("#container1").DataTable({
+    "ordering": false
+  });
 
-  var checkRegisterError = document.getElementById('registerModel').getElementsByClassName('has-error');
-    if (checkRegisterError.length > 0) {
-      $('#registerModel').modal('show');
-    }
-
-var checkLoginError = document.getElementById('loginModel').getElementsByClassName('has-error');
-if (checkLoginError.length > 0) {
-  $('#loginModel').modal('show');
-}
-
-var checkerror = document.getElementById('editModel').getElementsByClassName('has-error')
-  if (checkerror.length > 0) {
-    $('#editModel').modal('show');
-  }
+  $("#container2").DataTable();
+  
+  $("#container3").DataTable();
+  
+  $('.tree-toggle').click(function () {
+    $(this).parent().children('ul.tree').toggle(200);
+  });
 });
 </script>
 </body>
