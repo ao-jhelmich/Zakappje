@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Model\Book\Mainrequirements;
-use App\Mode\User\User;
+use App\Model\User\User;
 
 class LeaderboardController  extends Controller
 {

@@ -32,10 +32,6 @@ class User extends Authenticatable
 
     public function hasInCheck($userId)
     {
-        //get the user id
-        
-        //search the user wants checked db
-        //if not in row for checking check if user already has requirement.
         return User::where('users_rank_id', $userId)->get();
     }
 

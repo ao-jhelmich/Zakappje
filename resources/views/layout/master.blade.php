@@ -15,9 +15,8 @@ $curclass = 0;
 $curmr = 0;
 $curr = 0;
 $adminRows = UserWantsChk::all();
-$test = "test";
 //$array = bookcontroller::GetInfo();
-//dd($array);
+// dd($allInfo);
 @endphp
 <!DOCTYPE html>
 <html>
