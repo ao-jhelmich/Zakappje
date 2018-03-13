@@ -7,6 +7,11 @@ use App\Model\Book\Mainrequirements;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
     public function index()
     {
         $mainrequirementOfTheDay = Mainrequirements::where('ModFlag', 2)->get();

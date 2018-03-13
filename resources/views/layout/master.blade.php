@@ -1,16 +1,6 @@
 @php
-use App\Model\Book\Requirements;
-use App\Http\Controllers\bookcontroller;
-use App\Http\Controllers\LeaderboardController;
 use App\Model\Admin\UserWantsChk;
 
-$requirements = Requirements::all();
-$allInfo = DB::table('ranks')
-->select('ranks.*', 'mainrequirements.*', 'requirements.*')
-->leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
-->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
-->orderby('rank_id')
-->get();
 $curclass = 0;
 $curmr = 0;
 $curr = 0;
@@ -237,7 +227,7 @@ $adminRows = UserWantsChk::all();
           <ul class="treeview-menu">
             @foreach ($allInfo as $info)
             @if ($info->rank_id !== $curclass)
-            @php$curclass=$info->rank_id;@endphp
+            @php $curclass=$info->rank_id; @endphp
             <li class="treeview">
               
               <a href="#">
@@ -248,7 +238,7 @@ $adminRows = UserWantsChk::all();
                 @foreach ($allInfo as $info)
                 @if ($info->rank_id == $curclass)
                 @if ($info->mainrequirements_id !== $curmr)
-                @php$curmr=$info->mainrequirements_id;@endphp
+                @php $curmr=$info->mainrequirements_id; @endphp
                 <li class="treeview">
                   <a href="#">
                     {{$info->mainrequirements_name}}
@@ -259,7 +249,7 @@ $adminRows = UserWantsChk::all();
                     @if ($info->rank_id == $curclass)
                     @if ($info->mainrequirements_id == $curmr)
                     @if ($info->requirements_id !== $curr)
-                    @php$curr=$info->requirements_id;@endphp
+                    @php $curr=$info->requirements_id; @endphp
                     <li class="treeview">
                       <a href="/book/show/{{$info->requirements_id}}">{{$info->requirements_name}}</a>
                       

@@ -17,6 +17,11 @@ use DB;
 
 class checkController extends Controller
 {
+	public function __construct()
+    {
+        parent::__construct();
+	}
+	
 	public function index($requirementid, $userid, $check_id)
 	{
 		$user = User::Find($userid);

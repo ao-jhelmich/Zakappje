@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
     public function index()
     {   
 
