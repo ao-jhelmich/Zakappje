@@ -75,5 +75,7 @@ class LeaderboardController  extends Controller
             if (isset($array)) {
                 return($array);
             }
+
+            dd($array);
 	}
 }

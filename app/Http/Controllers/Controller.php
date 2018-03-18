@@ -16,16 +16,25 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        // if (!Cache::has('allInfo')) {
+        //     $allInfo = DB::table('ranks')
+        //     ->select('ranks.*', 'mainrequirements.*', 'requirements.*')
+        //     ->leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
+        //     ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
+        //     ->orderby('rank_id')
+        //     ->get();
+        
+        //     Cache::forever('allInfo', $allInfo);
+        // }
+        
         $allInfo = DB::table('ranks')
         ->select('ranks.*', 'mainrequirements.*', 'requirements.*')
         ->leftJoin('mainrequirements', 'ranks.rank_id', '=', 'mainrequirements.mainrequirements_rank_id')
         ->leftJoin('requirements', 'mainrequirements.mainrequirements_id', '=', 'requirements.requirements_mainrequirements_id')
         ->orderby('rank_id')
         ->get();
-
-        Cache::forever('allInfo', $allInfo);
-        
-        $result = Cache::get('allInfo');
+    
+        // $result = Cache::get('allInfo');
         
         $adminRows = userWantsChk::all();
         

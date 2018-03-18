@@ -30,9 +30,7 @@ use App\Http\Controllers\LeaderboardController;
             @php
             $i=0;
             @endphp
-            <div class="tab-pane @php
-              if ($rank->rank_id == 1){ echo 'active'; }
-              @endphp" id="tab_{{$rank->rank_id}}">
+            <div class="tab-pane {{ ($rank->rank_id == 1) ? 'active' : '' }} " id="tab_{{$rank->rank_id}}">
               <!-- /.box-header -->
               <div class="box-body no-padding">
                 <table class="table">

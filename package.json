@@ -19,6 +19,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "admin-lte": "^2.4.2"
+    "admin-lte": "^2.4.2",
+    "browser-sync": "^2.23.6"
   }
 }

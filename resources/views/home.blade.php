@@ -25,19 +25,14 @@
         </div>
       </div>
 
-      {{-- <div class="box-body">
-        @php
-        $MainrequirementOfTheDay = '';
-        foreach ($MainrequirementOfTheDay as $key => $value) {
-         if ($value->mainrequirements_rank_id == Auth::user()->users_rank_id OR $value->mainrequirements_rank_id == 4) {
-              $mrName = $value->mainrequirements_name;
-              $mrDesc = $value->mainrequirements_description;
-           }  
-        }
-        @endphp 
-        Vandaag staat, {{$mrName}} in het zonnetje.
+      <div class="box-body">
+        @if(!$mrName) 
+        Er is nog geen eis van de dag.
+        @else
+        Vandaag staat, {{ $mrName }} in het zonnetje.
         Dit betekent dat je dit tegen komt tijdens het programma. 
-      </div> --}}
+        @endif
+      </div>
       <!-- /.box-body -->
       <div class="box-footer">
       </div>

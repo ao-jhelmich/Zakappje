@@ -15,8 +15,15 @@ class HomeController extends Controller
     public function index()
     {
         $mainrequirementOfTheDay = Mainrequirements::where('ModFlag', 2)->get();
+        $mrName = '';
+
+        foreach ($mainrequirementOfTheDay as $key => $value) {
+         if ($value->mainrequirements_rank_id == Auth::user()->users_rank_id OR $value->mainrequirements_rank_id == 4) {
+              $mrName = $value->mainrequirements_name;
+           }  
+        }
         
-        return view('home', compact('mainrequirementOfTheDay'));
+        return view('home', compact('mainrequirementOfTheDay', 'mrName'));
     }
 
     public function uitlegIndex()

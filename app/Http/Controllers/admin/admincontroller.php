@@ -25,9 +25,8 @@ class AdminController extends Controller
     	$mainRequirements = Mainrequirements::All();
         $Instructions = Instructions::All();
         $Requirements = Requirements::All();
-    	return view('admin.manage' , [	'Requirements' => $Requirements ,
-    									'Instructions' => $Instructions ,
-    									'mainRequirements' => $mainRequirements ]);
+
+    	return view('admin.manage' , compact('Requirements', 'Instructions', 'mainRequirements'));
     }
 
     public function MainrequirementOfTheDayPage()
@@ -38,13 +37,13 @@ class AdminController extends Controller
         $mainrequirementsRank4s = Mainrequirements::where('mainrequirements_rank_id', '4')-> get();
 
         $rank = Ranks::pluck("rank_name");
-        return view('admin.mod',[
-                                'rank' => $rank, 
-                                'mainrequirementsRank1s' => $mainrequirementsRank1s,
-                                'mainrequirementsRank2s' => $mainrequirementsRank2s,
-                                'mainrequirementsRank3s' => $mainrequirementsRank3s,
-                                'mainrequirementsRank4s' => $mainrequirementsRank4s,
-                                 ]);
+        return view('admin.mod', compact(
+                                'rank', 
+                                'mainrequirementsRank1s',
+                                'mainrequirementsRank2s',
+                                'mainrequirementsRank3s',
+                                'mainrequirementsRank4s'
+                                 ));
     }
 
     public function setMainrequirementOfTheDay(Request $request)
