@@ -50,7 +50,7 @@
         <h3>Je bent ingelogd wat nu?</h3>
         <a href="#"></a>
         <p>Nu je ingelogd bent kan je gaan beginnen met het behalen van de eisen. Klik hieronder om naar de uitleg te gaan!</p>
-        <p><a href="/uitleg"><button class="btn btn-block btn-succes" type="button">Uitleg!</button></a></p>
+        <p><a href="/uitleg"><button class="btn btn-block btn-info" type="button">Uitleg!</button></a></p>
         
         @else
         <h3>Log eerst even in!</h3>
