@@ -37,7 +37,6 @@ class User extends Authenticatable
 
     public function rank_id()
     {
-        $id = Auth::user()->id;
-        return User::where('users_rank_id', $id)->get();
+        return $this->users_rank_id;
     }
 }

@@ -16,4 +16,9 @@ class Ranks extends Model
     protected $fillable = [
         'rank_name', 
     ];
+
+    public function mainrequirements()
+    {
+        return $this->hasMany(Mainrequirements::class);
+    }
 }

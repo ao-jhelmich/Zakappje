@@ -13,4 +13,9 @@ class mainrequirements extends Model
         'mainrequirements_rank_id',
         'ModFlag',
     ];
+
+    public function ranks()
+    {
+        return $this->belongsTo(Ranks::class);
+    }
 }
