@@ -138,7 +138,7 @@ $adminRows = UserWantsChk::all();
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     @if(Auth::check())
-                    @if(Auth::user()->accountRole == 2)
+                    @if(Auth::user()->role == 2)
                     <a href="{{ url('admin') }}" class="">Admin</a>
                     @else
                     <a href="#">Halfjaarplanning</a>
@@ -175,7 +175,7 @@ $adminRows = UserWantsChk::all();
           @endif
           <!-- Control Sidebar Toggle Button -->
           @if (Auth::check())
-          @if (Auth::user()->accountRole ==2)
+          @if (Auth::user()->role ==2)
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
@@ -200,10 +200,10 @@ $adminRows = UserWantsChk::all();
           <p>{{ isset(Auth::user()->name) ? 'welkom '  . Auth::user()->name : 'Quest'}}</p>
           <!-- Status -->
           <p>
-            @if (isset(Auth::user()->accountRole))
-            @if (Auth::user()->accountRole == 1)
+            @if (isset(Auth::user()->role))
+            @if (Auth::user()->role == 1)
             {{'Verkenner'}}
-            @elseif(Auth::user()->accountRole == 2)
+            @elseif(Auth::user()->role == 2)
             {{'Leiding'}}
             @endif
             @endif
@@ -271,8 +271,8 @@ $adminRows = UserWantsChk::all();
           </ul>
         </li>
         <li><a href="{{ url('leaderboard') }}"><i class="fa fa-line-chart"></i><span>Leaderboard</span></a></li>
-        @if(isset(Auth::user()->accountRole))
-        @if(Auth::user()->accountRole == 2)
+        @if(isset(Auth::user()->role))
+        @if(Auth::user()->role == 2)
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i><span>Admin</span>
@@ -452,7 +452,7 @@ $adminRows = UserWantsChk::all();
   </footer>
   <!-- Control Sidebar -->
   @if (Auth::check())
-  @if (Auth::user()->accountRole == 2)
+  @if (Auth::user()->role == 2)
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -481,28 +481,6 @@ $adminRows = UserWantsChk::all();
         </ul>
         <!-- /.control-sidebar-menu -->
       </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
   </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed

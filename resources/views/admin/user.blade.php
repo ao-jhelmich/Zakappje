@@ -44,9 +44,9 @@
                         <tr>
                             <td>{{$user->name}}</td>
                             <td>
-                                @if ($user->accountRole == 1)
+                                @if ($user->role == 1)
                                 {{'Verkenner'}}
-                                @elseif($user->accountRole == 2)
+                                @elseif($user->role == 2)
                                 {{'Leiding'}}
                                 @endif
                             </td>

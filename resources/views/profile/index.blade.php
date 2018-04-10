@@ -32,7 +32,7 @@
                   <li><a href="#">Sizes</a></li>
                   <li><label class="tree-toggle nav-header">Forms</label>
                   <ul class="nav nav-list tree">
-                    <li><a href="
+                    <li><a href=""></a>
                       <li><a href="#">Vertical</a></li>
                     </ul>
                   </li>
@@ -77,14 +77,14 @@
 <!-- /.tab-pane -->
 <div class="active tab-pane" id="timeline">
 <div class="box-body box-profile">
-<img class="profile-user-img img-responsive img-circle" src="/images/user8-128x128.jpg" alt="User profile picture">
+<img class="profile-user-img img-responsive img-circle" src="{{ asset('/images/logo.png')}}" alt="User profile picture">
 <h3 class="profile-username text-center">{{$profile->name .' '. $profile->lastName}}</h3>
 <a data-toggle="modal" data-target="#editModel" href="#">edit</a>
 <p class="text-muted text-center">
-@if (isset(Auth::user()->accountRole))
-@if (Auth::user()->accountRole == 1)
+@if (isset(Auth::user()->role))
+@if (Auth::user()->role == 1)
 {{'Verkenner'}}
-@elseif(Auth::user()->accountRole == 2)
+@elseif(Auth::user()->role == 2)
 {{'Leiding'}}
 @endif
 @endif

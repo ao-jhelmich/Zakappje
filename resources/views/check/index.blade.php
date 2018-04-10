@@ -18,12 +18,12 @@
   <section class="content">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="/images/user4-128x128.jpg" alt="User profile picture">
+        <img class="profile-user-img img-responsive img-circle" src="{{ asset('/images/logo.png')}}" alt="User profile picture">
         <h3 class="profile-username text-center">{{$user->name . " " . $user->lastName}}</h3>
         <p class="text-muted text-center">
-          @if ($user->accountRole == 1)
+          @if ($user->role == 1)
           {{'Verkenner'}}
-          @elseif($user->accountRole == 2)
+          @elseif($user->role == 2)
           {{'Leiding'}}
           @endif
         </p>

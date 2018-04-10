@@ -170,11 +170,11 @@ class userController extends Controller
     {
         $id = $request->userid;
         $foundUser = User::find($id);
-        if ($foundUser->accountRole == 1) {
-            $foundUser->accountRole = $foundUser->accountRole + 1;
+        if ($foundUser->role == 1) {
+            $foundUser->role = $foundUser->role + 1;
                 $foundUser->save();
             return Redirect::to('admin/user');
-        }elseif ($foundUser->accountRole <= 2) {
+        }elseif ($foundUser->role <= 2) {
             return Redirect::to('/');
         }
     }

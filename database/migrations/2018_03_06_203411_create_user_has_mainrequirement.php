@@ -16,6 +16,7 @@ class CreateUserHasMainrequirement extends Migration
         Schema::create('user_has_mainrequirement', function (Blueprint $table) {
             $table->increments('user_has_mainrequirement_id');
             $table->integer('user_has_mainrequirement_rank_id');
+            $table->integer('mainrequirement_id');            
             $table->integer('user_id');
             $table->timestamps();
         });

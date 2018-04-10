@@ -70,7 +70,7 @@
     </section>
     <!-- /.content -->
   </div>
-  @if (Auth::check() && Auth::user()->accountRole == 1)
+  @if (Auth::check() && Auth::user()->role == 1)
   @if (!isset(Auth::user()->streetAdress, Auth::user()->houseNumber, Auth::user()->city, Auth::user()->postal_code, Auth::user()->user_phone_number, Auth::user()->user_parent_name, Auth::user()->user_parent_email, Auth::user()->user_parent_phone))
   <script>
   function askExtraInfo() {
