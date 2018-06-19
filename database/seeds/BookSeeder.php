@@ -832,9 +832,9 @@ class BookSeeder extends Seeder
         ]);
 
         /**
-         *  Sport & Spel
+         *  Omgeving
          */
-        $mr_id = mainrequirements::where('mainrequirements_description', 'Sport & Spel voor 1')->first();
+        $mr_id = mainrequirements::where('mainrequirements_description', 'Omgeving voor 1')->first();
 
         requirements::create([
             'requirements_name' => 'Relevant interview leiding',
@@ -846,7 +846,7 @@ class BookSeeder extends Seeder
             'requirements_mainrequirements_id' => $mr_id->mainrequirements_id,
         ]);
 
-        $mr_id = mainrequirements::where('mainrequirements_description', 'Sport & Spel voor 2')->first();
+        $mr_id = mainrequirements::where('mainrequirements_description', 'Omgeving voor 2')->first();
 
         requirements::create([
             'requirements_name' => 'Morse piramide maken',
@@ -863,7 +863,7 @@ class BookSeeder extends Seeder
             'requirements_mainrequirements_id' => $mr_id->mainrequirements_id
         ]);
 
-        $mr_id = mainrequirements::where('mainrequirements_description', 'Sport & Spel voor 3')->first();
+        $mr_id = mainrequirements::where('mainrequirements_description', 'Omgeving voor 3')->first();
 
         requirements::create([
             'requirements_name' => 'Diersporen herkennen',
@@ -875,7 +875,7 @@ class BookSeeder extends Seeder
             'requirements_mainrequirements_id' => $mr_id->mainrequirements_id,
         ]);
 
-        $mr_id = mainrequirements::where('mainrequirements_description', 'Sport & Spel voor 4')->first();
+        $mr_id = mainrequirements::where('mainrequirements_description', 'Omgeving voor 4')->first();
 
         requirements::create([
             'requirements_name' => 'Morsecode toepassen',
