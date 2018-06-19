@@ -1,7 +1,7 @@
 const { mix } = require('laravel-mix');
 
 mix.browserSync({
-    proxy: 'homestead.test'
+    proxy: 'zakappje.test'
 })
 
 mix.js('resources/assets/js/app.js', 'public/js')
